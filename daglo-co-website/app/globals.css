@@ -1,121 +1,164 @@
 /* globals.css
- * This stylesheet defines the foundational design system for the Daglo and Co. website.
- * It establishes the color palette, typography hierarchy, and core layout patterns
- * that every page on the site will use to ensure visual consistency throughout the experience.
+ * The foundational design system for Daglo and Co.
+ *
+ * This stylesheet establishes the color palette, typography hierarchy, and core layout patterns
+ * that every page on the site uses to maintain visual consistency. The system is built around
+ * three foundational principles that distinguish premium executive design from generic web design:
+ *
+ * First, readability is non-negotiable. Every text color is chosen to ensure adequate contrast
+ * against its background. Where the previous version of this stylesheet allowed dark navy text
+ * to appear on dark backgrounds in some contexts, this version establishes strict rules about
+ * which text colors can appear on which background colors.
+ *
+ * Second, hierarchy is established through restraint. Rather than using many sizes and weights,
+ * we use a limited palette of typographic choices applied with discipline. This is the approach
+ * that distinguishes editorial design from marketing design.
+ *
+ * Third, spacing creates rhythm. The system defines generous vertical spacing between sections
+ * because that breathing room is what makes executive design feel substantial rather than busy.
  */
 
-/* We import two font families from Google Fonts that work together to create our editorial voice.
- * Cormorant Garamond is a refined serif typeface used for headings and statements of substance.
- * Inter is a clean sans-serif typeface used for body text and navigation, providing readability without distraction.
- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* The :root selector defines CSS custom properties that act as our design tokens.
- * Any element on the site can reference these tokens, which means we can update a color in one place
- * and have that change propagate everywhere it is used. This approach mirrors how design systems work
- * at sophisticated firms like Kearney and McKinsey.
+/* The :root selector defines the design tokens as CSS custom properties.
+ * These tokens are the single source of truth for colors throughout the site.
+ * When we want to adjust a color, we change it here and the change propagates everywhere.
  */
 :root {
+  /* Base canvas colors establish the foundational backgrounds and text colors. */
   --background: #ffffff;
   --foreground: #1a1a1a;
+
+  /* Navy is our primary brand color. We define multiple variations because different contexts
+   * require slightly different shades to maintain optimal contrast and visual hierarchy. */
   --navy: #0a1f3d;
   --navy-deep: #061730;
+  --navy-rich: #0d2447;
+
+  /* Gold is our accent color. The standard gold appears against light backgrounds.
+   * Gold-light is a slightly warmer variation used against dark backgrounds where the standard
+   * gold can appear too muted to read easily. */
   --gold: #b8945a;
   --gold-light: #d4b97f;
+  --gold-bright: #e8c896;
+
+  /* Ivory is our primary light background. The warm variation has subtle warmth that prevents
+   * the site from feeling clinical or sterile, which is a common failure mode in tech-influenced
+   * design that does not understand executive aesthetics. */
   --ivory: #f5f2ec;
   --ivory-warm: #faf7f1;
-  --muted: #5f5e5a;
-  --muted-light: #8a8985;
+  --ivory-pure: #fbf9f5;
+
+  /* Text colors for use on light backgrounds. These tokens ensure that body text always has
+   * adequate contrast for sustained reading. */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a48;
+  --text-tertiary: #6b6b68;
+  --text-muted: #8a8985;
+
+  /* Text colors specifically calibrated for dark navy backgrounds. The critical insight that
+   * was missing in the previous version: text on dark backgrounds needs to be brighter than
+   * just "white with reduced opacity." Pure white at 70 percent opacity on a navy background
+   * reads as gray and feels unprofessional. These tokens use slightly warm ivory variations
+   * that maintain warmth while ensuring strong contrast. */
+  --text-on-dark-primary: #faf7f1;
+  --text-on-dark-secondary: #e8e4d8;
+  --text-on-dark-tertiary: #c8c4b8;
+
+  /* Border and divider colors establish subtle separation without heavy visual weight. */
   --border: #e8e6e0;
+  --border-light: #efece6;
+  --border-dark: #1a3258;
 }
 
-/* Tailwind v4 allows us to expose our custom CSS variables as Tailwind utility classes
- * by declaring them inside the @theme block. This means writing bg-navy or text-gold
- * in our component code will use these exact brand colors.
+/* The @theme block exposes our design tokens as Tailwind utility classes.
+ * This means writing bg-navy or text-gold in component code applies these exact brand values.
+ * The result is a unified system where the design tokens and the utility classes are always in sync.
  */
 @theme {
   --color-navy: #0a1f3d;
   --color-navy-deep: #061730;
+  --color-navy-rich: #0d2447;
   --color-gold: #b8945a;
   --color-gold-light: #d4b97f;
+  --color-gold-bright: #e8c896;
   --color-ivory: #f5f2ec;
   --color-ivory-warm: #faf7f1;
-  --color-muted: #5f5e5a;
-  --color-muted-light: #8a8985;
+  --color-ivory-pure: #fbf9f5;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a48;
+  --color-text-tertiary: #6b6b68;
+  --color-text-muted: #8a8985;
+  --color-text-on-dark-primary: #faf7f1;
+  --color-text-on-dark-secondary: #e8e4d8;
+  --color-text-on-dark-tertiary: #c8c4b8;
   --color-border: #e8e6e0;
+  --color-border-light: #efece6;
+  --color-border-dark: #1a3258;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
-/* The universal selector resets default browser styles so we start from a known baseline.
- * Different browsers apply different default margins and padding, which creates inconsistencies.
- * Resetting these values ensures our design appears the same in Chrome, Safari, Firefox, and Edge.
- */
+/* The universal reset removes inconsistent browser defaults and ensures predictable layout behavior.
+ * This is foundational to any serious design system because different browsers apply different
+ * default styles, which creates inconsistencies if you do not reset them. */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Smooth scrolling makes anchor link navigation feel polished rather than jarring.
- * When a user clicks a link that jumps to a section of the page, the browser animates the scroll
- * rather than instantly snapping to the destination.
- */
+/* Smooth scrolling makes anchor link navigation feel polished and intentional.
+ * The text-rendering property tells browsers to prioritize legibility over speed when rendering text,
+ * which produces slightly more refined character spacing. */
 html {
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
-/* The body element receives our base typography settings.
- * We use Inter as the default font, set a comfortable line height for reading long passages,
- * and use a warm ivory background that feels editorial rather than clinical.
- */
+/* Body styles establish the baseline typographic environment.
+ * Anti-aliasing settings ensure crisp text rendering on all displays.
+ * The font feature settings enable advanced typographic features like proper number spacing
+ * that distinguish premium typography from default browser rendering. */
 body {
   background: var(--ivory-warm);
-  color: var(--foreground);
+  color: var(--text-primary);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 400;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1;
 }
 
-/* All heading elements use the serif font family to create editorial gravitas.
- * The navy color reinforces our brand identity at every level of typography.
- */
+/* All heading elements share the serif font family to create editorial gravitas.
+ * The negative letter-spacing tightens the headlines slightly, which is a classic technique
+ * for making serif headlines feel more refined and intentional at large sizes. */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 500;
   color: var(--navy);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   line-height: 1.15;
 }
 
-/* The font-serif utility class allows us to apply the serif font to any element when needed.
- * This is useful for pull quotes and other special typographic moments.
- */
+/* Utility classes for typography that components can apply for special contexts. */
 .font-serif {
   font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-/* The font-sans utility class explicitly applies the sans-serif font, which is occasionally needed
- * to override a parent element that has applied the serif font.
- */
 .font-sans {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Paragraph elements receive subdued styling to support the headlines rather than compete with them.
- * The muted color and increased line height create comfortable, sustained reading conditions.
- */
+/* Paragraph styling establishes comfortable reading conditions for body text. */
 p {
-  color: var(--muted);
-  line-height: 1.8;
+  color: var(--text-secondary);
+  line-height: 1.75;
 }
 
-/* Link elements use the gold accent color to create gentle visual interest without overwhelming the page.
- * The smooth color transition on hover provides subtle feedback that the element is interactive.
- */
+/* Link styling creates gentle visual interest without overwhelming the page. */
 a {
   color: var(--gold);
   text-decoration: none;
@@ -126,10 +169,10 @@ a:hover {
   color: var(--navy);
 }
 
-/* The .container-narrow utility class creates a constrained reading width for long-form text.
- * Research on readability shows that line lengths between 50 and 75 characters are optimal,
- * which is approximately what this max-width achieves at standard font sizes.
- */
+/* Container utilities define the standard reading widths used throughout the site.
+ * The narrow container is for long-form text where line length affects readability.
+ * The wide container is for multi-column layouts and image-heavy sections.
+ * The full container is for hero sections and other immersive content. */
 .container-narrow {
   max-width: 760px;
   margin-left: auto;
@@ -138,9 +181,6 @@ a:hover {
   padding-right: 1.5rem;
 }
 
-/* The .container-wide utility class is used for sections that benefit from more breathing room,
- * such as image-heavy layouts and grids of content cards.
- */
 .container-wide {
   max-width: 1280px;
   margin-left: auto;
@@ -149,41 +189,115 @@ a:hover {
   padding-right: 1.5rem;
 }
 
-/* The .eyebrow class creates the small uppercase label that appears above section headings.
- * This typographic pattern is used by sophisticated firms to establish hierarchy and add editorial polish.
- */
+@media (min-width: 768px) {
+  .container-narrow,
+  .container-wide {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* The eyebrow class creates the small uppercase labels that appear above section headings.
+ * This typographic pattern signals editorial structure and adds professional polish. */
 .eyebrow {
   font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   display: inline-block;
 }
 
-/* The .pull-quote class formats the large, emphatic statements that anchor each page.
- * These quotes appear at strategic moments to reinforce key arguments and create rhythm.
- */
+.eyebrow-light {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.25rem;
+  display: inline-block;
+}
+
+/* The pull-quote class formats large emphatic statements that anchor important arguments.
+ * The italic Cormorant variant adds editorial weight, and the gold border creates the
+ * visual signature that ties the quote back to the overall brand system. */
 .pull-quote {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  line-height: 1.3;
+  font-size: 1.875rem;
+  line-height: 1.4;
   color: var(--navy);
   font-weight: 500;
   font-style: italic;
-  border-left: 3px solid var(--gold);
+  border-left: 2px solid var(--gold);
   padding-left: 2rem;
   margin: 3rem 0;
 }
 
-/* The .section-divider class creates the subtle horizontal lines that separate major content sections.
- * Using a thin gold line rather than a heavy border maintains the refined aesthetic.
- */
+@media (min-width: 768px) {
+  .pull-quote {
+    font-size: 2.25rem;
+    padding-left: 2.5rem;
+  }
+}
+
+/* Section dividers create subtle visual separation between major content sections.
+ * The gradient line is thinner and more elegant than a solid border, which contributes
+ * to the editorial feel rather than the marketing feel. */
 .section-divider {
   height: 1px;
   background: linear-gradient(to right, transparent, var(--gold), transparent);
-  margin: 4rem auto;
-  max-width: 200px;
+  margin: 0 auto;
+  max-width: 240px;
+  opacity: 0.6;
+}
+
+/* Section transition creates a refined visual break between major sections of a page.
+ * Rather than just spacing, this adds a small architectural detail that signals the page is
+ * organized with intention. */
+.section-transition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.section-transition::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 4rem;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+}
+
+/* The brand-mark class is used for the wordmark display in the footer and other branded contexts.
+ * It applies the specific serif treatment that gives the Daglo and Co. name its signature look. */
+.brand-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Card surfaces are used throughout the site for content that benefits from gentle elevation.
+ * Cards on dark backgrounds use a subtle navy-rich tone that provides separation without
+ * appearing as separate boxes. Cards on light backgrounds use ivory-pure for the same effect. */
+.surface-dark {
+  background: var(--navy-rich);
+  border: 1px solid var(--border-dark);
+}
+
+.surface-light {
+  background: var(--ivory-pure);
+  border: 1px solid var(--border-light);
+}
+
+/* Focus states ensure accessibility for keyboard users without compromising the design.
+ * The outline appears in gold to match the brand and provides clear feedback about which
+ * element is currently focused. */
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 1px;
 }

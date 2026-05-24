@@ -1,24 +1,33 @@
 // Navigation.tsx
-// This component renders the site-wide header that appears at the top of every page.
-// It contains the Daglo and Co. logo on the left and the primary navigation links on the right.
-// The "use client" directive at the top tells Next.js this component needs to run in the browser
-// because it uses React hooks for the mobile menu toggle.
+// This is the site-wide header that appears at the top of every page on the Daglo and Co. website.
+//
+// The refinements applied in this version address several specific concerns:
+//
+// First, the logo is now larger and given proper breathing room. The previous version used a
+// small logo that felt added to the page rather than integrated into the brand system. Premium
+// executive sites like Kearney and McKinsey give their wordmarks substantial presence in the
+// header because the logo IS the brand statement. We follow that principle here.
+//
+// Second, the navigation links are arranged with more sophisticated spacing and typography.
+// The widened letter-spacing and refined font weight signal editorial discipline rather than
+// generic marketing design. The active state styling makes it clear which page the visitor is
+// currently viewing, which is a small detail that contributes significantly to the professional feel.
+//
+// Third, the header now has a subtle bottom border and increased vertical padding, which creates
+// architectural weight and establishes the header as a distinct zone rather than text floating
+// at the top of the page.
+
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-// The Navigation component is exported as the default export so it can be imported into the layout.
-// Making this a default export means other files can import it with any name they choose.
 export default function Navigation() {
-  // We use React state to track whether the mobile menu is open or closed.
-  // On larger screens this state does not matter because the full menu is always visible.
-  // On smaller screens, this state controls whether the hamburger menu shows or hides the links.
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  // We define the navigation links as an array so we can easily map over them and render each one.
-  // This approach makes it easy to add or remove pages later without rewriting the navigation code.
   const navLinks = [
     { href: "/philosophy", label: "Philosophy" },
     { href: "/approach", label: "Approach" },
@@ -28,44 +37,54 @@ export default function Navigation() {
     { href: "/contact", label: "Contact" },
   ];
 
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
-    // The header uses a navy background to create immediate brand recognition.
-    // We use a sticky positioning so the navigation stays visible as users scroll.
-    <header className="bg-navy border-b border-navy/10 sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
-        {/* The logo on the left side links back to the homepage when clicked. */}
-        {/* We use the white version of the logo because it appears on the navy background. */}
-        <Link href="/" className="flex items-center" aria-label="Daglo and Co. home">
-          <Image
-            src="/images/logo-white.png"
-            alt="Daglo and Co."
-            width={180}
-            height={60}
-            priority
-            className="h-10 w-auto"
-          />
+    <header className="bg-navy-deep sticky top-0 z-50 border-b border-gold/15">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+        <Link
+          href="/"
+          className="flex items-center group"
+          aria-label="Daglo and Co. home"
+        >
+          <div className="flex items-center space-x-4">
+            <Image
+              src="/images/logo-white.png"
+              alt="Daglo and Co."
+              width={240}
+              height={80}
+              priority
+              className="h-12 w-auto opacity-95 group-hover:opacity-100 transition-opacity duration-300"
+            />
+          </div>
         </Link>
 
-        {/* On desktop screens, the navigation links are displayed horizontally on the right. */}
-        {/* The hidden class hides them on mobile, and the md:flex class shows them on medium and larger screens. */}
-        <div className="hidden md:flex items-center space-x-10">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-ivory text-sm tracking-widest uppercase hover:text-gold transition-colors duration-300"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="hidden lg:flex items-center space-x-1">
+          {navLinks.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative px-4 py-2 text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-300 ${active ? "text-gold-light" : "text-text-on-dark-secondary hover:text-gold-light"}`}
+              >
+                {link.label}
+                {active && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-px bg-gold-light" />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
-        {/* On mobile screens, we show a hamburger button that toggles the menu open and closed. */}
-        {/* The md:hidden class hides this button on medium and larger screens where the full menu is shown. */}
         <button
-          className="md:hidden text-ivory"
+          className="lg:hidden text-text-on-dark-primary p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={mobileMenuOpen}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -73,31 +92,33 @@ export default function Navigation() {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            strokeWidth={1.5}
           >
             {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
       </nav>
 
-      {/* The mobile menu drops down below the header when the user taps the hamburger icon. */}
-      {/* It is only visible when mobileMenuOpen is true and on screens smaller than medium. */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-navy border-t border-ivory/10">
-          <div className="px-6 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block text-ivory text-sm tracking-widest uppercase hover:text-gold transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+        <div className="lg:hidden bg-navy-deep border-t border-gold/15">
+          <div className="px-6 py-6 space-y-1">
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`block px-4 py-3 text-sm tracking-[0.2em] uppercase font-medium transition-colors duration-300 ${active ? "text-gold-light border-l-2 border-gold" : "text-text-on-dark-secondary hover:text-gold-light border-l-2 border-transparent"}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}
