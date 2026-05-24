@@ -96,13 +96,16 @@ export default function InsightsPage() {
             </h2>
           </div>
 
-          {/* The articles are stacked vertically with thin hairline rules between them. */}
-          <div className="max-w-3xl mx-auto">
-            {forthcomingArticles.map((article, index) => (
+          {/* The articles are stacked vertically with substantial vertical spacing between
+              them. The previous version used thin hairline rules between articles, but
+              those divider lines were creating a cluttered feeling that conflicted with
+              the editorial restraint of the rest of the site. White space alone now does
+              the work of separating one article from the next, which is the pattern that
+              serious publications use when they want articles to feel curated rather than
+              listed. */}
+          <div className="max-w-3xl mx-auto space-y-24">
+            {forthcomingArticles.map((article) => (
               <article key={article.number}>
-                {/* A thin hairline rule appears between articles but not before the first. */}
-                {index > 0 && <div className="hairline-rule my-20" />}
-
                 {/* The metadata bar combines the number, the category label, and the status. */}
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 mb-8">
                   <div className="flex items-baseline gap-5">
@@ -131,9 +134,11 @@ export default function InsightsPage() {
             ))}
           </div>
 
-          {/* The closing thesis statement ties the three articles into a single argument. */}
-          <div className="max-w-3xl mx-auto mt-24 text-center">
-            <div className="hairline-rule mb-12" />
+          {/* The closing thesis statement ties the three articles into a single argument.
+              The previous version included a thin horizontal rule above this passage as
+              visual separation from the articles above, but the white space provided by
+              the substantial top margin now serves that purpose more elegantly. */}
+          <div className="max-w-3xl mx-auto mt-32 text-center">
             <p className="text-xl md:text-2xl font-serif italic text-navy leading-relaxed">
               The future of governance will belong to leaders who can connect cyber risk,
               data, geopolitical pressure, and operational execution into one picture.
