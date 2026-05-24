@@ -302,12 +302,10 @@ export default function FoundationPage() {
           </div>
 
           <p className="text-text-light-body leading-relaxed mt-16">
-            Together, these foundations position Daglo and Co. to advise boards, executives,
-            and organizations operating in complex environments where governance decisions
-            carry strategic, financial, operational, cyber, and reputational consequences.
-            The work is relevant across corporate, federal, defense, intelligence, critical
-            infrastructure, and highly regulated enterprise settings, including environments
-            where geopolitical pressure, data risk, and operational resilience intersect.
+            Together, these credentials support a practice built for boards, executives,
+            and organizations navigating enterprise risk, cyber resilience, data governance,
+            regulatory complexity, and strategic uncertainty across both public and
+            private-sector environments.
           </p>
         </div>
       </section>

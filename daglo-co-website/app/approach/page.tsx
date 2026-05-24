@@ -2,23 +2,28 @@
 //
 // The Approach page develops the GEOINT framing and Zero Trust governance philosophy.
 //
-// This version removes all the bordered containers that were wrapping the What Boards
-// Must See elements and the Four Commitments. Those gray-box treatments were exactly the
-// kind of clutter you correctly identified. Each element now appears as pure typography
-// with no container, where the structure comes from labels, headlines, and spacing.
+// This revision applies the unified centered composition treatment to two sections that
+// were breaking the page rhythm. The "What Boards Must See" terrain elements and the
+// "Four commitments that govern the work" commitments grid both previously used the same
+// problematic pattern: centered headlines above followed by left-aligned grid items below.
+// This produced the same visual discontinuity that we fixed on the Contact page.
+//
+// The fix applied here mirrors the Contact page solution. Each grid container now uses
+// text-center to cascade center alignment down to every child element, and each item
+// within the grid uses flex with items-center to align its content along the center axis.
+// Paragraphs are constrained to a narrower text measure so the columns appear visually
+// balanced. The result is that both sections now read as unified centered compositions
+// rather than as centered headlines floating above left-aligned content blocks.
 
 import Image from "next/image";
 import Link from "next/link";
 
 export default function ApproachPage() {
-  // The four commitments use your sharper language from the previous revision.
-  // Each commitment has a short directive name, a central statement, and a developed expansion.
   const commitments = [
     {
       number: "01",
       name: "Never assume",
-      statement:
-        "Governance should challenge inherited assumptions before the environment does.",
+      statement: "Governance should challenge inherited assumptions before the environment does.",
       expansion:
         "Every governance structure rests on assumptions that were true when the organization was smaller, slower, or less exposed. The work of the board is to surface those assumptions while they can still be revised in a meeting, not after they have been revised by a crisis.",
     },
@@ -32,8 +37,7 @@ export default function ApproachPage() {
     {
       number: "03",
       name: "Reduce hidden exposure",
-      statement:
-        "Implicit trust should be surfaced, tested, and converted into deliberate decisions.",
+      statement: "Implicit trust should be surfaced, tested, and converted into deliberate decisions.",
       expansion:
         "Every implicit trust relationship across data, vendors, geographies, and partnerships is a place where the organization is exposed without knowing it. The work is to convert those relationships into explicit decisions the board has actually made.",
     },
@@ -46,7 +50,6 @@ export default function ApproachPage() {
     },
   ];
 
-  // The terrain elements are the four things the board must see, framed as a decision framework.
   const terrainElements = [
     {
       label: "Movement",
@@ -94,7 +97,10 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The opening section introduces the GEOINT analogy. */}
+      {/* The opening section introduces the GEOINT analogy. This is left-aligned editorial
+          content because it functions as a long-form essay opener rather than as a structured
+          section with grid content. The pattern works because there is no grid below it that
+          would create alignment discontinuity. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-narrow">
           <div className="eyebrow mb-6">A GEOINT Perspective</div>
@@ -120,9 +126,10 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The What Boards Must See section now uses pure typography with no bordered tiles.
-          Each element has a small gold label, a serif headline, and developed supporting text.
-          The structure comes from the spacing rhythm between items, not from boxes around them. */}
+      {/* The "What Boards Must See" section now applies the unified centered composition.
+          The label, headline, and intro paragraph are centered. The four terrain elements
+          below them now also center along the same vertical axis, producing a single
+          unified composition rather than centered text above a left-aligned grid. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-wide">
           <div className="text-center mb-24 max-w-3xl mx-auto">
@@ -136,29 +143,37 @@ export default function ApproachPage() {
             </p>
           </div>
 
-          {/* The four terrain elements are presented as a typographic grid. Each element has
-              its own visual identity through the gold label and serif headline, but there are
-              no boxes or borders separating them from the page. */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 max-w-5xl mx-auto">
-            {terrainElements.map((element) => (
-              <div key={element.label}>
-                <div className="text-xs tracking-[0.3em] uppercase text-gold mb-5">
-                  {element.label}
+          {/* The grid container now uses text-center to cascade alignment to children.
+              The max-w-5xl constraint keeps the grid visually balanced under the centered
+              headline rather than spreading to the full container width. */}
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 text-center">
+              {terrainElements.map((element) => (
+                <div key={element.label} className="flex flex-col items-center">
+                  <div className="text-xs tracking-[0.3em] uppercase text-gold mb-5">
+                    {element.label}
+                  </div>
+                  <h3 className="text-2xl font-serif text-navy mb-5 leading-tight">
+                    {element.title}
+                  </h3>
+                  {/* The max-w-sm constraint creates a narrower text measure within each
+                      grid cell, which produces the balanced visual weight that distinguishes
+                      editorial design from raw text dumps. */}
+                  <p className="text-base text-text-body leading-relaxed max-w-sm">
+                    {element.body}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-serif text-navy mb-5 leading-tight">
-                  {element.title}
-                </h3>
-                <p className="text-base text-text-body leading-relaxed">
-                  {element.body}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* The Zero Trust section uses the deep navy background with white headlines for
-          strong readability. The two-column layout pairs the cityscape imagery with the argument. */}
+      {/* The Zero Trust section uses the deep navy background with white headlines.
+          This two-column layout pairs the cityscape imagery with the argument, which is
+          a different kind of composition than the centered grid pattern. Asymmetric
+          two-column layouts work well here because the image and the text balance each
+          other visually even though they are not on the same vertical axis. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -192,9 +207,11 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The Four Commitments section now uses pure typography with no bordered cards.
-          Each commitment has a large gold number, a small gold directive name, a substantial
-          serif statement that captures the principle, and a developed expansion beneath it. */}
+      {/* The Four Commitments section also applies the unified centered composition.
+          The structure mirrors the terrain elements above: centered label, centered headline,
+          centered intro paragraph, and a centered grid of commitments below. Each commitment
+          has its content centered along the column's vertical axis, with paragraphs
+          constrained to a narrower text measure for visual balance. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-wide">
           <div className="text-center mb-24 max-w-3xl mx-auto">
@@ -209,28 +226,30 @@ export default function ApproachPage() {
             </p>
           </div>
 
-          {/* The four commitments appear in a two-column grid with generous spacing.
-              No bordered containers, no gray boxes. Each commitment is built from pure
-              typography: number, name, statement, expansion. */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 max-w-5xl mx-auto">
-            {commitments.map((commitment) => (
-              <div key={commitment.number}>
-                <div className="flex items-baseline gap-5 mb-5">
-                  <div className="text-4xl font-serif text-gold leading-none">
-                    {commitment.number}
+          {/* The commitments grid follows the same centered pattern as the terrain elements.
+              Each commitment shows the number and directive name in a centered baseline row,
+              followed by the centered statement headline, and the centered expansion paragraph. */}
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 text-center">
+              {commitments.map((commitment) => (
+                <div key={commitment.number} className="flex flex-col items-center">
+                  <div className="flex items-baseline gap-5 mb-5 justify-center">
+                    <div className="text-4xl font-serif text-gold leading-none">
+                      {commitment.number}
+                    </div>
+                    <div className="text-xs tracking-[0.3em] uppercase text-gold">
+                      {commitment.name}
+                    </div>
                   </div>
-                  <div className="text-xs tracking-[0.3em] uppercase text-gold">
-                    {commitment.name}
-                  </div>
+                  <h3 className="text-xl md:text-2xl font-serif text-navy mb-6 leading-snug max-w-md">
+                    {commitment.statement}
+                  </h3>
+                  <p className="text-base text-text-body leading-relaxed max-w-md">
+                    {commitment.expansion}
+                  </p>
                 </div>
-                <h3 className="text-xl md:text-2xl font-serif text-navy mb-6 leading-snug">
-                  {commitment.statement}
-                </h3>
-                <p className="text-base text-text-body leading-relaxed">
-                  {commitment.expansion}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="text-center mt-24">
