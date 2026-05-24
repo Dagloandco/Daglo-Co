@@ -2,19 +2,16 @@
 //
 // The Insights page is the publication hub for the practice's editorial work.
 //
-// This version uses the three-article pipeline you specified, rebuilt with pure typography
-// rather than the bordered card treatment the previous version used. Each article appears
-// as a clean editorial entry with no container, where the structure comes from the metadata
-// labels, the serif headline, and generous spacing between items.
-//
-// The "Forthcoming Field Notes" headline now uses white text against the dark hero background,
-// which fixes the readability problem where the previous version had this headline nearly
-// invisible against its own background.
+// This version removes the audience lines from each forthcoming article as you specified.
+// Those lines previously appeared in italic serif beneath each article description, naming
+// the intended readers. Removing them produces a cleaner editorial layout that lets the
+// title and description carry the full weight of each article entry.
 
-import Link from "next/link";
 import Image from "next/image";
 
 export default function InsightsPage() {
+  // The three forthcoming articles in the editorial pipeline. The audience field has been
+  // removed from each entry because the audience lines are no longer displayed in the layout.
   const forthcomingArticles = [
     {
       number: "01",
@@ -23,7 +20,6 @@ export default function InsightsPage() {
         "The Castle Has Fallen: Why trust is the most dangerous word in cybersecurity.",
       description:
         "The old perimeter model is gone. This article argues that trust has become one of the most dangerous assumptions in cybersecurity, and that Zero Trust is no longer just a technical framework. It is a leadership mandate.",
-      audience: "For C-suite leaders, boards, and security executives.",
       status: "Coming soon",
     },
     {
@@ -33,8 +29,6 @@ export default function InsightsPage() {
         "Data is the New Fuel: Why protecting data is the only security strategy that matters.",
       description:
         "Data is now the real attack surface. This article explores why protecting systems is no longer enough, and why boards must treat data governance, access, classification, and visibility as core enterprise strategy.",
-      audience:
-        "For C-suite leaders, CISOs, data leaders, and enterprise risk executives.",
       status: "Forthcoming",
     },
     {
@@ -43,7 +37,6 @@ export default function InsightsPage() {
       title: "The Digital Frontline: Security in a connected, contested world.",
       description:
         "Security is no longer confined to networks, borders, or organizations. This article connects cyber risk, geopolitical instability, African security dynamics, and the global threat landscape into one strategic picture.",
-      audience: "For policymakers, boards, and strategic leaders.",
       status: "Forthcoming",
     },
   ];
@@ -67,8 +60,6 @@ export default function InsightsPage() {
           <div className="text-xs tracking-[0.35em] uppercase text-gold-light mb-8">
             Insights
           </div>
-          {/* The headline now uses pure white, which fixes the readability problem where
-              the previous version had this headline nearly invisible. */}
           <h1 className="text-5xl md:text-7xl font-serif text-white leading-[1.1]">
             Forthcoming Field Notes.
           </h1>
@@ -91,10 +82,11 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      {/* The three-article pipeline is now presented as pure editorial typography.
-          Each article has a metadata bar at the top with the number, label, and status,
-          followed by a substantive serif headline, a developed description, and an italic
-          audience line. No bordered containers, no card surfaces. Just type and space. */}
+      {/* The three-article pipeline presents each article as a clean editorial entry.
+          Each article has a metadata bar with the number, label, and status, followed by
+          a substantive serif headline and a developed description. The audience lines that
+          previously appeared beneath each description have been removed, which produces a
+          cleaner layout that lets the title and description carry the full weight. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-wide">
           <div className="text-center mb-24 max-w-3xl mx-auto">
@@ -104,20 +96,14 @@ export default function InsightsPage() {
             </h2>
           </div>
 
-          {/* The articles are stacked vertically with thin hairline rules between them.
-              This is the editorial pattern that serious publications use because it provides
-              minimal structural separation without creating boxed feeling. */}
+          {/* The articles are stacked vertically with thin hairline rules between them. */}
           <div className="max-w-3xl mx-auto">
             {forthcomingArticles.map((article, index) => (
               <article key={article.number}>
-                {/* A thin hairline rule appears between articles but not before the first one
-                    or after the last one. This creates the minimal separation that serious
-                    publications use to organize editorial content. */}
+                {/* A thin hairline rule appears between articles but not before the first. */}
                 {index > 0 && <div className="hairline-rule my-20" />}
 
-                {/* The metadata bar at the top combines the number, the category label,
-                    and the status indicator in a single horizontal row. The number is
-                    rendered larger in serif type to anchor the article visually. */}
+                {/* The metadata bar combines the number, the category label, and the status. */}
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 mb-8">
                   <div className="flex items-baseline gap-5">
                     <div className="text-3xl font-serif text-gold leading-none">
@@ -138,21 +124,14 @@ export default function InsightsPage() {
                 </h3>
 
                 {/* The description provides the substantive preview of the argument. */}
-                <p className="text-base md:text-lg text-text-body leading-relaxed mb-6">
+                <p className="text-base md:text-lg text-text-body leading-relaxed">
                   {article.description}
-                </p>
-
-                {/* The audience line uses italic serif to provide visual distinction
-                    while maintaining editorial consistency. */}
-                <p className="text-sm text-text-tertiary italic font-serif">
-                  {article.audience}
                 </p>
               </article>
             ))}
           </div>
 
-          {/* The closing thesis statement ties the three articles into a single argument
-              about what governance will require of future leaders. */}
+          {/* The closing thesis statement ties the three articles into a single argument. */}
           <div className="max-w-3xl mx-auto mt-24 text-center">
             <div className="hairline-rule mb-12" />
             <p className="text-xl md:text-2xl font-serif italic text-navy leading-relaxed">
@@ -163,8 +142,7 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      {/* The closing section invites readers to follow the writing through LinkedIn.
-          White headlines on the deep navy background ensure strong readability. */}
+      {/* The closing section invites readers to follow the writing through LinkedIn. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="container-narrow text-center">
           <div className="eyebrow-light mb-6">Follow the Writing</div>

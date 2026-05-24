@@ -289,6 +289,7 @@ export default function FoundationPage() {
                 Director credentialing through the National Association of Corporate Directors.
               </p>
             </div>
+            {/* The NACD entry uses the polished wording specified for the board pipeline. */}
             <div>
               <h3 className="text-2xl font-serif text-white mb-3">
                 INSEAD Directors Certification
@@ -301,12 +302,12 @@ export default function FoundationPage() {
           </div>
 
           <p className="text-text-light-body leading-relaxed mt-16">
-            These credentials reflect a commitment to formal board-level governance expertise
-            alongside the practitioner depth of the foundations above. Together they position
-            the practice to serve boards, executives, and organizations navigating contested
-            terrain across federal, defense, intelligence, and highly regulated enterprise
-            environments, including CENTCOM, AFRICOM, EUCOM, and other combatant command
-            contexts where governance carries operational consequence.
+            Together, these foundations position Daglo and Co. to advise boards, executives,
+            and organizations operating in complex environments where governance decisions
+            carry strategic, financial, operational, cyber, and reputational consequences.
+            The work is relevant across corporate, federal, defense, intelligence, critical
+            infrastructure, and highly regulated enterprise settings, including environments
+            where geopolitical pressure, data risk, and operational resilience intersect.
           </p>
         </div>
       </section>

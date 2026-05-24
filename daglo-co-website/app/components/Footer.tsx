@@ -2,25 +2,21 @@
 //
 // The site-wide footer for Daglo and Co.
 //
-// This version is rebuilt to mirror the Kearney footer structure you referenced. The key
-// changes from the previous version are substantial:
+// This version centers every element in the footer to produce the symmetrical, intentional
+// feeling you specified. The previous version had some elements centered and others
+// floating in ways that broke the visual balance. The new version aligns everything to a
+// single center axis, which produces the calm, structured feeling that distinguishes
+// premium advisory footers from generic web footers.
 //
-// First, all boxes are eliminated. The previous version wrapped direct email and professional
-// network in bordered containers, which created the cluttered feeling you correctly identified.
-// The new version uses plain text on the dark background with no containers at all.
-//
-// Second, the email address is no longer displayed in uppercase. Kearney and other premium
-// advisory firms always display email addresses in their natural case because uppercase email
-// reads as marketing rather than as direct contact.
-//
-// Third, the structure is now organized in horizontal bands rather than columns. A single
-// row of navigation links sits at the top, social icons below them, contact details and
-// brand mark in a final row. This mirrors how Kearney organizes their footer and produces
-// the clean, structured feeling that distinguishes premium advisory from generic web design.
+// The brand mark at the top of the footer is given more breathing room than before,
+// with substantial vertical space above and below it. This makes the wordmark function
+// as the anchor of the footer rather than as a small element competing with other content
+// for attention.
 
 import Link from "next/link";
 
 export default function Footer() {
+  // The navigation links mirror the main site navigation for consistency.
   const footerNavLinks = [
     { href: "/philosophy", label: "Philosophy" },
     { href: "/approach", label: "Approach" },
@@ -30,7 +26,7 @@ export default function Footer() {
     { href: "/contact", label: "Contact" },
   ];
 
-  // The social links use the LinkedIn URL you specified in this revision.
+  // The social links use the LinkedIn URL you specified.
   const socialLinks = [
     {
       name: "LinkedIn",
@@ -54,32 +50,40 @@ export default function Footer() {
 
   return (
     // The footer uses the deep navy background with substantial top margin to separate
-    // it from the page content above. No top border is needed because the color shift
-    // provides natural separation.
-    <footer className="bg-navy-deep mt-32 pt-20 pb-12">
+    // it from the page content above. The entire footer container is set to text-center
+    // so that every element inside will be centered horizontally by default.
+    <footer className="bg-navy-deep mt-32 pt-24 pb-12 text-center">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        {/* The brand mark sits at the top of the footer as a quiet wordmark.
-            This is the same treatment Kearney uses, where the brand name appears
-            as the anchor point at the top of the footer rather than buried below. */}
-        <div className="text-center mb-12">
-          <div className="font-serif text-3xl text-white mb-3 tracking-wide">
-            Daglo &amp; Co.
+        {/* The brand mark anchors the top of the footer with substantial visual presence.
+            The wordmark is rendered at large size with the ampersand in gold-light to add
+            the typographic detail that ties the footer back to the brand system. The
+            tagline beneath uses widened uppercase letter-spacing to signal editorial
+            discipline. Both elements are naturally centered because the parent container
+            has text-center applied. */}
+        <div className="mb-16">
+          <div className="font-serif text-4xl md:text-5xl text-white tracking-wide mb-4">
+            Daglo <span className="text-gold-light">&amp;</span> Co.
           </div>
-          <div className="text-xs tracking-[0.3em] uppercase text-text-light-secondary">
+          <div className="text-xs tracking-[0.35em] uppercase text-text-light-secondary">
             Governance &middot; Risk &middot; Leadership
           </div>
         </div>
 
-        {/* A thin horizontal rule provides minimal separation between the brand mark
-            and the navigation row. This is the kind of subtle structural element that
-            distinguishes editorial design from box-based design. */}
-        <div className="hairline-rule-dark max-w-3xl mx-auto mb-12" />
+        {/* A thin hairline rule provides minimal separation between the brand mark and
+            the navigation row. The rule is centered with a constrained width so that it
+            does not span the full width of the page, which would feel too heavy. */}
+        <div className="mx-auto mb-14 max-w-md">
+          <div className="hairline-rule-dark" />
+        </div>
 
-        {/* The navigation row presents all six pages as a single horizontal line of links.
-            This is exactly how Kearney structures their footer navigation, with the items
-            spread across a centered row with generous spacing between them. */}
-        <nav className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-10">
+        {/* The navigation row presents all six pages in a single horizontal line.
+            The flex-wrap class allows the items to break onto multiple lines on smaller
+            screens, and the justify-center keeps them centered regardless of how many
+            rows they occupy. The gap-x-10 utility provides forty pixels of horizontal
+            space between items, and the gap-y-4 provides vertical breathing room when
+            items wrap to a second row. */}
+        <nav className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-12">
           {footerNavLinks.map((link) => (
             <Link
               key={link.href}
@@ -91,9 +95,9 @@ export default function Footer() {
           ))}
         </nav>
 
-        {/* The social icons sit below the navigation in a centered row.
-            No labels, no containers, just the icons themselves with gentle hover states. */}
-        <div className="flex justify-center gap-6 mb-14">
+        {/* The social icons sit below the navigation in a centered row with generous
+            spacing between them. No labels, no containers, just the icons themselves. */}
+        <div className="flex justify-center gap-8 mb-14">
           {socialLinks.map((link) => (
             <a
               key={link.name}
@@ -108,11 +112,10 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* The contact information appears in its natural case as plain text on the
-            dark background. No box, no border, no uppercase styling. Just the email
-            address rendered as a direct, readable link the way it would appear on a
-            business card or in a signature line. */}
-        <div className="text-center mb-10">
+        {/* The contact email appears in its natural case as a plain centered link.
+            No box, no border, no uppercase styling. Just the email address rendered as
+            it would appear on a business card. */}
+        <div className="mb-14">
           <a
             href="mailto:donald@daglo.co"
             className="text-text-light-body hover:text-white transition-colors duration-300"
@@ -121,9 +124,13 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* The closing line sits at the very bottom as a quiet signature. */}
-        <div className="hairline-rule-dark max-w-3xl mx-auto mb-8" />
-        <div className="text-center text-xs text-text-light-secondary tracking-wide italic font-serif">
+        {/* A final thin rule provides minimal separation before the closing signature. */}
+        <div className="mx-auto mb-8 max-w-md">
+          <div className="hairline-rule-dark" />
+        </div>
+
+        {/* The closing line sits at the very bottom as a quiet centered signature. */}
+        <div className="text-xs text-text-light-secondary tracking-wide italic font-serif">
           Counsel for the decisions that define you.
         </div>
       </div>
