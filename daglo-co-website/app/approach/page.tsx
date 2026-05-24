@@ -2,18 +2,10 @@
 //
 // The Approach page develops the GEOINT framing and Zero Trust governance philosophy.
 //
-// This revision applies the unified centered composition treatment to two sections that
-// were breaking the page rhythm. The "What Boards Must See" terrain elements and the
-// "Four commitments that govern the work" commitments grid both previously used the same
-// problematic pattern: centered headlines above followed by left-aligned grid items below.
-// This produced the same visual discontinuity that we fixed on the Contact page.
-//
-// The fix applied here mirrors the Contact page solution. Each grid container now uses
-// text-center to cascade center alignment down to every child element, and each item
-// within the grid uses flex with items-center to align its content along the center axis.
-// Paragraphs are constrained to a narrower text measure so the columns appear visually
-// balanced. The result is that both sections now read as unified centered compositions
-// rather than as centered headlines floating above left-aligned content blocks.
+// This revision applies the unified editorial composition system. The terrain elements
+// and the four commitments now stack vertically as left-aligned editorial entries rather
+// than spreading across two-column grids. This produces the polished editorial feeling
+// that matches the rest of the site and gives each idea substantial visual weight.
 
 import Image from "next/image";
 import Link from "next/link";
@@ -75,7 +67,7 @@ export default function ApproachPage() {
 
   return (
     <>
-      {/* The page hero uses the geospatial imagery to visually establish the GEOINT framing. */}
+      {/* The page hero uses centered composition against the geospatial imagery. */}
       <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -97,69 +89,61 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The opening section introduces the GEOINT analogy. This is left-aligned editorial
-          content because it functions as a long-form essay opener rather than as a structured
-          section with grid content. The pattern works because there is no grid below it that
-          would create alignment discontinuity. */}
+      {/* The opening section introduces the GEOINT analogy using left-aligned editorial
+          composition. The three paragraphs build the argument from observation to analogy
+          to enterprise application. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
-        <div className="container-narrow">
-          <div className="eyebrow mb-6">A GEOINT Perspective</div>
-          <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
-            Enterprise risk as contested terrain.
-          </h2>
-          <p className="text-lg text-text-body mb-6 leading-relaxed">
-            Traditional governance is backward-looking. Boards receive sanitized reports after
-            risk has already matured, see compliance dashboards and red-yellow-green charts,
-            but often miss the actual terrain the organization is operating in.
-          </p>
-          <p className="text-lg text-text-body mb-6 leading-relaxed">
-            I think about risk the way a geospatial intelligence analyst thinks about contested
-            terrain. You must understand the movement, the timing, the pattern of life, the
-            dependencies, the chokepoints, and the adversary&apos;s likely path.
-          </p>
-          <p className="text-lg text-text-body leading-relaxed">
-            In enterprise terms, that means understanding how data flows, where access is
-            overextended, where third-party exposure exists, where geopolitical instability
-            affects the mission, and where a single failure could cascade across the
-            organization.
-          </p>
+        <div className="content-column">
+          <div className="reading-column">
+            <div className="eyebrow mb-6">A GEOINT Perspective</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
+              Enterprise risk as contested terrain.
+            </h2>
+            <p className="text-lg text-text-body mb-6 leading-relaxed">
+              Traditional governance is backward-looking. Boards receive sanitized reports after
+              risk has already matured, see compliance dashboards and red-yellow-green charts,
+              but often miss the actual terrain the organization is operating in.
+            </p>
+            <p className="text-lg text-text-body mb-6 leading-relaxed">
+              I think about risk the way a geospatial intelligence analyst thinks about contested
+              terrain. You must understand the movement, the timing, the pattern of life, the
+              dependencies, the chokepoints, and the adversary&apos;s likely path.
+            </p>
+            <p className="text-lg text-text-body leading-relaxed">
+              In enterprise terms, that means understanding how data flows, where access is
+              overextended, where third-party exposure exists, where geopolitical instability
+              affects the mission, and where a single failure could cascade across the
+              organization.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* The "What Boards Must See" section now applies the unified centered composition.
-          The label, headline, and intro paragraph are centered. The four terrain elements
-          below them now also center along the same vertical axis, producing a single
-          unified composition rather than centered text above a left-aligned grid. */}
+      {/* The terrain elements now stack vertically as left-aligned editorial entries.
+          Each element has a small gold uppercase label, a serif headline, and developed
+          body text, all anchored to the same left margin. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
-        <div className="container-wide">
-          <div className="text-center mb-24 max-w-3xl mx-auto">
+        <div className="content-column">
+          <div className="reading-column">
             <div className="eyebrow mb-6">What Boards Must See</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-navy mb-8 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               The board should know.
             </h2>
-            <p className="text-lg text-text-body leading-relaxed">
+            <p className="text-lg text-text-body mb-20 leading-relaxed">
               Four questions that should be standing items on the governance agenda, not
               exceptions triggered by incidents.
             </p>
-          </div>
 
-          {/* The grid container now uses text-center to cascade alignment to children.
-              The max-w-5xl constraint keeps the grid visually balanced under the centered
-              headline rather than spreading to the full container width. */}
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 text-center">
+            <div className="space-y-16">
               {terrainElements.map((element) => (
-                <div key={element.label} className="flex flex-col items-center">
-                  <div className="text-xs tracking-[0.3em] uppercase text-gold mb-5">
+                <div key={element.label}>
+                  <div className="text-xs tracking-[0.3em] uppercase text-gold mb-4">
                     {element.label}
                   </div>
-                  <h3 className="text-2xl font-serif text-navy mb-5 leading-tight">
+                  <h3 className="text-2xl md:text-3xl font-serif text-navy mb-4 leading-tight">
                     {element.title}
                   </h3>
-                  {/* The max-w-sm constraint creates a narrower text measure within each
-                      grid cell, which produces the balanced visual weight that distinguishes
-                      editorial design from raw text dumps. */}
-                  <p className="text-base text-text-body leading-relaxed max-w-sm">
+                  <p className="text-base md:text-lg text-text-body leading-relaxed">
                     {element.body}
                   </p>
                 </div>
@@ -169,71 +153,51 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The Zero Trust section uses the deep navy background with white headlines.
-          This two-column layout pairs the cityscape imagery with the argument, which is
-          a different kind of composition than the centered grid pattern. Asymmetric
-          two-column layouts work well here because the image and the text balance each
-          other visually even though they are not on the same vertical axis. */}
+      {/* The Zero Trust section uses left-aligned editorial composition on the deep navy
+          background. The cityscape imagery is removed from this section because it was
+          competing visually with the text rather than supporting it. The argument now
+          stands on its own substantial weight as editorial content. */}
       <section className="py-28 md:py-36 bg-navy-deep">
-        <div className="container-wide">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div className="relative h-96 lg:h-[520px] overflow-hidden">
-              <Image
-                src="/images/cityscape.webp"
-                alt="Connected urban environment visualization"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <div className="eyebrow-light mb-6">Zero Trust as Governance</div>
-              <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">
-                Beyond the cybersecurity framework.
-              </h2>
-              <p className="text-lg text-text-light-body mb-6 leading-relaxed">
-                Zero Trust is not a technology decision. It is a governance philosophy. A way
-                of thinking about trust, verification, and assumptions at every level of the
-                enterprise.
-              </p>
-              <p className="text-lg text-text-light-body leading-relaxed">
-                The cybersecurity industry has adopted Zero Trust as a technical architecture.
-                That work matters. But the deeper opportunity is to apply the same discipline
-                at the board level, where decisions about partnerships, vendors, geographies,
-                and strategic exposure benefit from the same rigor of never assume, always
-                verify.
-              </p>
-            </div>
+        <div className="content-column">
+          <div className="reading-column">
+            <div className="eyebrow-light mb-6">Zero Trust as Governance</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">
+              Beyond the cybersecurity framework.
+            </h2>
+            <p className="text-lg text-text-light-body mb-6 leading-relaxed">
+              Zero Trust is not a technology decision. It is a governance philosophy. A way
+              of thinking about trust, verification, and assumptions at every level of the
+              enterprise.
+            </p>
+            <p className="text-lg text-text-light-body leading-relaxed">
+              The cybersecurity industry has adopted Zero Trust as a technical architecture.
+              That work matters. But the deeper opportunity is to apply the same discipline
+              at the board level, where decisions about partnerships, vendors, geographies,
+              and strategic exposure benefit from the same rigor of never assume, always
+              verify.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* The Four Commitments section also applies the unified centered composition.
-          The structure mirrors the terrain elements above: centered label, centered headline,
-          centered intro paragraph, and a centered grid of commitments below. Each commitment
-          has its content centered along the column's vertical axis, with paragraphs
-          constrained to a narrower text measure for visual balance. */}
+      {/* The four commitments now stack vertically as left-aligned editorial entries. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
-        <div className="container-wide">
-          <div className="text-center mb-24 max-w-3xl mx-auto">
+        <div className="content-column">
+          <div className="reading-column">
             <div className="eyebrow mb-6">Operating Discipline</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-navy mb-8 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               Four commitments that govern the work.
             </h2>
-            <p className="text-lg text-text-body leading-relaxed">
+            <p className="text-lg text-text-body mb-20 leading-relaxed">
               Every engagement operates against four standing commitments. These hold whether
               the conversation is about board governance, enterprise risk, AI strategy, or
               data exposure in contested environments.
             </p>
-          </div>
 
-          {/* The commitments grid follows the same centered pattern as the terrain elements.
-              Each commitment shows the number and directive name in a centered baseline row,
-              followed by the centered statement headline, and the centered expansion paragraph. */}
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 text-center">
+            <div className="space-y-20">
               {commitments.map((commitment) => (
-                <div key={commitment.number} className="flex flex-col items-center">
-                  <div className="flex items-baseline gap-5 mb-5 justify-center">
+                <div key={commitment.number}>
+                  <div className="flex items-baseline gap-5 mb-4">
                     <div className="text-4xl font-serif text-gold leading-none">
                       {commitment.number}
                     </div>
@@ -241,24 +205,24 @@ export default function ApproachPage() {
                       {commitment.name}
                     </div>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-serif text-navy mb-6 leading-snug max-w-md">
+                  <h3 className="text-xl md:text-2xl font-serif text-navy mb-5 leading-snug">
                     {commitment.statement}
                   </h3>
-                  <p className="text-base text-text-body leading-relaxed max-w-md">
+                  <p className="text-base md:text-lg text-text-body leading-relaxed">
                     {commitment.expansion}
                   </p>
                 </div>
               ))}
             </div>
-          </div>
 
-          <div className="text-center mt-24">
-            <Link
-              href="/engagement"
-              className="text-sm tracking-[0.3em] uppercase font-medium text-navy border-b border-navy pb-2 hover:text-gold hover:border-gold transition-colors"
-            >
-              How Engagements Work
-            </Link>
+            <div className="mt-24">
+              <Link
+                href="/engagement"
+                className="text-sm tracking-[0.3em] uppercase font-medium text-navy border-b border-navy pb-2 hover:text-gold hover:border-gold transition-colors"
+              >
+                How Engagements Work
+              </Link>
+            </div>
           </div>
         </div>
       </section>
