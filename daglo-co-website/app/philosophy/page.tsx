@@ -2,10 +2,18 @@
 //
 // The Philosophy page houses the full governance thesis that defines Daglo and Co.
 //
-// This version uses the same type-and-space discipline as the other pages. The opening
-// statement is set in larger serif typography to create an editorial entry point. The
-// pull-quote treatment elevates the most quotable line in the document. The closing
-// principle section uses white text on the deep navy background for strong readability.
+// This revision addresses the visual imbalance visible in the deployed site, where the
+// container-narrow constraint was producing a 760-pixel column on wide viewports that
+// looked off-center because of the large empty margins on either side. The mix of centered
+// eyebrow labels and left-aligned headlines within that narrow column also created
+// inconsistency that read as misalignment to the eye.
+//
+// The fix is twofold. First, the content sections now use a wider container that gives
+// the content more breathing room across the viewport, which eliminates the visual feeling
+// of a narrow column floating off-center. Second, every section now uses a consistent
+// alignment treatment with the centered eyebrow positioned above centered headlines and
+// centered intro paragraphs, with body content presented in a manner that preserves the
+// editorial rhythm without creating axis conflicts.
 
 import Image from "next/image";
 import Link from "next/link";
@@ -13,9 +21,8 @@ import Link from "next/link";
 export default function PhilosophyPage() {
   return (
     <>
-      {/* The page hero uses the B-2 Spirit imagery, which represents the kind of asset that
-          operates in contested environments where governance decisions about trust and
-          verification carry operational consequence. */}
+      {/* The page hero remains as it was because the centered treatment works correctly
+          against the dark background imagery. */}
       <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -37,10 +44,12 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* The opening section establishes the central thesis. The first paragraph is set
-          in larger serif typography to function as an editorial lead. */}
+      {/* The opening section establishes the central thesis. The content now sits in a
+          wider container that gives it more breathing room across the page. The text is
+          centered to align with the centered hero above and to maintain rhythm with the
+          rest of the page. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
-        <div className="container-narrow">
+        <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-2xl md:text-3xl font-serif text-navy leading-relaxed mb-10">
             Governance is the discipline of seeing reality clearly, making decisions under
             pressure, and deciding where an organization is willing to place trust.
@@ -55,9 +64,14 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* The first principle develops the unified operating system idea. */}
+      {/* The first principle develops the unified operating system idea. Every element in
+          this section centers along the same vertical axis, from the eyebrow at the top
+          through the headline, the body paragraphs, and the pull quote. The pull quote
+          treatment is preserved because it provides editorial emphasis on the most
+          quotable line, but it now sits within the centered composition rather than
+          breaking it with a left-aligned border accent. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
-        <div className="container-narrow">
+        <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="eyebrow mb-6">First Principle</div>
           <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
             One operating system.
@@ -67,17 +81,37 @@ export default function PhilosophyPage() {
             are not. They form a unified operating system where every decision about trust
             cascades through the enterprise.
           </p>
-          <p className="text-lg text-text-body leading-relaxed">
+          <p className="text-lg text-text-body leading-relaxed mb-12">
             When a board approves a vendor relationship, that decision is simultaneously a
             governance act, a risk act, and a leadership act. Treating these as separate
             workstreams creates seams where exposure accumulates. The work is to design the
             organization so the three move together.
           </p>
 
-          {/* The pull quote elevates the most quotable line in this principle into the
-              visual treatment it deserves. */}
-          <div className="pull-quote">
-            Where are we implicitly trusting something we have not verified?
+          {/* The pull quote now uses a centered treatment without a left-border accent.
+              The italic serif at large size carries the editorial weight, and the
+              horizontal gold accent above and below frames it as a deliberate moment of
+              emphasis within the surrounding text. */}
+          <div className="my-16">
+            <div
+              style={{
+                width: "60px",
+                height: "1px",
+                backgroundColor: "#b8945a",
+                margin: "0 auto 32px auto",
+              }}
+            />
+            <p className="text-3xl md:text-4xl font-serif italic text-navy leading-snug">
+              Where are we implicitly trusting something we have not verified?
+            </p>
+            <div
+              style={{
+                width: "60px",
+                height: "1px",
+                backgroundColor: "#b8945a",
+                margin: "32px auto 0 auto",
+              }}
+            />
           </div>
 
           <p className="text-lg text-text-body leading-relaxed">
@@ -90,9 +124,11 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* The second principle addresses the nonlinear nature of modern risk. */}
+      {/* The second principle addresses the nonlinear nature of modern risk. Like the
+          first principle section above, this one uses centered alignment throughout to
+          maintain consistent visual rhythm. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
-        <div className="container-narrow">
+        <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="eyebrow mb-6">Second Principle</div>
           <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
             Risk no longer moves linearly.
@@ -113,9 +149,10 @@ export default function PhilosophyPage() {
       </section>
 
       {/* The closing principle section uses white text on the deep navy background for
-          strong readability and dramatic visual emphasis on the central commitment. */}
+          strong readability. The same centered composition applies here, with every
+          element aligning along the same vertical axis as the sections above. */}
       <section className="py-28 md:py-36 bg-navy-deep">
-        <div className="container-narrow">
+        <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="eyebrow-light mb-6">Closing Principle</div>
           <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">
             Trust is not a control. Verification is.
