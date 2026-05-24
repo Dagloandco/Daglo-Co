@@ -1,72 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap');
+/* globals.css
+ * This stylesheet defines the foundational design system for the Daglo and Co. website.
+ * It establishes the color palette, typography hierarchy, and core layout patterns
+ * that every page on the site will use to ensure visual consistency throughout the experience.
+ */
+
+/* We import two font families from Google Fonts that work together to create our editorial voice.
+ * Cormorant Garamond is a refined serif typeface used for headings and statements of substance.
+ * Inter is a clean sans-serif typeface used for body text and navigation, providing readability without distraction.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
+/* The :root selector defines CSS custom properties that act as our design tokens.
+ * Any element on the site can reference these tokens, which means we can update a color in one place
+ * and have that change propagate everywhere it is used. This approach mirrors how design systems work
+ * at sophisticated firms like Kearney and McKinsey.
+ */
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
   --navy: #0a1f3d;
+  --navy-deep: #061730;
   --gold: #b8945a;
+  --gold-light: #d4b97f;
   --ivory: #f5f2ec;
+  --ivory-warm: #faf7f1;
   --muted: #5f5e5a;
+  --muted-light: #8a8985;
   --border: #e8e6e0;
 }
 
+/* Tailwind v4 allows us to expose our custom CSS variables as Tailwind utility classes
+ * by declaring them inside the @theme block. This means writing bg-navy or text-gold
+ * in our component code will use these exact brand colors.
+ */
+@theme {
+  --color-navy: #0a1f3d;
+  --color-navy-deep: #061730;
+  --color-gold: #b8945a;
+  --color-gold-light: #d4b97f;
+  --color-ivory: #f5f2ec;
+  --color-ivory-warm: #faf7f1;
+  --color-muted: #5f5e5a;
+  --color-muted-light: #8a8985;
+  --color-border: #e8e6e0;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* The universal selector resets default browser styles so we start from a known baseline.
+ * Different browsers apply different default margins and padding, which creates inconsistencies.
+ * Resetting these values ensures our design appears the same in Chrome, Safari, Firefox, and Edge.
+ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Smooth scrolling makes anchor link navigation feel polished rather than jarring.
+ * When a user clicks a link that jumps to a section of the page, the browser animates the scroll
+ * rather than instantly snapping to the destination.
+ */
 html {
   scroll-behavior: smooth;
 }
 
+/* The body element receives our base typography settings.
+ * We use Inter as the default font, set a comfortable line height for reading long passages,
+ * and use a warm ivory background that feels editorial rather than clinical.
+ */
 body {
-  background: var(--ivory);
+  background: var(--ivory-warm);
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
   line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* All heading elements use the serif font family to create editorial gravitas.
+ * The navy color reinforces our brand identity at every level of typography.
+ */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
   color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
-h1 {
-  font-size: 56px;
-  line-height: 1.2;
+/* The font-serif utility class allows us to apply the serif font to any element when needed.
+ * This is useful for pull quotes and other special typographic moments.
+ */
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-h2 {
-  font-size: 32px;
-  margin-bottom: 2rem;
-  text-align: center;
+/* The font-sans utility class explicitly applies the sans-serif font, which is occasionally needed
+ * to override a parent element that has applied the serif font.
+ */
+.font-sans {
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
-h3 {
-  font-size: 28px;
-  margin-bottom: 1.5rem;
-}
-
-h4 {
-  font-size: 18px;
-  margin-bottom: 1rem;
-}
-
+/* Paragraph elements receive subdued styling to support the headlines rather than compete with them.
+ * The muted color and increased line height create comfortable, sustained reading conditions.
+ */
 p {
-  font-size: 15px;
   color: var(--muted);
   line-height: 1.8;
 }
 
+/* Link elements use the gold accent color to create gentle visual interest without overwhelming the page.
+ * The smooth color transition on hover provides subtle feedback that the element is interactive.
+ */
 a {
   color: var(--gold);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
 a:hover {
   color: var(--navy);
+}
+
+/* The .container-narrow utility class creates a constrained reading width for long-form text.
+ * Research on readability shows that line lengths between 50 and 75 characters are optimal,
+ * which is approximately what this max-width achieves at standard font sizes.
+ */
+.container-narrow {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* The .container-wide utility class is used for sections that benefit from more breathing room,
+ * such as image-heavy layouts and grids of content cards.
+ */
+.container-wide {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* The .eyebrow class creates the small uppercase label that appears above section headings.
+ * This typographic pattern is used by sophisticated firms to establish hierarchy and add editorial polish.
+ */
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* The .pull-quote class formats the large, emphatic statements that anchor each page.
+ * These quotes appear at strategic moments to reinforce key arguments and create rhythm.
+ */
+.pull-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  line-height: 1.3;
+  color: var(--navy);
+  font-weight: 500;
+  font-style: italic;
+  border-left: 3px solid var(--gold);
+  padding-left: 2rem;
+  margin: 3rem 0;
+}
+
+/* The .section-divider class creates the subtle horizontal lines that separate major content sections.
+ * Using a thin gold line rather than a heavy border maintains the refined aesthetic.
+ */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 4rem auto;
+  max-width: 200px;
 }
