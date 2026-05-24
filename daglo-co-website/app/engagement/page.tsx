@@ -1,17 +1,18 @@
 // engagement/page.tsx
+//
 // The Engagement page explains how Daglo and Co. works with clients.
 //
-// This refined version applies the same readability and design improvements that we made
-// to the other pages tonight. The four engagement types are now presented as substantive
-// cards with proper hierarchy, and all text on dark backgrounds uses the dedicated
-// dark-background text colors that maintain warmth while ensuring strong contrast.
+// This version removes all the bordered containers that were wrapping the four engagement
+// types in the previous version. Each engagement type now appears as pure typography:
+// a large gold number, a serif headline, and developed supporting text. The structure
+// comes from the spacing rhythm rather than from visible boxes.
 
 import Image from "next/image";
 import Link from "next/link";
 
 export default function EngagementPage() {
-  // The four engagement types are stored as data so the rendering code stays clean.
-  // Each engagement has a number, a title, and a description that explains the work.
+  // The four engagement types are stored as data so the rendering code stays clean
+  // and so future revisions to titles or descriptions only require editing one place.
   const engagementTypes = [
     {
       number: "01",
@@ -42,7 +43,7 @@ export default function EngagementPage() {
   return (
     <>
       {/* The page hero uses the boardroom imagery to establish the executive environment. */}
-      <section className="relative h-[60vh] min-h-[440px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/boardroom.webp"
@@ -57,61 +58,61 @@ export default function EngagementPage() {
           <div className="text-xs tracking-[0.35em] uppercase text-gold-light mb-8">
             Engagement
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif text-text-on-dark-primary leading-[1.1]">
+          <h1 className="text-5xl md:text-7xl font-serif text-white leading-[1.1]">
             How we engage.
           </h1>
         </div>
       </section>
 
-      {/* The opening section frames how engagements work and establishes the practice's
-          counsel model rather than retainer model. */}
+      {/* The opening section frames how engagements work using the counsel model rather
+          than the retainer model. The contrast between these two models is what positions
+          the practice differently from large consulting firms. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-narrow">
-          <div className="eyebrow">Approach to Clients</div>
+          <div className="eyebrow mb-6">Approach to Clients</div>
           <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
             Limited engagements. Considered counsel.
           </h2>
-          <p className="text-lg text-text-secondary mb-6 leading-relaxed">
-            Daglo and Co. takes on a limited number of engagements at any given time. We work
-            with boards and executives navigating complexity, high-value assets, sensitive data,
-            and risks that move faster than traditional governance models can handle.
+          <p className="text-lg text-text-body mb-6 leading-relaxed">
+            Daglo and Co. takes on a limited number of engagements at any given time.
+            We work with boards and executives navigating complexity, high-value assets,
+            sensitive data, and risks that move faster than traditional governance models
+            can handle.
           </p>
-          <p className="text-lg text-text-secondary leading-relaxed">
-            The work is not a retainer model designed to maximize hours. It is a counsel model
-            designed to maximize judgment in the moments where judgment matters most.
+          <p className="text-lg text-text-body leading-relaxed">
+            The work is not a retainer model designed to maximize hours. It is a counsel
+            model designed to maximize judgment in the moments where judgment matters most.
             Engagements are scoped to address specific governance challenges with clear
             deliverables and a defined arc.
           </p>
         </div>
       </section>
 
-      <div className="section-divider" />
-
-      {/* The four engagement types are presented as substantive cards in a two-column grid.
-          Each card has the same structure to create parallel visual rhythm: a large gold
-          number, a refined eyebrow label, a serif title, and a developed description. */}
-      <section className="py-28 bg-ivory-warm">
+      {/* The four engagement types section now uses pure typography with no boxes.
+          Each engagement type appears as a clean editorial block with a large gold number
+          providing visual anchoring, a substantive serif headline, and developed supporting
+          text. The structure comes from spacing rather than from containers. */}
+      <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-wide">
-          <div className="text-center mb-20">
-            <div className="eyebrow">Four Engagement Types</div>
+          <div className="text-center mb-24">
+            <div className="eyebrow mb-6">Four Engagement Types</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy leading-tight">
               How we work.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* The engagement types are presented in a two-column grid with generous spacing
+              between items. No borders, no containers, no card surfaces. Just type and space. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 max-w-5xl mx-auto">
             {engagementTypes.map((engagement) => (
-              <div
-                key={engagement.number}
-                className="surface-light p-10 md:p-12 border-t-2 border-t-gold"
-              >
+              <div key={engagement.number}>
                 <div className="text-5xl font-serif text-gold mb-6 leading-none">
                   {engagement.number}
                 </div>
-                <h3 className="text-2xl md:text-3xl font-serif text-navy mb-6 leading-tight">
+                <h3 className="text-2xl md:text-3xl font-serif text-navy mb-5 leading-tight">
                   {engagement.title}
                 </h3>
-                <p className="text-base text-text-secondary leading-relaxed">
+                <p className="text-base text-text-body leading-relaxed">
                   {engagement.description}
                 </p>
               </div>
@@ -120,29 +121,28 @@ export default function EngagementPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
-
-      {/* The closing section invites visitors to begin a conversation. */}
-      <section className="py-28 bg-navy-deep text-text-on-dark-primary">
+      {/* The closing call-to-action uses white text on the deep navy background.
+          The email appears as a clean readable link, not as a boxed button. */}
+      <section className="py-28 md:py-36 bg-navy-deep">
         <div className="container-narrow text-center">
-          <h2 className="text-4xl md:text-5xl font-serif text-text-on-dark-primary mb-8 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-tight">
             Begin a conversation.
           </h2>
-          <p className="text-lg text-text-on-dark-secondary mb-12 leading-relaxed">
+          <p className="text-lg text-text-light-body mb-12 leading-relaxed">
             Tell us what you are navigating. We will respond with a thoughtful next step.
           </p>
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
             <a
               href="mailto:donald@daglo.co"
-              className="inline-block border border-gold-light text-gold-light px-12 py-4 text-xs tracking-[0.3em] uppercase font-medium hover:bg-gold-light hover:text-navy-deep transition-all duration-300"
+              className="text-base text-white border-b border-white pb-2 hover:text-gold-light hover:border-gold-light transition-colors duration-300"
             >
               donald@daglo.co
             </a>
             <Link
               href="/contact"
-              className="inline-block text-xs tracking-[0.3em] uppercase font-medium text-text-on-dark-secondary border-b border-text-on-dark-tertiary pb-2 hover:text-gold-light hover:border-gold-light transition-colors"
+              className="text-sm tracking-[0.3em] uppercase font-medium text-text-light-body border-b border-text-light-secondary pb-2 hover:text-white hover:border-white transition-colors"
             >
-              See How Engagements Begin
+              How Engagements Begin
             </Link>
           </div>
         </div>

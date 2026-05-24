@@ -1,22 +1,24 @@
 // approach/page.tsx
+//
 // The Approach page develops the GEOINT framing and Zero Trust governance philosophy.
 //
-// This refined version uses your sharper language for the Four Commitments section.
-// The previous wording was generic. The new wording reads as boardroom commitments
-// that an executive could actually quote in a meeting and sound credible doing it.
+// This version removes all the bordered containers that were wrapping the What Boards
+// Must See elements and the Four Commitments. Those gray-box treatments were exactly the
+// kind of clutter you correctly identified. Each element now appears as pure typography
+// with no container, where the structure comes from labels, headlines, and spacing.
 
 import Image from "next/image";
 import Link from "next/link";
 
 export default function ApproachPage() {
-  // The four commitments are stored as data so the rendering code stays clean.
-  // Each commitment has a label name, a short statement that captures the principle,
-  // and a brief expansion that develops the practical meaning.
+  // The four commitments use your sharper language from the previous revision.
+  // Each commitment has a short directive name, a central statement, and a developed expansion.
   const commitments = [
     {
       number: "01",
       name: "Never assume",
-      statement: "Governance should challenge inherited assumptions before the environment does.",
+      statement:
+        "Governance should challenge inherited assumptions before the environment does.",
       expansion:
         "Every governance structure rests on assumptions that were true when the organization was smaller, slower, or less exposed. The work of the board is to surface those assumptions while they can still be revised in a meeting, not after they have been revised by a crisis.",
     },
@@ -44,8 +46,7 @@ export default function ApproachPage() {
     },
   ];
 
-  // The terrain elements are stored similarly. These are the four things the board
-  // must see, framed as a decision framework rather than a list of topics.
+  // The terrain elements are the four things the board must see, framed as a decision framework.
   const terrainElements = [
     {
       label: "Movement",
@@ -72,7 +73,7 @@ export default function ApproachPage() {
   return (
     <>
       {/* The page hero uses the geospatial imagery to visually establish the GEOINT framing. */}
-      <section className="relative h-[60vh] min-h-[440px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/geospatial.jpg"
@@ -87,68 +88,67 @@ export default function ApproachPage() {
           <div className="text-xs tracking-[0.35em] uppercase text-gold-light mb-8">
             Approach
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif text-text-on-dark-primary leading-[1.1]">
+          <h1 className="text-5xl md:text-7xl font-serif text-white leading-[1.1]">
             Understanding the terrain.
           </h1>
         </div>
       </section>
 
-      {/* The opening section introduces the GEOINT analogy that anchors the approach. */}
+      {/* The opening section introduces the GEOINT analogy. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-narrow">
-          <div className="eyebrow">A GEOINT Perspective</div>
+          <div className="eyebrow mb-6">A GEOINT Perspective</div>
           <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
             Enterprise risk as contested terrain.
           </h2>
-          <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+          <p className="text-lg text-text-body mb-6 leading-relaxed">
             Traditional governance is backward-looking. Boards receive sanitized reports after
-            risk has already matured, see compliance dashboards and red-yellow-green charts, but
-            often miss the actual terrain the organization is operating in.
+            risk has already matured, see compliance dashboards and red-yellow-green charts,
+            but often miss the actual terrain the organization is operating in.
           </p>
-          <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+          <p className="text-lg text-text-body mb-6 leading-relaxed">
             I think about risk the way a geospatial intelligence analyst thinks about contested
             terrain. You must understand the movement, the timing, the pattern of life, the
             dependencies, the chokepoints, and the adversary&apos;s likely path.
           </p>
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-lg text-text-body leading-relaxed">
             In enterprise terms, that means understanding how data flows, where access is
             overextended, where third-party exposure exists, where geopolitical instability
-            affects the mission, and where a single failure could cascade across the organization.
+            affects the mission, and where a single failure could cascade across the
+            organization.
           </p>
         </div>
       </section>
 
-      <div className="section-divider" />
-
-      {/* The What Boards Must See section presents the terrain framework as a clean board-level
-          decision matrix. Each element gets equal visual weight in the grid, with consistent
-          card structure that makes the framework feel like board material rather than marketing copy. */}
-      <section className="py-28 bg-ivory-warm">
+      {/* The What Boards Must See section now uses pure typography with no bordered tiles.
+          Each element has a small gold label, a serif headline, and developed supporting text.
+          The structure comes from the spacing rhythm between items, not from boxes around them. */}
+      <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-wide">
-          <div className="text-center mb-20 max-w-3xl mx-auto">
-            <div className="eyebrow">What Boards Must See</div>
+          <div className="text-center mb-24 max-w-3xl mx-auto">
+            <div className="eyebrow mb-6">What Boards Must See</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-8 leading-tight">
               The board should know.
             </h2>
-            <p className="text-lg text-text-secondary leading-relaxed">
+            <p className="text-lg text-text-body leading-relaxed">
               Four questions that should be standing items on the governance agenda, not
               exceptions triggered by incidents.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* The four terrain elements are presented as a typographic grid. Each element has
+              its own visual identity through the gold label and serif headline, but there are
+              no boxes or borders separating them from the page. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 max-w-5xl mx-auto">
             {terrainElements.map((element) => (
-              <div
-                key={element.label}
-                className="surface-light p-10 border-l-2 border-l-gold"
-              >
+              <div key={element.label}>
                 <div className="text-xs tracking-[0.3em] uppercase text-gold mb-5">
                   {element.label}
                 </div>
                 <h3 className="text-2xl font-serif text-navy mb-5 leading-tight">
                   {element.title}
                 </h3>
-                <p className="text-base text-text-secondary leading-relaxed">
+                <p className="text-base text-text-body leading-relaxed">
                   {element.body}
                 </p>
               </div>
@@ -157,12 +157,9 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
-
-      {/* The Zero Trust section develops the governance philosophy beyond the technical framework.
-          The two-column layout pairs the cityscape imagery with the argument, creating editorial
-          rhythm that makes the section feel like a feature spread rather than a content block. */}
-      <section className="py-28 bg-navy-deep text-text-on-dark-primary">
+      {/* The Zero Trust section uses the deep navy background with white headlines for
+          strong readability. The two-column layout pairs the cityscape imagery with the argument. */}
+      <section className="py-28 md:py-36 bg-navy-deep">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="relative h-96 lg:h-[520px] overflow-hidden">
@@ -174,82 +171,72 @@ export default function ApproachPage() {
               />
             </div>
             <div>
-              <div className="text-xs tracking-[0.3em] uppercase text-gold-light mb-8">
-                Zero Trust as Governance
-              </div>
-              <h2 className="text-4xl md:text-5xl font-serif text-text-on-dark-primary mb-10 leading-tight">
+              <div className="eyebrow-light mb-6">Zero Trust as Governance</div>
+              <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">
                 Beyond the cybersecurity framework.
               </h2>
-              <p className="text-lg text-text-on-dark-secondary mb-6 leading-relaxed">
-                Zero Trust is not a technology decision. It is a governance philosophy. A way of
-                thinking about trust, verification, and assumptions at every level of the
+              <p className="text-lg text-text-light-body mb-6 leading-relaxed">
+                Zero Trust is not a technology decision. It is a governance philosophy. A way
+                of thinking about trust, verification, and assumptions at every level of the
                 enterprise.
               </p>
-              <p className="text-lg text-text-on-dark-secondary leading-relaxed">
+              <p className="text-lg text-text-light-body leading-relaxed">
                 The cybersecurity industry has adopted Zero Trust as a technical architecture.
-                That work matters. But the deeper opportunity is to apply the same discipline at
-                the board level, where decisions about partnerships, vendors, geographies, and
-                strategic exposure benefit from the same rigor of never assume, always verify.
+                That work matters. But the deeper opportunity is to apply the same discipline
+                at the board level, where decisions about partnerships, vendors, geographies,
+                and strategic exposure benefit from the same rigor of never assume, always
+                verify.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The Four Commitments section uses the sharper language you provided.
-          Each commitment now has three layers: the short name like "Never assume" that reads
-          as a directive, the central statement that captures the principle in one line,
-          and a brief expansion that develops the practical meaning for board work. */}
-      <section className="py-28 bg-ivory-warm">
+      {/* The Four Commitments section now uses pure typography with no bordered cards.
+          Each commitment has a large gold number, a small gold directive name, a substantial
+          serif statement that captures the principle, and a developed expansion beneath it. */}
+      <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="container-wide">
-          <div className="text-center mb-20 max-w-3xl mx-auto">
-            <div className="eyebrow">Operating Discipline</div>
+          <div className="text-center mb-24 max-w-3xl mx-auto">
+            <div className="eyebrow mb-6">Operating Discipline</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-8 leading-tight">
               Four commitments that govern the work.
             </h2>
-            <p className="text-lg text-text-secondary leading-relaxed">
+            <p className="text-lg text-text-body leading-relaxed">
               Every engagement operates against four standing commitments. These hold whether
               the conversation is about board governance, enterprise risk, AI strategy, or
               data exposure in contested environments.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* The four commitments appear in a two-column grid with generous spacing.
+              No bordered containers, no gray boxes. Each commitment is built from pure
+              typography: number, name, statement, expansion. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-x-20 lg:gap-y-20 max-w-5xl mx-auto">
             {commitments.map((commitment) => (
-              <div
-                key={commitment.number}
-                className="surface-light p-10 md:p-12 border-t-2 border-t-gold"
-              >
-                {/* The header bar combines the commitment number with its short directive name.
-                    This is the typographic moment where each commitment establishes its identity. */}
-                <div className="flex items-baseline gap-5 mb-6">
-                  <div className="text-3xl font-serif text-gold leading-none">
+              <div key={commitment.number}>
+                <div className="flex items-baseline gap-5 mb-5">
+                  <div className="text-4xl font-serif text-gold leading-none">
                     {commitment.number}
                   </div>
                   <div className="text-xs tracking-[0.3em] uppercase text-gold">
                     {commitment.name}
                   </div>
                 </div>
-
-                {/* The central statement is the boardroom-ready line that captures the principle.
-                    The serif treatment at substantial size gives this line the weight it needs
-                    to be quotable, which is the test of executive language. */}
                 <h3 className="text-xl md:text-2xl font-serif text-navy mb-6 leading-snug">
                   {commitment.statement}
                 </h3>
-
-                {/* The expansion develops the practical meaning beneath the central statement. */}
-                <p className="text-base text-text-secondary leading-relaxed">
+                <p className="text-base text-text-body leading-relaxed">
                   {commitment.expansion}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-20">
+          <div className="text-center mt-24">
             <Link
               href="/engagement"
-              className="inline-block border-2 border-navy text-navy px-14 py-5 text-sm tracking-[0.3em] uppercase font-medium hover:bg-navy hover:text-text-on-dark-primary transition-all duration-300"
+              className="text-sm tracking-[0.3em] uppercase font-medium text-navy border-b border-navy pb-2 hover:text-gold hover:border-gold transition-colors"
             >
               How Engagements Work
             </Link>

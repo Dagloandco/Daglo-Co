@@ -1,21 +1,24 @@
 // Navigation.tsx
-// This is the site-wide header that appears at the top of every page on the Daglo and Co. website.
 //
-// The refinements applied in this version address several specific concerns:
+// The site-wide header for Daglo and Co.
 //
-// First, the logo is now larger and given proper breathing room. The previous version used a
-// small logo that felt added to the page rather than integrated into the brand system. Premium
-// executive sites like Kearney and McKinsey give their wordmarks substantial presence in the
-// header because the logo IS the brand statement. We follow that principle here.
+// This version is rebuilt with the Kearney reference in mind. The key principles applied here:
 //
-// Second, the navigation links are arranged with more sophisticated spacing and typography.
-// The widened letter-spacing and refined font weight signal editorial discipline rather than
-// generic marketing design. The active state styling makes it clear which page the visitor is
-// currently viewing, which is a small detail that contributes significantly to the professional feel.
+// First, the logo is given substantial size and proper breathing room. Premium advisory sites
+// treat the wordmark as a primary brand statement, not as a small decorative element in the
+// corner. The new logo file you provided is balanced and confident, and this header lets it
+// breathe at the size it deserves.
 //
-// Third, the header now has a subtle bottom border and increased vertical padding, which creates
-// architectural weight and establishes the header as a distinct zone rather than text floating
-// at the top of the page.
+// Second, navigation items have generous horizontal spacing between them. Looking at Kearney's
+// header, "Your industry", "Your needs", "About us", "Careers", "Insights", and "Contact" each
+// occupy clearly distinct positions with comfortable gaps. We replicate that rhythm here so
+// that PHILOSOPHY APPROACH ENGAGEMENT FOUNDATION INSIGHTS CONTACT no longer collide into a
+// single unreadable string.
+//
+// Third, the typography size for navigation items is now larger than the previous version.
+// The previous version used extra-small text at 12 pixels, which was too small to read
+// comfortably. This version uses small text at 14 pixels, which Kearney also uses, giving
+// each navigation item the weight it needs to feel like a real destination.
 
 "use client";
 
@@ -43,45 +46,57 @@ export default function Navigation() {
   };
 
   return (
-    <header className="bg-navy-deep sticky top-0 z-50 border-b border-gold/15">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+    // The header uses the deep navy background and a barely-there bottom border.
+    // The previous version used a gold border at fifteen percent opacity which was still
+    // too prominent. This version uses a white border at eight percent opacity, which is
+    // closer to the almost-invisible separation Kearney uses.
+    <header className="bg-navy-deep sticky top-0 z-50 border-b border-white/8">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
+
+        {/* The logo block sits on the left with proper sizing. The previous version used
+            forty-eight pixels of height which still felt small. This version uses fifty-six
+            pixels, which is closer to the visual weight Kearney gives their wordmark. */}
         <Link
           href="/"
-          className="flex items-center group"
+          className="flex items-center"
           aria-label="Daglo and Co. home"
         >
-          <div className="flex items-center space-x-4">
-            <Image
-              src="/images/logo-white.png"
-              alt="Daglo and Co."
-              width={240}
-              height={80}
-              priority
-              className="h-12 w-auto opacity-95 group-hover:opacity-100 transition-opacity duration-300"
-            />
-          </div>
+          <Image
+            src="/images/logo-white.png"
+            alt="Daglo and Co."
+            width={280}
+            height={100}
+            priority
+            className="h-14 w-auto"
+          />
         </Link>
 
-        <div className="hidden lg:flex items-center space-x-1">
+        {/* The desktop navigation now uses substantial horizontal spacing between items.
+            The space-x-10 class creates forty pixels of gap between each link, which is
+            the spacing rhythm that makes Kearney's navigation feel deliberate rather than
+            crowded. The text size is also larger at fourteen pixels rather than twelve. */}
+        <div className="hidden lg:flex items-center space-x-10">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-300 ${active ? "text-gold-light" : "text-text-on-dark-secondary hover:text-gold-light"}`}
+                className={`text-sm tracking-wide font-normal transition-colors duration-300 ${
+                  active
+                    ? "text-white"
+                    : "text-text-light-body hover:text-white"
+                }`}
               >
                 {link.label}
-                {active && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-px bg-gold-light" />
-                )}
               </Link>
             );
           })}
         </div>
 
+        {/* The mobile menu toggle remains the same in function but uses lighter touch styling. */}
         <button
-          className="lg:hidden text-text-on-dark-primary p-2"
+          className="lg:hidden text-white p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle navigation menu"
           aria-expanded={mobileMenuOpen}
@@ -103,16 +118,21 @@ export default function Navigation() {
         </button>
       </nav>
 
+      {/* Mobile menu drawer with generous spacing between items. */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-navy-deep border-t border-gold/15">
-          <div className="px-6 py-6 space-y-1">
+        <div className="lg:hidden bg-navy-deep border-t border-white/8">
+          <div className="px-6 py-8 space-y-6">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`block px-4 py-3 text-sm tracking-[0.2em] uppercase font-medium transition-colors duration-300 ${active ? "text-gold-light border-l-2 border-gold" : "text-text-on-dark-secondary hover:text-gold-light border-l-2 border-transparent"}`}
+                  className={`block text-base tracking-wide transition-colors duration-300 ${
+                    active
+                      ? "text-white"
+                      : "text-text-light-body hover:text-white"
+                  }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}

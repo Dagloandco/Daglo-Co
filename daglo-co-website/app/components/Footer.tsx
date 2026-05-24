@@ -1,27 +1,26 @@
 // Footer.tsx
-// The site-wide footer that closes every page on the Daglo and Co. website.
 //
-// The redesigned footer addresses several concerns from the original version:
+// The site-wide footer for Daglo and Co.
 //
-// First, the footer now establishes proper hierarchy through a multi-zone layout.
-// The previous version felt thin and rushed. The new version uses three distinct horizontal
-// zones: a primary zone with the brand mark and navigation, a secondary zone with contact
-// and connect information, and a tertiary zone with the closing signature line. This layered
-// approach gives the footer real substance.
+// This version is rebuilt to mirror the Kearney footer structure you referenced. The key
+// changes from the previous version are substantial:
 //
-// Second, the typography is now more refined. The brand mark in the footer uses the same
-// serif treatment as the page content, which ties the footer back to the editorial system
-// rather than treating it as a separate marketing element.
+// First, all boxes are eliminated. The previous version wrapped direct email and professional
+// network in bordered containers, which created the cluttered feeling you correctly identified.
+// The new version uses plain text on the dark background with no containers at all.
 //
-// Third, the social media icons are now larger and more refined, sitting in proper alignment
-// with the rest of the typography. The hover states use the gold accent color to maintain
-// visual consistency with the rest of the site's interaction patterns.
+// Second, the email address is no longer displayed in uppercase. Kearney and other premium
+// advisory firms always display email addresses in their natural case because uppercase email
+// reads as marketing rather than as direct contact.
+//
+// Third, the structure is now organized in horizontal bands rather than columns. A single
+// row of navigation links sits at the top, social icons below them, contact details and
+// brand mark in a final row. This mirrors how Kearney organizes their footer and produces
+// the clean, structured feeling that distinguishes premium advisory from generic web design.
 
 import Link from "next/link";
 
 export default function Footer() {
-  // The footer navigation mirrors the main site navigation, providing visitors with
-  // an additional pathway to any page on the site without having to scroll back to the top.
   const footerNavLinks = [
     { href: "/philosophy", label: "Philosophy" },
     { href: "/approach", label: "Approach" },
@@ -31,13 +30,11 @@ export default function Footer() {
     { href: "/contact", label: "Contact" },
   ];
 
-  // The social links use updated URLs as requested.
-  // LinkedIn now points to the correct profile URL with the kokoudonalddaglo handle.
-  // Instagram remains unchanged as you confirmed it was correct.
+  // The social links use the LinkedIn URL you specified in this revision.
   const socialLinks = [
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/in/kokoudonalddaglo",
+      href: "https://www.linkedin.com/in/donalddaglo",
       icon: (
         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -56,107 +53,78 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-navy-deep text-text-on-dark-primary mt-32">
-      {/* The primary footer zone contains the brand presentation and the navigation block.
-          This zone establishes the footer as a substantial closing element rather than a
-          thin afterthought at the bottom of the page. */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-20 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* The brand block on the left side gets significant horizontal space.
-              The wordmark is presented at substantial size with the supporting pillars
-              displayed beneath it as a tight typographic system. */}
-          <div className="lg:col-span-5">
-            <div className="brand-mark text-4xl text-text-on-dark-primary mb-3">
-              Daglo <span className="text-gold-light">&amp;</span> Co.
-            </div>
-            <div className="text-xs tracking-[0.3em] uppercase text-gold-light mb-6">
-              Governance &middot; Risk &middot; Leadership
-            </div>
-            <p className="text-text-on-dark-secondary leading-relaxed max-w-md">
-              Counsel for the decisions that define you. Advisory practice serving boards and
-              executives navigating governance, risk, and leadership in contested terrain.
-            </p>
+    // The footer uses the deep navy background with substantial top margin to separate
+    // it from the page content above. No top border is needed because the color shift
+    // provides natural separation.
+    <footer className="bg-navy-deep mt-32 pt-20 pb-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+
+        {/* The brand mark sits at the top of the footer as a quiet wordmark.
+            This is the same treatment Kearney uses, where the brand name appears
+            as the anchor point at the top of the footer rather than buried below. */}
+        <div className="text-center mb-12">
+          <div className="font-serif text-3xl text-white mb-3 tracking-wide">
+            Daglo &amp; Co.
           </div>
-
-          {/* The navigation block presents all six pages as a clean two-column list.
-              This gives visitors a complete map of the site at the moment they reach the footer,
-              which is valuable for visitors who want to continue exploring after finishing a page. */}
-          <div className="lg:col-span-3">
-            <div className="text-xs tracking-[0.3em] uppercase text-gold-light mb-6">
-              Navigate
-            </div>
-            <ul className="grid grid-cols-2 gap-y-3 gap-x-6">
-              {footerNavLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-text-on-dark-secondary hover:text-gold-light transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* The contact and connect block presents the email address and social links
-              with clear hierarchy. The email is treated as the primary point of contact
-              because that matches the practice's philosophy that conversations begin with email. */}
-          <div className="lg:col-span-4">
-            <div className="mb-8">
-              <div className="text-xs tracking-[0.3em] uppercase text-gold-light mb-3">
-                Direct Contact
-              </div>
-              <a
-                href="mailto:donald@daglo.co"
-                className="text-lg text-text-on-dark-primary hover:text-gold-light transition-colors duration-300"
-              >
-                donald@daglo.co
-              </a>
-            </div>
-
-            <div>
-              <div className="text-xs tracking-[0.3em] uppercase text-gold-light mb-4">
-                Connect
-              </div>
-              <div className="flex space-x-5">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text-on-dark-tertiary hover:text-gold-light transition-colors duration-300"
-                    aria-label={link.name}
-                  >
-                    {link.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
+          <div className="text-xs tracking-[0.3em] uppercase text-text-light-secondary">
+            Governance &middot; Risk &middot; Leadership
           </div>
         </div>
-      </div>
 
-      {/* The secondary footer zone provides a refined separator before the signature line.
-          The gradient line is wider than the section dividers used throughout the site
-          because it serves a different purpose here, marking the transition to the final
-          signature rather than separating content sections. */}
-      <div className="border-t border-gold/15">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            {/* The signature block on the left identifies the practice with the same
-                typographic treatment used throughout the site for editorial consistency. */}
-            <div className="text-sm text-text-on-dark-tertiary tracking-wide">
-              <span className="brand-mark">Daglo &amp; Co.</span>
-            </div>
+        {/* A thin horizontal rule provides minimal separation between the brand mark
+            and the navigation row. This is the kind of subtle structural element that
+            distinguishes editorial design from box-based design. */}
+        <div className="hairline-rule-dark max-w-3xl mx-auto mb-12" />
 
-            {/* The tagline on the right closes the page with the practice's signature statement.
-                Setting this in italic serif creates a quiet but distinguished final note. */}
-            <div className="font-serif italic text-sm text-text-on-dark-tertiary">
-              Counsel for the decisions that define you.
-            </div>
-          </div>
+        {/* The navigation row presents all six pages as a single horizontal line of links.
+            This is exactly how Kearney structures their footer navigation, with the items
+            spread across a centered row with generous spacing between them. */}
+        <nav className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-10">
+          {footerNavLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm text-text-light-body hover:text-white transition-colors duration-300"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* The social icons sit below the navigation in a centered row.
+            No labels, no containers, just the icons themselves with gentle hover states. */}
+        <div className="flex justify-center gap-6 mb-14">
+          {socialLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text-light-secondary hover:text-white transition-colors duration-300"
+              aria-label={link.name}
+            >
+              {link.icon}
+            </a>
+          ))}
+        </div>
+
+        {/* The contact information appears in its natural case as plain text on the
+            dark background. No box, no border, no uppercase styling. Just the email
+            address rendered as a direct, readable link the way it would appear on a
+            business card or in a signature line. */}
+        <div className="text-center mb-10">
+          <a
+            href="mailto:donald@daglo.co"
+            className="text-text-light-body hover:text-white transition-colors duration-300"
+          >
+            donald@daglo.co
+          </a>
+        </div>
+
+        {/* The closing line sits at the very bottom as a quiet signature. */}
+        <div className="hairline-rule-dark max-w-3xl mx-auto mb-8" />
+        <div className="text-center text-xs text-text-light-secondary tracking-wide italic font-serif">
+          Counsel for the decisions that define you.
         </div>
       </div>
     </footer>
