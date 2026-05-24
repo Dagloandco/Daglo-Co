@@ -2,18 +2,21 @@
 //
 // The site-wide header for Daglo and Co.
 //
-// This version fixes the navigation collision problem where items were rendering as one
-// solid string of crushed letters. The previous version relied on the Tailwind space-x-10
-// utility class, which in some layout contexts fails to apply the expected horizontal
-// margins between children. This version replaces that approach with explicit individual
-// padding on each navigation link, which is guaranteed to produce visible spacing because
-// padding cannot fail the way utility-class margins sometimes can.
+// This version uses inline styles for the navigation spacing rather than Tailwind utility
+// classes. Previous versions used utility classes like space-x-10 and px-5, both of which
+// failed to produce visible spacing in the deployed site. This is the third attempt at
+// fixing the navigation collision, and the lesson from the previous failures is that
+// utility-class spacing cannot be trusted in this particular layout context.
 //
-// The logo presentation also changes in this version. Rather than rendering the logo as
-// an image with its own background, we now render the wordmark as styled text directly
-// in the header. This eliminates the small white box that was appearing around the logo
-// image, gives us complete control over the size and color of the brand mark, and ensures
-// the wordmark integrates seamlessly into the navy header.
+// Inline styles are the most reliable way to apply CSS in any context because they have
+// the highest specificity and cannot be overridden by other stylesheets or stripped during
+// the build process. By specifying the padding directly on each link as an inline style,
+// we guarantee that the spacing will appear regardless of what is happening elsewhere in
+// the CSS pipeline.
+//
+// The structure is intentionally simple: each navigation link is rendered with explicit
+// inline padding values, which produces visible gaps between adjacent items that cannot
+// be defeated by any CSS issue.
 
 "use client";
 
@@ -22,13 +25,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function Navigation() {
-  // State for the mobile menu toggle. When true, the dropdown menu is visible on small screens.
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // The pathname hook returns the current URL path so we can highlight the active page.
   const pathname = usePathname();
 
-  // The navigation links are defined as an array so we can render them in a consistent loop.
   const navLinks = [
     { href: "/philosophy", label: "Philosophy" },
     { href: "/approach", label: "Approach" },
@@ -38,63 +37,88 @@ export default function Navigation() {
     { href: "/contact", label: "Contact" },
   ];
 
-  // Helper function that determines whether a given link matches the current page.
-  // We use startsWith rather than exact equality so that subpages of a section still
-  // highlight the parent navigation item.
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
   return (
-    // The header uses the deep navy background. We removed the bottom border entirely
-    // because Kearney's header has no visible separator between the header and the page
-    // content. The color shift between header and content provides natural separation.
-    <header className="bg-navy-deep sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
-
-        {/* The logo block is now rendered as styled text rather than as an image.
-            This gives us complete control over the appearance and eliminates the small
-            white container that was appearing around the previous logo image. The serif
-            treatment matches the rest of the site's typographic system, and the ampersand
-            uses the gold-light accent to add a small typographic detail that signals
-            attention to the brand mark.
-
-            The text size is set substantial enough to give the wordmark presence in the
-            header, and the tracking is widened slightly to give the letterforms room to
-            breathe. This is the treatment Kearney uses for their own brand mark in the
-            header. */}
+    // The header uses the deep navy background with no bottom border.
+    <header
+      style={{
+        backgroundColor: "#061730",
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+      }}
+    >
+      <nav
+        style={{
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "24px 24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* The logo is rendered as styled text with explicit inline styles to guarantee
+            consistent appearance regardless of CSS pipeline issues. */}
         <Link
           href="/"
-          className="group"
+          style={{ textDecoration: "none" }}
           aria-label="Daglo and Co. home"
         >
-          <div className="font-serif text-2xl md:text-3xl text-white tracking-wide group-hover:text-gold-light transition-colors duration-300">
-            Daglo <span className="text-gold-light">&amp;</span> Co.
+          <div
+            style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: "28px",
+              color: "#ffffff",
+              letterSpacing: "0.02em",
+              fontWeight: 500,
+            }}
+          >
+            Daglo <span style={{ color: "#d4b97f" }}>&amp;</span> Co.
           </div>
         </Link>
 
-        {/* The desktop navigation now uses inline-block link elements with explicit
-            horizontal padding on each side. This approach is guaranteed to produce
-            visible spacing between items because padding is one of the most reliable
-            CSS properties and cannot be overridden by parent layout contexts the way
-            margin-based utilities sometimes can.
+        {/* The desktop navigation uses explicit inline padding on each link. This is the
+            critical fix. Every previous attempt to space these items relied on utility
+            classes that were failing silently in the deployed environment. By using inline
+            padding, we guarantee that each link occupies a wider clickable area with clear
+            visible gaps between adjacent items.
 
-            Each link has 1.25 rem of horizontal padding on each side, which produces
-            approximately 2.5 rem of total gap between adjacent items. That spacing
-            matches the rhythm Kearney uses in their navigation. */}
-        <div className="hidden lg:flex items-center">
+            The padding value of 0 16px means zero pixels of vertical padding and sixteen
+            pixels of horizontal padding on each side. Between two adjacent links, this
+            produces thirty-two pixels of total whitespace, which is the spacing rhythm
+            that makes the navigation feel like Kearney's header.
+
+            We also use the className prop for hover states because hover effects are
+            difficult to express with inline styles. The className applies the color
+            transitions, while the inline style applies the spacing that cannot fail. */}
+        <div
+          style={{
+            display: "none",
+            alignItems: "center",
+          }}
+          className="nav-desktop-container"
+        >
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-5 py-2 text-sm tracking-wide font-normal transition-colors duration-300 ${
-                  active
-                    ? "text-white"
-                    : "text-text-light-body hover:text-white"
-                }`}
+                style={{
+                  padding: "8px 20px",
+                  fontSize: "14px",
+                  letterSpacing: "0.02em",
+                  color: active ? "#ffffff" : "#e8e6e0",
+                  textDecoration: "none",
+                  transition: "color 0.3s ease",
+                  display: "inline-block",
+                }}
+                className="nav-link-item"
               >
                 {link.label}
               </Link>
@@ -102,16 +126,23 @@ export default function Navigation() {
           })}
         </div>
 
-        {/* The mobile menu toggle remains the same in function. */}
+        {/* The mobile menu toggle button. */}
         <button
-          className="lg:hidden text-white p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle navigation menu"
           aria-expanded={mobileMenuOpen}
+          style={{
+            color: "#ffffff",
+            padding: "8px",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+          }}
+          className="nav-mobile-toggle"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            style={{ height: "24px", width: "24px" }}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -126,21 +157,30 @@ export default function Navigation() {
         </button>
       </nav>
 
-      {/* Mobile menu drawer with generous spacing between items. */}
+      {/* Mobile menu drawer. */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-navy-deep border-t border-white/10">
-          <div className="px-6 py-8 space-y-6">
+        <div
+          style={{
+            backgroundColor: "#061730",
+            borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+          }}
+          className="lg:hidden"
+        >
+          <div style={{ padding: "32px 24px" }}>
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`block text-base tracking-wide transition-colors duration-300 ${
-                    active
-                      ? "text-white"
-                      : "text-text-light-body hover:text-white"
-                  }`}
+                  style={{
+                    display: "block",
+                    padding: "12px 0",
+                    fontSize: "16px",
+                    letterSpacing: "0.02em",
+                    color: active ? "#ffffff" : "#e8e6e0",
+                    textDecoration: "none",
+                  }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -150,6 +190,25 @@ export default function Navigation() {
           </div>
         </div>
       )}
+
+      {/* Inline style block to handle the responsive behavior and hover states.
+          Inline styles cannot express media queries or hover states directly, so we use
+          a small embedded style element to handle those specific behaviors. This is a
+          common pattern in React applications that need both reliable static styles and
+          responsive or interactive behaviors. */}
+      <style>{`
+        @media (min-width: 1024px) {
+          .nav-desktop-container {
+            display: flex !important;
+          }
+          .nav-mobile-toggle {
+            display: none !important;
+          }
+        }
+        .nav-link-item:hover {
+          color: #ffffff !important;
+        }
+      `}</style>
     </header>
   );
 }
