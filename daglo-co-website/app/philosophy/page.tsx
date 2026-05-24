@@ -2,25 +2,16 @@
 //
 // The Philosophy page houses the full governance thesis that defines Daglo and Co.
 //
-// This revision applies the editorial composition principle that distinguishes premium
-// advisory sites from generic web design. The hero section remains centered because that
-// is the appropriate treatment for a dramatic opening statement against an image. But the
-// substantive content sections now use left-aligned editorial composition anchored to a
-// consistent left margin within the unified content column.
+// This revision adds center alignment to every content section while preserving the
+// editorial composition system established in the previous revision. The unified content
+// column and reading column constraints remain in place, but the text within those
+// containers now centers along the page axis rather than left-aligning to a margin.
 //
-// The shift from centered-everything to left-aligned-editorial is the single most important
-// design change in this revision. Centered text works for short ceremonial moments like
-// hero headlines and call-to-action sections. It does not work for sustained reading content
-// because the eye has to find a new starting position at the beginning of every line, which
-// creates reading friction. Left-aligned text has a single consistent starting point that
-// the eye can return to effortlessly, which is why every serious editorial publication uses
-// left alignment for body content.
-//
-// The pull quote treatment from previous versions has been removed. Pull quotes are a
-// magazine convention that does not belong on advisory firm sites. Editorial emphasis in
-// this version comes from the natural hierarchy of headlines, lead paragraphs, and body
-// text, with the most important passages standing on their own as standalone paragraphs
-// that read with intentional weight.
+// Center alignment produces a different feeling than left alignment. Left alignment
+// feels anchored and editorial, like a serious publication. Center alignment feels
+// ceremonial and balanced, like a formal document or invitation. Both can work for
+// premium content, and you have specifically asked for the centered treatment because
+// it matches the symmetrical, formal feeling you want for the practice.
 
 import Image from "next/image";
 import Link from "next/link";
@@ -28,9 +19,7 @@ import Link from "next/link";
 export default function PhilosophyPage() {
   return (
     <>
-      {/* The page hero uses the B-2 Spirit imagery and a centered composition.
-          The centered treatment works here because the hero is a brief ceremonial moment
-          designed to establish the page's central claim before the substantive content begins. */}
+      {/* The page hero remains centered as it was. */}
       <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -52,14 +41,14 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* The opening section establishes the central thesis using left-aligned editorial
-          composition. The content sits within the unified content column and uses the
-          reading column constraint to keep line lengths comfortable. The lead paragraph
-          is set in larger serif type to function as an editorial entry point, with body
-          paragraphs below it providing the developed argument. */}
+      {/* The opening section now uses center alignment within the reading column.
+          The text-center utility cascades center alignment down to every child element,
+          which means the lead paragraph and the body paragraph both center along the
+          page axis. The reading column itself is centered within the content column
+          through the margin-auto we added to the global stylesheet. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <p className="text-2xl md:text-3xl font-serif text-navy leading-relaxed mb-10">
               Governance is the discipline of seeing reality clearly, making decisions under
               pressure, and deciding where an organization is willing to place trust.
@@ -75,14 +64,12 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* The first principle section uses the editorial composition pattern that will repeat
-          throughout the substantive content of the site. An eyebrow label at the top, a serif
-          headline beneath it, and developed body paragraphs below the headline. All elements
-          are left-aligned to the same vertical line within the reading column, which creates
-          the strong editorial anchor that left-aligned composition produces. */}
+      {/* The first principle section centers every element within the reading column.
+          The eyebrow, headline, body paragraphs, and italic emphasis paragraph all
+          center along the same vertical axis through the middle of the page. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">First Principle</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               One operating system.
@@ -99,11 +86,9 @@ export default function PhilosophyPage() {
               organization so the three move together.
             </p>
 
-            {/* The most quotable line in this section is now treated as a standalone paragraph
-                set in larger serif italic type. This produces editorial emphasis without the
-                magazine-style pull quote that we previously used. The italic serif treatment
-                signals that this is the central question of the section while keeping the
-                passage within the same alignment system as the surrounding text. */}
+            {/* The italic emphasis paragraph centers along with everything else, which
+                gives the central question of this section the visual weight of a ceremonial
+                statement positioned at the heart of the page. */}
             <p className="text-2xl md:text-3xl font-serif italic text-navy mb-10 leading-snug">
               Where are we implicitly trusting something we have not verified?
             </p>
@@ -119,10 +104,10 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* The second principle continues the same editorial composition pattern. */}
+      {/* The second principle continues the centered composition pattern. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">Second Principle</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               Risk no longer moves linearly.
@@ -143,12 +128,12 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      {/* The closing principle section uses the same editorial pattern but on the deep navy
-          background with white text for strong contrast. The italic standalone paragraph
-          treatment again provides the editorial emphasis for the most quotable line. */}
+      {/* The closing principle uses centered composition on the deep navy background.
+          The Read the Approach link sits centered as a small inline-block element below
+          the closing paragraph, completing the ceremonial centered composition. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow-light mb-6">Closing Principle</div>
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">
               Trust is not a control. Verification is.
@@ -167,7 +152,7 @@ export default function PhilosophyPage() {
 
             <Link
               href="/approach"
-              className="text-sm tracking-[0.3em] uppercase font-medium text-white border-b border-white pb-2 hover:text-gold-light hover:border-gold-light transition-colors duration-300"
+              className="inline-block text-sm tracking-[0.3em] uppercase font-medium text-white border-b border-white pb-2 hover:text-gold-light hover:border-gold-light transition-colors duration-300"
             >
               Read the Approach
             </Link>

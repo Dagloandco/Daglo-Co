@@ -1,11 +1,7 @@
 // approach/page.tsx
 //
-// The Approach page develops the GEOINT framing and Zero Trust governance philosophy.
-//
-// This revision applies the unified editorial composition system. The terrain elements
-// and the four commitments now stack vertically as left-aligned editorial entries rather
-// than spreading across two-column grids. This produces the polished editorial feeling
-// that matches the rest of the site and gives each idea substantial visual weight.
+// The Approach page now uses centered composition throughout. The terrain elements and
+// the four commitments stack vertically with each entry centered along the page axis.
 
 import Image from "next/image";
 import Link from "next/link";
@@ -67,7 +63,6 @@ export default function ApproachPage() {
 
   return (
     <>
-      {/* The page hero uses centered composition against the geospatial imagery. */}
       <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -89,12 +84,9 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The opening section introduces the GEOINT analogy using left-aligned editorial
-          composition. The three paragraphs build the argument from observation to analogy
-          to enterprise application. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">A GEOINT Perspective</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               Enterprise risk as contested terrain.
@@ -119,12 +111,9 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The terrain elements now stack vertically as left-aligned editorial entries.
-          Each element has a small gold uppercase label, a serif headline, and developed
-          body text, all anchored to the same left margin. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">What Boards Must See</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               The board should know.
@@ -153,13 +142,9 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The Zero Trust section uses left-aligned editorial composition on the deep navy
-          background. The cityscape imagery is removed from this section because it was
-          competing visually with the text rather than supporting it. The argument now
-          stands on its own substantial weight as editorial content. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow-light mb-6">Zero Trust as Governance</div>
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">
               Beyond the cybersecurity framework.
@@ -180,10 +165,9 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The four commitments now stack vertically as left-aligned editorial entries. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">Operating Discipline</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               Four commitments that govern the work.
@@ -197,7 +181,10 @@ export default function ApproachPage() {
             <div className="space-y-20">
               {commitments.map((commitment) => (
                 <div key={commitment.number}>
-                  <div className="flex items-baseline gap-5 mb-4">
+                  {/* The number and name center as a cluster within their flex row, which
+                      requires changing the flex container to justify-center rather than the
+                      default left alignment used in the left-aligned version. */}
+                  <div className="flex items-baseline justify-center gap-5 mb-4">
                     <div className="text-4xl font-serif text-gold leading-none">
                       {commitment.number}
                     </div>

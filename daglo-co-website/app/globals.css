@@ -125,9 +125,15 @@ a {
 /* The reading column is for long-form text where line length affects readability.
  * Lines longer than about 75 characters become hard to read because the eye has to
  * track across too much horizontal space to find the next line. The reading column
- * constrains text to a comfortable measure within the broader content column. */
+ * constrains text to a comfortable measure within the broader content column.
+ *
+ * The auto margins center the reading column horizontally within the content column,
+ * which means content inside the reading column will appear centered along the page
+ * axis regardless of whether the text itself is left-aligned or center-aligned. */
 .reading-column {
   max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .eyebrow {

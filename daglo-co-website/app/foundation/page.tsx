@@ -1,15 +1,12 @@
 // foundation/page.tsx
 //
-// The Foundation page presents background and credentials in left-aligned editorial format.
+// The Foundation page presents background and credentials in centered editorial format.
 //
-// This revision applies the same editorial composition principle to the credentials section
-// that we are applying throughout the site. The five credentials now anchor to the same
-// left margin as the surrounding content, which produces editorial consistency rather than
-// the centered-ceremonial feeling of the previous version.
-//
-// The structure preserves the curated five-credential list that we established in the
-// ninth revision. Each credential has its name set as a serif headline and its context
-// sentence below it in body text, all left-aligned within the unified content column.
+// The five credentials now use centered text alignment within the reading column. Each
+// credential name and its context sentence center along the page axis, which gives the
+// list a ceremonial, balanced feeling rather than the anchored editorial feeling of the
+// left-aligned version. The closing italic paragraph also centers, completing the
+// symmetrical composition of the credentials section.
 
 import Image from "next/image";
 
@@ -44,7 +41,6 @@ export default function FoundationPage() {
 
   return (
     <>
-      {/* The page hero uses the open-book imagery and centered composition. */}
       <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -66,12 +62,9 @@ export default function FoundationPage() {
         </div>
       </section>
 
-      {/* The biographical section uses left-aligned editorial composition. The lens-that-
-          informs-the-work framing anchors the reader's understanding of why these specific
-          credentials matter and what kind of perspective the practice brings. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">Background</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               The lens that informs the work.
@@ -94,17 +87,14 @@ export default function FoundationPage() {
         </div>
       </section>
 
-      {/* The credentials section presents the five curated credentials in left-aligned
-          editorial format. Each credential anchors to the same left margin as the
-          biographical section above, which produces visual continuity across the page.
-
-          There are no horizontal rules between credentials. The substantial vertical
-          spacing provided by space-y-16 produces clean separation without imposing visible
-          dividers. The credentials read as a deliberate list rather than as a fragmented
-          inventory. */}
+      {/* The credentials section now centers every credential along the page axis.
+          Each credential name appears as a centered serif headline with its context
+          sentence centered below it in body text. This produces the ceremonial,
+          balanced feeling of a curated list rather than the anchored editorial feeling
+          of the left-aligned version. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">Foundation of Practice</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               Built for board-level judgment.
@@ -129,10 +119,6 @@ export default function FoundationPage() {
               ))}
             </div>
 
-            {/* The closing italic paragraph uses the same left-aligned position as the
-                rest of the section content, with generous top margin separating it from
-                the final credential entry. The italic serif treatment provides editorial
-                emphasis for the closing statement. */}
             <p className="text-lg md:text-xl font-serif italic text-navy leading-relaxed mt-24">
               Together, these credentials support a practice built for boards, executives,
               and organizations navigating enterprise risk, cyber resilience, data

@@ -2,18 +2,14 @@
 //
 // The Contact page provides the entry point for beginning a conversation with the practice.
 //
-// This revision applies the unified editorial composition system. The hero remains centered
-// because it functions as a brief ceremonial opening. The substantive content sections use
-// left-aligned editorial composition anchored to the consistent left margin within the
-// unified content column. The three engagement stages are presented as a left-aligned
-// editorial sequence rather than as centered columns, which produces the polished list
-// feeling that serious advisory firms use for process descriptions.
+// This revision applies centered composition throughout the substantive content sections.
+// The three engagement stages now center along the page axis, as do the two contact
+// pathways in the closing section. Every element on the page aligns to the same vertical
+// center axis from the hero at the top through the final call to action.
 
 import Image from "next/image";
 
 export default function ContactPage() {
-  // The three engagement stages are stored as data so the rendering code stays clean
-  // and so future updates only require changes in one place.
   const stages = [
     {
       number: "01",
@@ -37,7 +33,6 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* The page hero uses centered composition against the boardroom imagery. */}
       <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-navy-deep">
           <Image
@@ -59,11 +54,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* The main contact section explains how engagements begin using left-aligned
-          editorial composition within the reading column. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">How We Begin</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               Conversations begin with an email.
@@ -89,17 +82,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* The What to Expect section now presents the three stages as a left-aligned
-          editorial sequence rather than as centered columns. Each stage anchors to the
-          same left margin as the headline above, which produces the editorial consistency
-          that distinguishes premium advisory sites from generic process pages.
-
-          The three stages stack vertically rather than spreading horizontally, which gives
-          each stage substantial visual weight and prevents the columns-of-text feeling that
-          horizontal grids produce. */}
+      {/* The three engagement stages now stack vertically with each stage centered along
+          the page axis. The number, title, and description for each stage all center
+          within the reading column. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">What to Expect</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               The arc of an engagement.
@@ -112,10 +100,6 @@ export default function ContactPage() {
             <div className="space-y-16">
               {stages.map((stage) => (
                 <div key={stage.number}>
-                  {/* The stage number sits in large gold serif type to anchor each entry
-                      visually. The number is positioned at the top of each stage block
-                      and the headline appears beneath it, which is the editorial pattern
-                      that gives each stage clear typographic identity. */}
                   <div className="text-4xl font-serif text-gold leading-none mb-4">
                     {stage.number}
                   </div>
@@ -132,13 +116,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* The closing connection section uses left-aligned editorial composition on the
-          deep navy background. The two contact pathways are presented as stacked entries
-          rather than as a centered two-column grid, which maintains the editorial
-          consistency with the rest of the site. */}
+      {/* The closing connection section centers the two contact pathways along the page
+          axis, with each pathway presented as a centered cluster of label, link, and
+          supporting description. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow-light mb-6">Connect</div>
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-16 leading-tight">
               Two paths forward.

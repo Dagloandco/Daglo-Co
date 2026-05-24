@@ -1,12 +1,8 @@
 // engagement/page.tsx
 //
-// The Engagement page explains how Daglo and Co. works with clients.
-//
-// This revision applies the unified editorial composition system. The four engagement
-// types now stack vertically as left-aligned editorial entries rather than spreading
-// across a two-column grid. This produces the polished editorial list feeling that
-// premium advisory firms use for service descriptions, where each entry has substantial
-// visual weight and clear typographic identity rather than being squeezed into a column.
+// The Engagement page now uses centered composition throughout. The four engagement
+// types stack vertically with each entry centered along the page axis, which gives the
+// list a balanced, ceremonial feeling that matches the rest of the centered site.
 
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +37,6 @@ export default function EngagementPage() {
 
   return (
     <>
-      {/* The page hero uses centered composition against the boardroom imagery. */}
       <section className="relative h-[55vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -63,11 +58,9 @@ export default function EngagementPage() {
         </div>
       </section>
 
-      {/* The opening section frames the counsel model that distinguishes the practice
-          from retainer-based consulting firms. Left-aligned editorial composition. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">Approach to Clients</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               Limited engagements. Considered counsel.
@@ -88,14 +81,9 @@ export default function EngagementPage() {
         </div>
       </section>
 
-      {/* The four engagement types now stack vertically as left-aligned editorial entries.
-          Each entry has the gold number serif as a visual anchor at the top, the serif
-          headline below it, and the developed paragraph beneath. This treatment gives
-          each engagement type substantial weight and clear typographic identity, which
-          is the editorial pattern premium advisory firms use for service descriptions. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">Four Engagement Types</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-20 leading-tight">
               How we work.
@@ -120,12 +108,9 @@ export default function EngagementPage() {
         </div>
       </section>
 
-      {/* The closing call-to-action uses left-aligned editorial composition on the deep
-          navy background. The email link and the secondary navigation link are presented
-          as stacked editorial elements rather than as a centered button row. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-tight">
               Begin a conversation.
             </h2>

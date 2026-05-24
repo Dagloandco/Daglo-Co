@@ -2,18 +2,15 @@
 //
 // The homepage of the Daglo and Co. website.
 //
-// This revision applies the unified editorial composition system. The airplane hero you
-// specifically asked to preserve remains untouched. Every substantive content section now
-// uses left-aligned editorial composition anchored to the consistent left margin within
-// the unified content column. The four pillars stack vertically as editorial entries
-// rather than spreading across a four-column grid, which gives each pillar substantial
-// visual weight and clear typographic identity.
+// This revision applies centered composition to every substantive content section,
+// completing the site-wide consistency. The airplane hero remains exactly as you
+// requested. The four pillars, the engagement preview, and all other content sections
+// now center along the page axis.
 
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
-  // The four pillars are defined as data so the rendering code stays clean.
   const pillars = [
     {
       number: "01",
@@ -41,7 +38,6 @@ export default function Home() {
     },
   ];
 
-  // The four engagement types previewed on the homepage.
   const engagementPreview = [
     {
       title: "Board governance advisory",
@@ -67,9 +63,6 @@ export default function Home() {
 
   return (
     <>
-      {/* The hero section preserves the F-47 aircraft imagery exactly as you requested.
-          The centered composition is the appropriate treatment for a hero because it
-          functions as a brief ceremonial opening rather than as sustained reading content. */}
       <section className="relative h-[90vh] min-h-[640px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -107,10 +100,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The introduction section uses left-aligned editorial composition. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">An Advisory Practice</div>
             <h2 className="text-4xl md:text-6xl font-serif text-navy mb-10 leading-tight">
               Governance is not paperwork.
@@ -125,11 +117,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The four pillars now stack vertically as left-aligned editorial entries on the
-          deep navy background. White text ensures strong contrast. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow-light mb-6">The Four Pillars</div>
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-10 leading-tight">
               One operating system.
@@ -159,13 +149,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The Approach preview keeps the two-column layout because the imagery and text
-          are designed to balance each other as visual partners. This is a different kind
-          of composition than the editorial single-column pattern used elsewhere. */}
+      {/* The Approach preview keeps the two-column image-and-text layout because that
+          pattern works as a deliberate visual partnership between imagery and argument.
+          This is the one section on the homepage that uses a different alignment system
+          because it is genuinely a different kind of composition. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div>
+            <div className="text-center lg:text-left">
               <div className="eyebrow mb-6">The Approach</div>
               <h2 className="text-4xl md:text-5xl font-serif text-navy mb-8 leading-tight">
                 Enterprise risk as terrain.
@@ -199,11 +190,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The engagement preview uses left-aligned editorial composition with the four
-          engagement types presented as stacked entries. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <div className="eyebrow mb-6">How We Engage</div>
             <h2 className="text-4xl md:text-5xl font-serif text-navy mb-10 leading-tight">
               Limited engagements. Considered counsel.
@@ -235,11 +224,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The closing call-to-action uses left-aligned editorial composition on the deep
-          navy background. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="content-column">
-          <div className="reading-column">
+          <div className="reading-column text-center">
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-8 leading-tight">
               Begin a conversation.
             </h2>
