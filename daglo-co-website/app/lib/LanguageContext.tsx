@@ -64,8 +64,8 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "La gouvernance n'est pas de la paperasse.",
   },
   "home.intro.body": {
-    en: "Governance is the discipline of seeing reality clearly, making decisions under pressure, and deciding where an organization is willing to place trust. Daglo and Co. provides counsel to boards and executives navigating that responsibility in environments where the old governance models can no longer keep up.",
-    fr: "La gouvernance est la discipline de voir la réalité clairement, de prendre des décisions sous pression et de décider où une organisation accepte de placer sa confiance. Daglo and Co. accompagne les conseils d'administration et les dirigeants qui assument cette responsabilité dans des environnements où les anciens modèles de gouvernance ne suffisent plus.",
+    en: "Governance is the discipline of seeing reality clearly, making decisions under pressure, and deciding where an organization is willing to place Trust. Daglo and Co. provides counsel to boards and executives navigating that responsibility in environments where the old governance models can no longer keep up.",
+    fr: "La gouvernance est la discipline de voir la réalité clairement, de prendre des décisions sous pression et de décider où une organisation accepte de placer sa Confiance. Daglo and Co. accompagne les conseils d'administration et les dirigeants qui assument cette responsabilité dans des environnements où les anciens modèles de gouvernance ne suffisent plus.",
   },
 
   "home.pillars.eyebrow": { en: "The Four Pillars", fr: "Les quatre piliers" },
@@ -74,24 +74,24 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Un système d'exploitation unifié.",
   },
   "home.pillars.intro": {
-    en: "Most boards treat governance, risk, and leadership as separate functions. They are not. They form a unified operating system where every decision about trust cascades through the enterprise.",
-    fr: "La plupart des conseils traitent la gouvernance, le risque et le leadership comme des fonctions distinctes. Ils ne le sont pas. Ils forment un système d'exploitation unifié où chaque décision sur la confiance se propage à travers l'entreprise.",
+    en: "Most boards treat governance, risk, and leadership as separate functions. They are not. They form a unified operating system in which every decision about trust cascades throughout the enterprise.",
+    fr: "La plupart des conseils traitent la gouvernance, le risque et le leadership comme des fonctions distinctes. Ils ne le sont pas. Ils forment un système d'exploitation unifié dans lequel chaque décision sur la confiance se propage à travers l'entreprise.",
   },
 
   "home.pillar1.title": { en: "See clearly", fr: "Voir clairement" },
   "home.pillar1.desc": {
-    en: "Boards receive sanitized reports after risk has already matured. Real governance begins with seeing the terrain as it is, not as it was. The discipline of clear-eyed observation is what distinguishes governance from reporting.",
-    fr: "Les conseils reçoivent des rapports filtrés après que le risque a déjà mûri. La véritable gouvernance commence par voir le terrain tel qu'il est, et non tel qu'il était. La discipline de l'observation lucide est ce qui distingue la gouvernance du simple reporting.",
+    en: "Boards receive sanitized reports after risk has already matured. True governance begins with seeing the terrain as it is, which builds confidence in decision-making.",
+    fr: "Les conseils reçoivent des rapports filtrés après que le risque a déjà mûri. La véritable gouvernance commence par voir le terrain tel qu'il est, ce qui renforce la confiance dans la prise de décision.",
   },
-  "home.pillar2.title": { en: "Verify trust", fr: "Vérifier la confiance" },
+  "home.pillar2.title": { en: "Verify Trust", fr: "Vérifier la Confiance" },
   "home.pillar2.desc": {
-    en: "Where are we implicitly trusting something we have not verified? The answer determines where the next failure will originate. Every implicit trust relationship is an exposure surface until it has been examined and made explicit.",
-    fr: "Où accordons-nous implicitement notre confiance à quelque chose que nous n'avons pas vérifié ? La réponse détermine d'où viendra le prochain échec. Chaque relation de confiance implicite est une surface d'exposition tant qu'elle n'a pas été examinée et rendue explicite.",
+    en: "Why are we implicitly trusting something we have not verified? The answer determines where the next failure will originate. Every implicit trust relationship is an exposure until it is examined and made explicit.",
+    fr: "Pourquoi accordons-nous implicitement notre confiance à quelque chose que nous n'avons pas vérifié ? La réponse détermine d'où viendra le prochain échec. Chaque relation de confiance implicite est une exposition tant qu'elle n'a pas été examinée et rendue explicite.",
   },
   "home.pillar3.title": { en: "Adapt under pressure", fr: "S'adapter sous pression" },
   "home.pillar3.desc": {
-    en: "Risk no longer moves linearly. Cyber incidents become supply chain disruptions become market confidence crises in the same week. Governance machinery must operate at the speed of the actual environment, not the speed of the calendar.",
-    fr: "Le risque ne se déplace plus de manière linéaire. Les incidents cyber deviennent des perturbations de chaîne d'approvisionnement qui deviennent des crises de confiance des marchés dans la même semaine. La machinerie de gouvernance doit fonctionner à la vitesse de l'environnement réel, et non à celle du calendrier.",
+    en: "Risk no longer moves linearly. Governance must operate at the speed of the environment, fostering resilience and confidence in handling rapid changes.",
+    fr: "Le risque ne se déplace plus de manière linéaire. La gouvernance doit fonctionner à la vitesse de l'environnement, en favorisant la résilience et la confiance dans la gestion des changements rapides.",
   },
   "home.pillar4.title": {
     en: "Survive contested terrain",
@@ -108,7 +108,7 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Le risque d'entreprise comme terrain.",
   },
   "home.approach.p1": {
-    en: "I think about risk the way a geospatial intelligence analyst thinks about contested terrain. You must understand the movement, the timing, the pattern of life, the dependencies, the chokepoints, and the adversary's likely path.",
+    en: "I think about risk the way a geospatial intelligence analyst thinks about contested terrain. You must understand the movement, timing, life pattern, dependencies, chokepoints, and the adversary's likely path.",
     fr: "Je pense au risque comme un analyste de renseignement géospatial pense à un terrain contesté. Il faut comprendre le mouvement, le rythme, le schéma d'activité, les dépendances, les points de passage critiques et la trajectoire probable de l'adversaire.",
   },
   "home.approach.p2": {
@@ -130,8 +130,8 @@ const translations: Record<string, { en: string; fr: string }> = {
 
   "home.engage1.title": { en: "Board governance advisory", fr: "Conseil en gouvernance d'entreprise" },
   "home.engage1.desc": {
-    en: "Helping boards and committees understand the terrain they operate in.",
-    fr: "Aider les conseils et comités à comprendre le terrain sur lequel ils opèrent.",
+    en: "Helping boards and committees understand how modern governance strategies integrate with existing frameworks to address real-world challenges and enhance decision-making.",
+    fr: "Aider les conseils et comités à comprendre comment les stratégies de gouvernance modernes s'intègrent aux cadres existants pour relever les défis du monde réel et améliorer la prise de décision.",
   },
   "home.engage2.title": { en: "Enterprise risk strategy", fr: "Stratégie de risque d'entreprise" },
   "home.engage2.desc": {
@@ -145,8 +145,8 @@ const translations: Record<string, { en: string; fr: string }> = {
   },
   "home.engage4.title": { en: "Executive counsel", fr: "Conseil exécutif" },
   "home.engage4.desc": {
-    en: "Strategic counsel for leaders navigating decisions under pressure.",
-    fr: "Conseil stratégique pour les dirigeants qui prennent des décisions sous pression.",
+    en: "Strategic counsel for leaders navigating decisions under pressure, emphasizing how Daglo and Co. supports active board engagement and resilience.",
+    fr: "Conseil stratégique pour les dirigeants qui prennent des décisions sous pression, mettant l'accent sur la façon dont Daglo and Co. soutient l'engagement actif du conseil et la résilience.",
   },
 
   "home.cta.heading": { en: "Begin a conversation.", fr: "Engager une conversation." },
@@ -233,7 +233,7 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "La gouvernance traditionnelle regarde en arrière. Les conseils reçoivent des rapports filtrés après que le risque a déjà mûri, voient des tableaux de bord de conformité et des graphiques rouge-jaune-vert, mais manquent souvent le terrain réel sur lequel opère l'organisation.",
   },
   "approach.geo.p2": {
-    en: "I think about risk the way a geospatial intelligence analyst thinks about contested terrain. You must understand the movement, the timing, the pattern of life, the dependencies, the chokepoints, and the adversary's likely path.",
+    en: "I think about risk the way a geospatial intelligence analyst thinks about contested terrain. You must understand the movement, timing, life pattern, dependencies, chokepoints, and the adversary's likely path.",
     fr: "Je pense au risque comme un analyste de renseignement géospatial pense à un terrain contesté. Il faut comprendre le mouvement, le rythme, le schéma d'activité, les dépendances, les points de passage critiques et la trajectoire probable de l'adversaire.",
   },
   "approach.geo.p3": {
@@ -250,7 +250,7 @@ const translations: Record<string, { en: string; fr: string }> = {
   "approach.terrain1.label": { en: "Movement", fr: "Mouvement" },
   "approach.terrain1.title": { en: "What assets matter most", fr: "Quels actifs comptent le plus" },
   "approach.terrain1.body": {
-    en: "Not every asset is equally valuable to the mission. Real governance requires clarity about which assets carry the most weight and where the loss of any one would create disproportionate impact.",
+    en: "Not every asset is equally valuable to the mission. Real governance requires clarity about which assets carry the most weight and where the loss of any one would create a disproportionate impact.",
     fr: "Tous les actifs n'ont pas la même valeur pour la mission. La véritable gouvernance exige de la clarté sur les actifs qui pèsent le plus et sur ceux dont la perte créerait un impact disproportionné.",
   },
   "approach.terrain2.label": { en: "Dependencies", fr: "Dépendances" },
@@ -281,8 +281,8 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Au-delà du cadre de cybersécurité.",
   },
   "approach.zt.p1": {
-    en: "Zero Trust is not a technology decision. It is a governance philosophy. A way of thinking about trust, verification, and assumptions at every level of the enterprise.",
-    fr: "Le Zero Trust n'est pas une décision technologique. C'est une philosophie de gouvernance. Une façon de penser la confiance, la vérification et les hypothèses à chaque niveau de l'entreprise.",
+    en: "Zero Trust is not just a cybersecurity framework; it is a governance philosophy that applies verification and trust principles across all enterprise functions, including board decisions and risk management.",
+    fr: "Le Zero Trust n'est pas seulement un cadre de cybersécurité ; c'est une philosophie de gouvernance qui applique les principes de vérification et de confiance à toutes les fonctions de l'entreprise, y compris les décisions du conseil et la gestion du risque.",
   },
   "approach.zt.p2": {
     en: "The cybersecurity industry has adopted Zero Trust as a technical architecture. That work matters. But the deeper opportunity is to apply the same discipline at the board level, where decisions about partnerships, vendors, geographies, and strategic exposure benefit from the same rigor of never assume, always verify.",
@@ -295,8 +295,8 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Quatre engagements qui régissent le travail.",
   },
   "approach.commit.intro": {
-    en: "Every engagement operates against four standing commitments. These hold whether the conversation is about board governance, enterprise risk, AI strategy, or data exposure in contested environments.",
-    fr: "Chaque mandat s'appuie sur quatre engagements permanents. Ceux-ci tiennent que la conversation porte sur la gouvernance du conseil, le risque d'entreprise, la stratégie d'IA ou l'exposition des données en environnements contestés.",
+    en: "Every engagement is subject to four standing commitments. These hold whether the conversation is about board governance, enterprise risk, AI strategy, or data exposure in contested environments.",
+    fr: "Chaque mandat est soumis à quatre engagements permanents. Ceux-ci tiennent que la conversation porte sur la gouvernance du conseil, le risque d'entreprise, la stratégie d'IA ou l'exposition des données en environnements contestés.",
   },
 
   "approach.c1.name": { en: "Never assume", fr: "Ne jamais supposer" },
@@ -305,8 +305,8 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "La gouvernance devrait remettre en question les hypothèses héritées avant que l'environnement ne le fasse.",
   },
   "approach.c1.expansion": {
-    en: "Every governance structure rests on assumptions that were true when the organization was smaller, slower, or less exposed. The work of the board is to surface those assumptions while they can still be revised in a meeting, not after they have been revised by a crisis.",
-    fr: "Chaque structure de gouvernance repose sur des hypothèses qui étaient vraies lorsque l'organisation était plus petite, plus lente ou moins exposée. Le travail du conseil consiste à faire émerger ces hypothèses pendant qu'elles peuvent encore être révisées en réunion, et non après qu'elles aient été révisées par une crise.",
+    en: "Every governance structure rests on assumptions that were true when the organization was smaller, slower, or less exposed. The board's work is to surface those assumptions while they can still be revised in a meeting, not after a crisis has revised them.",
+    fr: "Chaque structure de gouvernance repose sur des hypothèses qui étaient vraies lorsque l'organisation était plus petite, plus lente ou moins exposée. Le travail du conseil consiste à faire émerger ces hypothèses pendant qu'elles peuvent encore être révisées en réunion, et non après qu'une crise les ait révisées.",
   },
   "approach.c2.name": { en: "Verify what matters", fr: "Vérifier ce qui compte" },
   "approach.c2.statement": {
@@ -319,12 +319,12 @@ const translations: Record<string, { en: string; fr: string }> = {
   },
   "approach.c3.name": { en: "Reduce hidden exposure", fr: "Réduire l'exposition cachée" },
   "approach.c3.statement": {
-    en: "Implicit trust should be surfaced, tested, and converted into deliberate decisions.",
-    fr: "La confiance implicite doit être mise au jour, testée et convertie en décisions délibérées.",
+    en: "Implicit Trust should be surfaced, tested, and converted into deliberate decisions.",
+    fr: "La Confiance implicite doit être mise au jour, testée et convertie en décisions délibérées.",
   },
   "approach.c3.expansion": {
-    en: "Every implicit trust relationship across data, vendors, geographies, and partnerships is a place where the organization is exposed without knowing it. The work is to convert those relationships into explicit decisions the board has actually made.",
-    fr: "Chaque relation de confiance implicite à travers les données, les fournisseurs, les zones géographiques et les partenariats est un endroit où l'organisation est exposée sans le savoir. Le travail consiste à convertir ces relations en décisions explicites que le conseil a réellement prises.",
+    en: "Every implicit trust relationship across data, vendors, geographies, and partnerships exposes the organization without its knowing. The work is to convert those relationships into explicit decisions that the board has actually made.",
+    fr: "Chaque relation de confiance implicite à travers les données, les fournisseurs, les zones géographiques et les partenariats expose l'organisation sans qu'elle le sache. Le travail consiste à convertir ces relations en décisions explicites que le conseil a réellement prises.",
   },
   "approach.c4.name": { en: "Make risk visible", fr: "Rendre le risque visible" },
   "approach.c4.statement": {
@@ -332,8 +332,8 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Les conseils ne peuvent pas gouverner ce qu'ils ne voient pas.",
   },
   "approach.c4.expansion": {
-    en: "Most boards cannot see what actually matters. The work is to build the visibility machinery that lets governance act on actual conditions rather than reported conditions. Visibility is treated as critical infrastructure, not as a reporting function.",
-    fr: "La plupart des conseils ne peuvent pas voir ce qui compte réellement. Le travail consiste à construire la machinerie de visibilité qui permet à la gouvernance d'agir sur les conditions réelles plutôt que sur les conditions rapportées. La visibilité est traitée comme une infrastructure critique, et non comme une fonction de reporting.",
+    en: "Most boards cannot see what actually matters. The work is to build the visibility machinery that enables governance to act on actual conditions rather than reported ones. Visibility is treated as critical infrastructure, not as a reporting function.",
+    fr: "La plupart des conseils ne peuvent pas voir ce qui compte réellement. Le travail consiste à construire la machinerie de visibilité qui permet à la gouvernance d'agir sur les conditions réelles plutôt que sur celles qui sont rapportées. La visibilité est traitée comme une infrastructure critique, et non comme une fonction de reporting.",
   },
   "approach.commit.cta": { en: "How Engagements Work", fr: "Comment se déroulent les mandats" },
 
@@ -346,12 +346,12 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Mandats limités. Conseil réfléchi.",
   },
   "engagement.intro.p1": {
-    en: "Daglo and Co. takes on a limited number of engagements at any given time. We work with boards and executives navigating complexity, high-value assets, sensitive data, and risks that move faster than traditional governance models can handle.",
-    fr: "Daglo and Co. accepte un nombre limité de mandats à tout moment. Nous travaillons avec des conseils et des dirigeants confrontés à la complexité, à des actifs de grande valeur, à des données sensibles et à des risques qui évoluent plus vite que ne peuvent le gérer les modèles de gouvernance traditionnels.",
+    en: "Daglo and Co. takes on a limited number of engagements at any given time. We work with boards and executives navigating complexity, high-value assets, sensitive data, and risks that move faster than traditional governance models can keep pace with.",
+    fr: "Daglo and Co. accepte un nombre limité de mandats à tout moment. Nous travaillons avec des conseils et des dirigeants confrontés à la complexité, à des actifs de grande valeur, à des données sensibles et à des risques qui évoluent plus vite que les modèles de gouvernance traditionnels.",
   },
   "engagement.intro.p2": {
-    en: "The work is not a retainer model designed to maximize hours. It is a counsel model designed to maximize judgment in the moments where judgment matters most. Engagements are scoped to address specific governance challenges with clear deliverables and a defined arc.",
-    fr: "Le travail n'est pas un modèle de provision conçu pour maximiser les heures. C'est un modèle de conseil conçu pour maximiser le jugement aux moments où le jugement compte le plus. Les mandats sont cadrés pour traiter des défis de gouvernance spécifiques avec des livrables clairs et un arc défini.",
+    en: "The work is not a retainer model designed to maximize hours. It is a counsel model designed to maximize judgment in moments when it matters most. Engagements are scoped to address specific governance challenges with clear deliverables and a defined arc.",
+    fr: "Le travail n'est pas un modèle de provision conçu pour maximiser les heures. C'est un modèle de conseil conçu pour maximiser le jugement aux moments où il compte le plus. Les mandats sont cadrés pour traiter des défis de gouvernance spécifiques avec des livrables clairs et un arc défini.",
   },
 
   "engagement.types.eyebrow": { en: "Four Engagement Types", fr: "Quatre types de mandat" },
@@ -359,8 +359,8 @@ const translations: Record<string, { en: string; fr: string }> = {
 
   "engagement.t1.title": { en: "Board governance advisory", fr: "Conseil en gouvernance d'entreprise" },
   "engagement.t1.desc": {
-    en: "Helping boards and committees understand the terrain they actually operate in. Moving the conversation from compliance questions to strategic risk verification. Preparing directors for contested environments where the old governance models cannot keep up. Sessions are designed to develop board judgment, not to add another layer of reporting.",
-    fr: "Aider les conseils et comités à comprendre le terrain sur lequel ils opèrent réellement. Faire passer la conversation des questions de conformité à la vérification stratégique du risque. Préparer les administrateurs aux environnements contestés où les anciens modèles de gouvernance ne suffisent plus. Les séances sont conçues pour développer le jugement du conseil, et non pour ajouter une couche supplémentaire de reporting.",
+    en: "Helping boards and committees understand the terrain they actually operate in. Moving the conversation from compliance questions to strategic risk verification. Preparing directors for contested environments where traditional governance models cannot keep pace. Sessions are designed to develop board judgment, not to add another layer of reporting.",
+    fr: "Aider les conseils et comités à comprendre le terrain sur lequel ils opèrent réellement. Faire passer la conversation des questions de conformité à la vérification stratégique du risque. Préparer les administrateurs aux environnements contestés où les modèles de gouvernance traditionnels ne suffisent plus. Les séances sont conçues pour développer le jugement du conseil, et non pour ajouter une couche supplémentaire de reporting.",
   },
   "engagement.t2.title": { en: "Enterprise risk strategy", fr: "Stratégie de risque d'entreprise" },
   "engagement.t2.desc": {
@@ -374,8 +374,8 @@ const translations: Record<string, { en: string; fr: string }> = {
   },
   "engagement.t4.title": { en: "Executive counsel", fr: "Conseil exécutif" },
   "engagement.t4.desc": {
-    en: "Cyber risk, data risk, third-party exposure, geopolitical disruption. Strategic counsel for leaders navigating decisions under pressure and incomplete information. Working alongside executives in the moments where the consequences of a single decision can cascade across the organization.",
-    fr: "Risque cyber, risque sur les données, exposition aux tiers, perturbation géopolitique. Conseil stratégique pour les dirigeants qui prennent des décisions sous pression et avec une information incomplète. Travailler aux côtés des dirigeants dans les moments où les conséquences d'une seule décision peuvent se propager à travers toute l'organisation.",
+    en: "Cyber risk, data risk, third-party exposure, geopolitical disruption. Strategic counsel for leaders navigating decisions under pressure and incomplete information, and working alongside executives in the moments where the consequences of a single decision can cascade across the organization.",
+    fr: "Risque cyber, risque sur les données, exposition aux tiers, perturbation géopolitique. Conseil stratégique pour les dirigeants qui prennent des décisions sous pression et avec une information incomplète, et travaillant aux côtés des dirigeants dans les moments où les conséquences d'une seule décision peuvent se propager à travers toute l'organisation.",
   },
 
   "engagement.cta.heading": { en: "Begin a conversation.", fr: "Engager une conversation." },
@@ -472,8 +472,8 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Sur la gouvernance, le risque cyber, les données et la sécurité dans un monde contesté.",
   },
   "insights.intro.body": {
-    en: "These essays examine the decisions leaders must make as trust erodes, data becomes the true center of gravity, and global competition reshapes the security environment. They are written for boards, executives, security leaders, and policymakers who need to govern through uncertainty.",
-    fr: "Ces essais examinent les décisions que les dirigeants doivent prendre alors que la confiance s'érode, que les données deviennent le véritable centre de gravité et que la concurrence mondiale redessine l'environnement de sécurité. Ils sont écrits pour les conseils, les dirigeants, les responsables de la sécurité et les décideurs publics qui doivent gouverner à travers l'incertitude.",
+    en: "These essays examine the decisions leaders must make as Trust erodes, data becomes the true center of gravity, and global competition reshapes the security environment. They are written for boards, executives, security leaders, and policymakers who need to govern in the face of uncertainty.",
+    fr: "Ces essais examinent les décisions que les dirigeants doivent prendre alors que la Confiance s'érode, que les données deviennent le véritable centre de gravité et que la concurrence mondiale redessine l'environnement de sécurité. Ils sont écrits pour les conseils, les dirigeants, les responsables de la sécurité et les décideurs publics qui doivent gouverner face à l'incertitude.",
   },
   "insights.pipeline.eyebrow": { en: "The Pipeline", fr: "En préparation" },
   "insights.pipeline.heading": {
@@ -486,12 +486,12 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Zero Trust / Stratégie cyber",
   },
   "insights.a1.title": {
-    en: "The Castle Has Fallen: Why trust is the most dangerous word in cybersecurity.",
-    fr: "Le château est tombé : pourquoi la confiance est le mot le plus dangereux en cybersécurité.",
+    en: "The Castle Has Fallen: Why Trust is the most dangerous word in cybersecurity.",
+    fr: "Le château est tombé : pourquoi la Confiance est le mot le plus dangereux en cybersécurité.",
   },
   "insights.a1.desc": {
-    en: "The old perimeter model is gone. This article argues that trust has become one of the most dangerous assumptions in cybersecurity, and that Zero Trust is no longer just a technical framework. It is a leadership mandate.",
-    fr: "L'ancien modèle de périmètre n'existe plus. Cet article soutient que la confiance est devenue l'une des hypothèses les plus dangereuses en cybersécurité, et que le Zero Trust n'est plus seulement un cadre technique. C'est un mandat de leadership.",
+    en: "The old perimeter model is gone. This article argues that Trust has become one of the most dangerous assumptions in cybersecurity and that Zero Trust is no longer just a technical framework. It is a leadership mandate.",
+    fr: "L'ancien modèle de périmètre n'existe plus. Cet article soutient que la Confiance est devenue l'une des hypothèses les plus dangereuses en cybersécurité et que le Zero Trust n'est plus seulement un cadre technique. C'est un mandat de leadership.",
   },
   "insights.a1.status": { en: "Coming soon", fr: "Bientôt disponible" },
 
@@ -504,7 +504,7 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Les données sont le nouveau carburant : pourquoi protéger les données est la seule stratégie de sécurité qui compte.",
   },
   "insights.a2.desc": {
-    en: "Data is now the real attack surface. This article explores why protecting systems is no longer enough, and why boards must treat data governance, access, classification, and visibility as core enterprise strategy.",
+    en: "Data is now the real attack surface. This article explores why protecting systems is no longer enough, and why boards must treat data governance, access, classification, and visibility as a core enterprise strategy.",
     fr: "Les données constituent désormais la véritable surface d'attaque. Cet article explore pourquoi protéger les systèmes ne suffit plus, et pourquoi les conseils doivent traiter la gouvernance, l'accès, la classification et la visibilité des données comme une stratégie centrale d'entreprise.",
   },
   "insights.a2.status": { en: "Forthcoming", fr: "À venir" },
@@ -547,12 +547,12 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Les conversations commencent par un courriel.",
   },
   "contact.begin.p1": {
-    en: "Daglo and Co. takes on a limited number of engagements at any given time. We work with boards and executives navigating complexity, high-value assets, sensitive data, and risks that move faster than traditional governance models can handle.",
-    fr: "Daglo and Co. accepte un nombre limité de mandats à tout moment. Nous travaillons avec des conseils et des dirigeants confrontés à la complexité, à des actifs de grande valeur, à des données sensibles et à des risques qui évoluent plus vite que ne peuvent le gérer les modèles de gouvernance traditionnels.",
+    en: "Daglo and Co. takes on a limited number of engagements at any given time. We work with boards and executives navigating complexity, high-value assets, sensitive data, and risks that move faster than traditional governance models can keep pace with.",
+    fr: "Daglo and Co. accepte un nombre limité de mandats à tout moment. Nous travaillons avec des conseils et des dirigeants confrontés à la complexité, à des actifs de grande valeur, à des données sensibles et à des risques qui évoluent plus vite que les modèles de gouvernance traditionnels.",
   },
   "contact.begin.p2": {
-    en: "If you are navigating a governance question that the standard frameworks are not answering, write us. We will respond with a thoughtful next step.",
-    fr: "Si vous traversez une question de gouvernance à laquelle les cadres standards ne répondent pas, écrivez-nous. Nous répondrons avec une prochaine étape réfléchie.",
+    en: "If you are navigating a governance question that the standard frameworks do not address, write to us. We will respond with a thoughtful next step.",
+    fr: "Si vous traversez une question de gouvernance que les cadres standards ne traitent pas, écrivez-nous. Nous répondrons avec une prochaine étape réfléchie.",
   },
 
   "contact.form.eyebrow": { en: "Send a Message", fr: "Envoyer un message" },
@@ -586,8 +586,8 @@ const translations: Record<string, { en: string; fr: string }> = {
   },
   "contact.s1.title": { en: "Initial response", fr: "Réponse initiale" },
   "contact.s1.desc": {
-    en: "We respond personally to every inquiry. The first message acknowledges what you have written and proposes how to continue. No automated intake forms or sales pipelines.",
-    fr: "Nous répondons personnellement à chaque demande. Le premier message accuse réception de ce que vous avez écrit et propose comment poursuivre. Pas de formulaires d'admission automatisés ni de pipelines commerciaux.",
+    en: "We respond personally to every inquiry. The first message acknowledges what you have written and proposes how to continue without automated intake forms or sales pipelines.",
+    fr: "Nous répondons personnellement à chaque demande. Le premier message accuse réception de ce que vous avez écrit et propose comment poursuivre sans formulaires d'admission automatisés ni pipelines commerciaux.",
   },
   "contact.s2.title": { en: "Exploratory conversation", fr: "Conversation exploratoire" },
   "contact.s2.desc": {
@@ -645,6 +645,43 @@ const translations: Record<string, { en: string; fr: string }> = {
   "a11y.reset": { en: "Reset Settings", fr: "Réinitialiser" },
   "a11y.close": { en: "Close", fr: "Fermer" },
   "a11y.open": { en: "Open accessibility panel", fr: "Ouvrir le panneau d'accessibilité" },
+
+  // Newsletter subscription strings used on the Contact page and elsewhere.
+  "newsletter.eyebrow": { en: "Field Notes Newsletter", fr: "Bulletin Notes de terrain" },
+  "newsletter.heading": {
+    en: "Receive each article when it publishes.",
+    fr: "Recevez chaque article dès sa parution.",
+  },
+  "newsletter.intro": {
+    en: "Sign up to receive forthcoming articles by email, along with occasional updates from the practice. We do not share email addresses and we do not send marketing.",
+    fr: "Inscrivez-vous pour recevoir les articles à venir par courriel, ainsi que des mises à jour occasionnelles du cabinet. Nous ne partageons pas les adresses courriel et n'envoyons pas de contenu marketing.",
+  },
+  "newsletter.email.placeholder": { en: "your.email@example.com", fr: "votre.courriel@exemple.com" },
+  "newsletter.consent": {
+    en: "I would like to receive articles and occasional updates by email.",
+    fr: "Je souhaite recevoir les articles et les mises à jour occasionnelles par courriel.",
+  },
+  "newsletter.submit": { en: "Subscribe", fr: "S'abonner" },
+  "newsletter.submitting": { en: "Subscribing...", fr: "Abonnement en cours..." },
+  "newsletter.success": {
+    en: "Thank you. Your subscription has been received. You will hear from us when the first article publishes.",
+    fr: "Merci. Votre abonnement a été reçu. Vous aurez de nos nouvelles à la parution du premier article.",
+  },
+  "newsletter.error": {
+    en: "There was an error processing your subscription. Please try again.",
+    fr: "Une erreur s'est produite lors du traitement de votre abonnement. Veuillez réessayer.",
+  },
+
+  // Expanded accessibility panel translation keys.
+  "a11y.theme": { en: "Theme & Display", fr: "Thème et affichage" },
+  "a11y.align": { en: "Align Text", fr: "Aligner le texte" },
+  "a11y.alignleft": { en: "Left Align", fr: "Aligner à gauche" },
+  "a11y.aligncenter": { en: "Center Align", fr: "Centrer" },
+  "a11y.fontweight": { en: "Font Weight", fr: "Graisse de police" },
+  "a11y.bigcursor": { en: "Big Cursor", fr: "Grand curseur" },
+  "a11y.lightcontrast": { en: "Light Contrast", fr: "Contraste clair" },
+  "a11y.dark": { en: "Dark Mode", fr: "Mode sombre" },
+  "a11y.letterspacing": { en: "Letter Spacing", fr: "Espacement des lettres" },
 };
 
 // The LanguageProvider component wraps the entire application and manages the current

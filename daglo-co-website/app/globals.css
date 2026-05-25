@@ -165,12 +165,9 @@ a {
 /* Accessibility adjustments triggered by the AccessibilityPanel component.
  *
  * The panel writes data attributes to the document root element, and these CSS rules
- * respond to those attributes by adjusting the visual presentation of the site. This
- * pattern keeps the styling logic in one place and lets the rest of the code remain
- * unaware that accessibility adjustments exist.
- *
- * Font size adjustment scales all text up by approximately 12% and 25% respectively.
- * The scaling uses the root font size which cascades through em and rem units. */
+ * respond to those attributes by adjusting the visual presentation of the site. */
+
+/* Font size adjustment scales all text proportionally. */
 html[data-font-size="1"] {
   font-size: 18px;
 }
@@ -178,7 +175,7 @@ html[data-font-size="2"] {
   font-size: 20px;
 }
 
-/* Line height adjustment increases the spacing between lines for easier reading. */
+/* Line height adjustment increases spacing between lines for easier reading. */
 html[data-line-height="1"] body {
   line-height: 1.9;
 }
@@ -192,9 +189,33 @@ html[data-line-height="2"] p {
   line-height: 2.2;
 }
 
-/* High contrast mode darkens text and lightens backgrounds for stronger separation
- * between content and surface. This helps readers with low vision or who are reading
- * in challenging lighting conditions. */
+/* Letter spacing adjustment increases the gap between adjacent letters which some
+ * dyslexic readers find easier to scan. */
+html[data-letter-spacing="1"] body,
+html[data-letter-spacing="1"] p {
+  letter-spacing: 0.05em;
+}
+html[data-letter-spacing="2"] body,
+html[data-letter-spacing="2"] p {
+  letter-spacing: 0.1em;
+}
+
+/* Font weight adjustment makes text bolder for low-vision readers. */
+html[data-font-weight="1"] body,
+html[data-font-weight="1"] p {
+  font-weight: 500;
+}
+html[data-font-weight="2"] body,
+html[data-font-weight="2"] p {
+  font-weight: 600;
+}
+html[data-font-weight="2"] h1,
+html[data-font-weight="2"] h2,
+html[data-font-weight="2"] h3 {
+  font-weight: 700;
+}
+
+/* High contrast mode for stronger separation between text and background. */
 html[data-high-contrast="true"] body {
   background: #ffffff !important;
 }
@@ -225,8 +246,50 @@ html[data-high-contrast="true"] h3 {
   color: #000000;
 }
 
-/* Readable font mode swaps the serif headlines for sans-serif, which some readers
- * with dyslexia or low vision find easier to scan. */
+/* Light contrast mode softens the color palette for readers sensitive to strong
+ * contrast such as those with migraines or photosensitivity. */
+html[data-light-contrast="true"] body {
+  background: #fafaf8 !important;
+}
+html[data-light-contrast="true"] .bg-ivory-warm {
+  background-color: #fafaf8 !important;
+}
+html[data-light-contrast="true"] .bg-navy-deep {
+  background-color: #3a4759 !important;
+}
+html[data-light-contrast="true"] .text-text-body,
+html[data-light-contrast="true"] p {
+  color: #5a5a58 !important;
+}
+
+/* Dark mode inverts the color palette for night reading. */
+html[data-dark-mode="true"] body {
+  background: #0a0a0a !important;
+  color: #e8e6e0 !important;
+}
+html[data-dark-mode="true"] .bg-ivory-warm,
+html[data-dark-mode="true"] section.bg-ivory-warm {
+  background-color: #1a1a1a !important;
+}
+html[data-dark-mode="true"] .bg-navy-deep,
+html[data-dark-mode="true"] section.bg-navy-deep {
+  background-color: #050505 !important;
+}
+html[data-dark-mode="true"] .text-navy,
+html[data-dark-mode="true"] .text-text-body,
+html[data-dark-mode="true"] h1,
+html[data-dark-mode="true"] h2,
+html[data-dark-mode="true"] h3,
+html[data-dark-mode="true"] p {
+  color: #e8e6e0 !important;
+}
+
+/* Monochrome mode removes all color which helps users with color vision deficiency. */
+html[data-monochrome="true"] body {
+  filter: grayscale(100%);
+}
+
+/* Readable font mode swaps serif headlines for sans serif. */
 html[data-readable-font="true"] h1,
 html[data-readable-font="true"] h2,
 html[data-readable-font="true"] h3,
@@ -234,4 +297,38 @@ html[data-readable-font="true"] h4,
 html[data-readable-font="true"] .font-serif {
   font-family: 'Inter', system-ui, sans-serif !important;
   font-weight: 600 !important;
+}
+
+/* Center text alignment override applies center alignment to all body content. */
+html[data-align-center="true"] p,
+html[data-align-center="true"] h1,
+html[data-align-center="true"] h2,
+html[data-align-center="true"] h3,
+html[data-align-center="true"] li {
+  text-align: center !important;
+}
+
+/* Big cursor makes the mouse pointer larger for visibility. The cursor URL uses a
+ * data URI with an enlarged arrow cursor. */
+html[data-big-cursor="true"],
+html[data-big-cursor="true"] * {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='%230a1f3d' stroke='%23ffffff' stroke-width='1'><path d='M3 2 L3 19 L8 14 L11 21 L13 20 L10 13 L17 13 Z'/></svg>") 0 0, auto !important;
+}
+
+/* Hide images mode removes images for users who want text only. */
+html[data-hide-images="true"] img,
+html[data-hide-images="true"] picture,
+html[data-hide-images="true"] video {
+  display: none !important;
+}
+
+/* Stop animations mode disables all transitions and animations for users sensitive
+ * to motion. */
+html[data-stop-animations="true"] *,
+html[data-stop-animations="true"] *::before,
+html[data-stop-animations="true"] *::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
 }

@@ -1,14 +1,22 @@
 // insights/page.tsx
 //
-// Insights page with full English and French translation support.
+// The Insights page with full English and French translation support and an inline
+// newsletter subscription option. The newsletter subscription form appears just before
+// the existing LinkedIn follow section, giving readers two ways to stay informed about
+// new articles: email subscription for direct delivery, or LinkedIn for the broader
+// thinking and announcements.
 
 "use client";
 
 import Image from "next/image";
+import { useForm, ValidationError } from "@formspree/react";
 import { useLanguage } from "../lib/LanguageContext";
+
+const FORMSPREE_FORM_ID = "xvzybbdk";
 
 export default function InsightsPage() {
   const { t } = useLanguage();
+  const [newsletterState, handleNewsletterSubmit] = useForm(FORMSPREE_FORM_ID);
 
   const articles = [
     { num: "01", labelKey: "insights.a1.label", titleKey: "insights.a1.title", descKey: "insights.a1.desc", statusKey: "insights.a1.status" },
@@ -64,6 +72,117 @@ export default function InsightsPage() {
             <p className="text-2xl md:text-3xl font-serif italic text-navy leading-snug mt-32">{t("insights.closing")}</p>
           </div>
         </div>
+      </section>
+
+      {/* Newsletter subscription on the Insights page. Readers who reach this page are
+          already interested in the writing, so offering them a way to receive each
+          article when it publishes is the natural next step. The form sits on the
+          ivory background to feel like a continuation of the editorial content above. */}
+      <section className="py-28 md:py-36 bg-ivory-warm" style={{ borderTop: "1px solid #e8e4dc" }}>
+        <div className="content-column">
+          <div className="reading-column">
+            <div className="text-center mb-12">
+              <div className="eyebrow mb-6">{t("newsletter.eyebrow")}</div>
+              <h2 className="text-3xl md:text-4xl font-serif text-navy mb-8 leading-tight">{t("newsletter.heading")}</h2>
+              <p className="text-base md:text-lg text-text-body leading-relaxed">{t("newsletter.intro")}</p>
+            </div>
+
+            {newsletterState.succeeded ? (
+              <div
+                style={{
+                  padding: "24px",
+                  backgroundColor: "#ffffff",
+                  color: "#0a1f3d",
+                  textAlign: "center",
+                  borderRadius: "4px",
+                  border: "1px solid #d4b97f",
+                }}
+              >
+                <p style={{ fontSize: "16px", lineHeight: 1.7, margin: 0 }}>{t("newsletter.success")}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit}>
+                <input type="hidden" name="_subject" value="New newsletter subscription from daglo.co Insights page" />
+                <input type="hidden" name="form_type" value="newsletter" />
+                <input type="hidden" name="source" value="insights_page" />
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "520px", margin: "0 auto" }}>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder={t("newsletter.email.placeholder")}
+                    aria-label={t("contact.form.email")}
+                    style={{
+                      width: "100%",
+                      padding: "16px 20px",
+                      fontSize: "16px",
+                      backgroundColor: "#ffffff",
+                      border: "1px solid #d8d4cc",
+                      borderRadius: "4px",
+                      color: "#0a1f3d",
+                      fontFamily: "'Inter', system-ui, sans-serif",
+                      transition: "border-color 0.2s ease",
+                    }}
+                    className="insights-newsletter-input"
+                  />
+                  <ValidationError prefix="Email" field="email" errors={newsletterState.errors} style={{ fontSize: "13px", color: "#9a3a3a", marginTop: "-8px" }} />
+
+                  <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", color: "#3a3a38", fontSize: "14px", lineHeight: 1.5 }}>
+                    <input
+                      type="checkbox"
+                      name="consent"
+                      value="yes"
+                      required
+                      style={{
+                        marginTop: "3px",
+                        width: "16px",
+                        height: "16px",
+                        accentColor: "#0a1f3d",
+                        cursor: "pointer",
+                        flexShrink: 0,
+                      }}
+                    />
+                    <span>{t("newsletter.consent")}</span>
+                  </label>
+
+                  <button
+                    type="submit"
+                    disabled={newsletterState.submitting}
+                    style={{
+                      width: "100%",
+                      padding: "16px",
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      letterSpacing: "0.15em",
+                      textTransform: "uppercase",
+                      backgroundColor: newsletterState.submitting ? "#3a3a38" : "#0a1f3d",
+                      color: "#ffffff",
+                      border: "none",
+                      borderRadius: "4px",
+                      cursor: newsletterState.submitting ? "wait" : "pointer",
+                      transition: "background-color 0.2s ease",
+                      marginTop: "8px",
+                    }}
+                    className="insights-newsletter-submit"
+                  >
+                    {newsletterState.submitting ? t("newsletter.submitting") : t("newsletter.submit")}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+
+        <style>{`
+          .insights-newsletter-input:focus {
+            outline: none;
+            border-color: #0a1f3d !important;
+          }
+          .insights-newsletter-submit:hover:not(:disabled) {
+            background-color: #061730 !important;
+          }
+        `}</style>
       </section>
 
       <section className="py-28 md:py-36 bg-navy-deep">
