@@ -39,8 +39,8 @@ const translations: Record<string, { en: string; fr: string }> = {
 
   // Homepage hero now introduces Donald Daglo as the governance leader.
   "home.eyebrow": {
-    en: "Donald Daglo · Governance Leadership Platform",
-    fr: "Donald Daglo · Plateforme de leadership en gouvernance",
+    en: "Donald Daglo · Governance & Enterprise Risk",
+    fr: "Donald Daglo · Gouvernance et risque d'entreprise",
   },
   "home.hero.line1": { en: "The castle has", fr: "Le château est" },
   "home.hero.line2": { en: "already fallen.", fr: "déjà tombé." },
@@ -49,10 +49,10 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Conseil pour les décisions qui vous définissent.",
   },
   "home.hero.intro": {
-    en: "A governance-minded executive working with boards and senior leadership on enterprise risk, resilience, Zero Trust, and decisions made under uncertainty.",
-    fr: "Un dirigeant orienté gouvernance qui travaille avec les conseils d'administration et la direction générale sur le risque d'entreprise, la résilience, le Zero Trust et les décisions prises dans l'incertitude.",
+    en: "A governance-minded executive working with boards and senior leadership on enterprise risk, resilience, Zero Trust, and high-consequence decisions.",
+    fr: "Un dirigeant orienté gouvernance qui travaille avec les conseils d'administration et la direction générale sur le risque d'entreprise, la résilience, le Zero Trust et les décisions à fortes conséquences.",
   },
-  "home.hero.cta": { en: "Begin", fr: "Commencer" },
+  "home.hero.cta": { en: "Explore", fr: "Explorer" },
 
   // Governance thesis section on the homepage.
   "home.thesis.eyebrow": { en: "Governance Thesis", fr: "Thèse de gouvernance" },
@@ -629,6 +629,19 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Pour une réflexion continue sur la gouvernance, le risque et le leadership.",
   },
 
+  // Direct Contact section on the Contact page. The section presents Donald's
+  // direct contact information including email, phone, and LinkedIn in a discreet
+  // executive treatment rather than as aggressive call-to-action buttons.
+  "contact.direct.eyebrow": { en: "Direct Contact", fr: "Contact direct" },
+  "contact.direct.heading": { en: "Reach out directly.", fr: "Contactez directement." },
+  "contact.direct.intro": {
+    en: "For governance inquiries, board conversations, and executive counsel.",
+    fr: "Pour les demandes de gouvernance, les conversations de conseil et le conseil exécutif.",
+  },
+  "contact.direct.phone.label": { en: "Direct Line", fr: "Ligne directe" },
+  "contact.direct.email.label": { en: "Email", fr: "Courriel" },
+  "contact.direct.li.label": { en: "LinkedIn", fr: "LinkedIn" },
+
   // Footer.
   "footer.pillars": {
     en: "Governance · Risk · Leadership",
@@ -643,7 +656,18 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "© 2026 Daglo & Co. Tous droits réservés.",
   },
 
-  // Newsletter.
+  // Governance Dialogue editorial transition that replaces the previous newsletter
+  // section on the Insights page. The treatment is editorial and premium rather than
+  // marketing-oriented, framing the writing as governance dialogue rather than as
+  // newsletter content. The button language reflects the same editorial register.
+  "dialogue.eyebrow": { en: "Governance Dialogue", fr: "Dialogue de gouvernance" },
+  "dialogue.body": {
+    en: "Thoughtful writing on enterprise risk, resilience, governance, and leadership in complex environments.",
+    fr: "Écrits réfléchis sur le risque d'entreprise, la résilience, la gouvernance et le leadership dans les environnements complexes.",
+  },
+  "dialogue.cta": { en: "Read Insights", fr: "Lire les perspectives" },
+
+  // Newsletter strings remain for backward compatibility but are no longer rendered.
   "newsletter.eyebrow": { en: "Field Notes Newsletter", fr: "Bulletin Notes de terrain" },
   "newsletter.heading": {
     en: "Receive each article when it publishes.",

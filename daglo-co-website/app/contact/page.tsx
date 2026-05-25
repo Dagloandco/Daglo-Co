@@ -1,10 +1,15 @@
 // contact/page.tsx
 //
-// The Contact page now uses the first-person voice consistent with the executive
-// platform positioning established across the rest of the restructure. The form and
-// engagement arc are preserved functionally, but the surrounding language has been
-// updated to reflect that Donald is the executive making the response personally
-// rather than "the practice" responding institutionally.
+// The Contact page now consolidates around three clean sections: the contact form for
+// initiating a substantive inquiry, the arc of an engagement explaining how
+// conversations progress, and a new Direct Contact section that presents Donald's
+// email, phone, and LinkedIn in a discreet executive treatment.
+//
+// The previous newsletter subscription section has been removed because it produced
+// a marketing-funnel feeling that conflicts with the executive governance positioning.
+// Readers who want ongoing engagement can either send a direct inquiry through the
+// form or connect on LinkedIn, both of which are appropriate for the executive
+// dialogue this page exists to support.
 
 "use client";
 
@@ -16,9 +21,7 @@ const FORMSPREE_FORM_ID = "xvzybbdk";
 
 export default function ContactPage() {
   const { t } = useLanguage();
-
   const [inquiryState, handleInquirySubmit] = useForm(FORMSPREE_FORM_ID);
-  const [newsletterState, handleNewsletterSubmit] = useForm(FORMSPREE_FORM_ID);
 
   const stages = [
     { num: "01", titleKey: "contact.s1.title", descKey: "contact.s1.desc" },
@@ -126,92 +129,9 @@ export default function ContactPage() {
         `}</style>
       </section>
 
-      <section className="py-28 md:py-36 bg-navy-deep">
-        <div className="content-column">
-          <div className="reading-column">
-            <div className="text-center mb-12">
-              <div className="eyebrow-light mb-6">{t("newsletter.eyebrow")}</div>
-              <h2 className="text-3xl md:text-4xl font-serif text-white mb-8 leading-tight">{t("newsletter.heading")}</h2>
-              <p className="text-base md:text-lg text-text-light-body leading-relaxed">{t("newsletter.intro")}</p>
-            </div>
-
-            {newsletterState.succeeded ? (
-              <div style={{ padding: "24px", backgroundColor: "rgba(255,255,255,0.08)", color: "#ffffff", textAlign: "center", borderRadius: "4px", border: "1px solid rgba(216,185,127,0.3)" }}>
-                <p style={{ fontSize: "16px", lineHeight: 1.7, margin: 0 }}>{t("newsletter.success")}</p>
-              </div>
-            ) : (
-              <form onSubmit={handleNewsletterSubmit}>
-                <input type="hidden" name="_subject" value="New newsletter subscription from daglo.co" />
-                <input type="hidden" name="form_type" value="newsletter" />
-
-                <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "520px", margin: "0 auto" }}>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder={t("newsletter.email.placeholder")}
-                    aria-label={t("contact.form.email")}
-                    style={{
-                      width: "100%",
-                      padding: "16px 20px",
-                      fontSize: "16px",
-                      backgroundColor: "rgba(255,255,255,0.08)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      borderRadius: "4px",
-                      color: "#ffffff",
-                      fontFamily: "'Inter', system-ui, sans-serif",
-                      transition: "border-color 0.2s ease",
-                    }}
-                    className="newsletter-input"
-                  />
-                  <ValidationError prefix="Email" field="email" errors={newsletterState.errors} style={{ ...errorStyle, color: "#f5b94a" }} />
-
-                  <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", color: "#e8e6e0", fontSize: "14px", lineHeight: 1.5 }}>
-                    <input
-                      type="checkbox"
-                      name="consent"
-                      value="yes"
-                      required
-                      style={{ marginTop: "3px", width: "16px", height: "16px", accentColor: "#d4b97f", cursor: "pointer", flexShrink: 0 }}
-                    />
-                    <span>{t("newsletter.consent")}</span>
-                  </label>
-
-                  <button
-                    type="submit"
-                    disabled={newsletterState.submitting}
-                    style={{
-                      width: "100%",
-                      padding: "16px",
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                      backgroundColor: newsletterState.submitting ? "#3a3a38" : "#d4b97f",
-                      color: "#0a1f3d",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: newsletterState.submitting ? "wait" : "pointer",
-                      transition: "background-color 0.2s ease",
-                      marginTop: "8px",
-                    }}
-                    className="newsletter-submit"
-                  >
-                    {newsletterState.submitting ? t("newsletter.submitting") : t("newsletter.submit")}
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-
-        <style>{`
-          .newsletter-input:focus { outline: none; border-color: #d4b97f !important; background-color: rgba(255,255,255,0.12) !important; }
-          .newsletter-input::placeholder { color: rgba(232,230,224,0.5); }
-          .newsletter-submit:hover:not(:disabled) { background-color: #c4a86b !important; }
-        `}</style>
-      </section>
-
+      {/* The arc of an engagement section explains how conversations progress through
+          three deliberate stages. This treatment is preserved from the previous version
+          because it works as written. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
           <div className="reading-column text-center">
@@ -232,25 +152,62 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* The Direct Contact section presents Donald's email, phone, and LinkedIn in a
+          discreet executive treatment. The phone number is included tastefully without
+          aggressive call-to-action language. Each contact channel sits in its own
+          centered block with the channel label as a small uppercase eyebrow above the
+          contact value, which reads as legitimate executive accessibility rather than
+          as a consulting funnel. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="content-column">
           <div className="reading-column text-center">
-            <div className="eyebrow-light mb-6">{t("contact.paths.eyebrow")}</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-16 leading-tight">{t("contact.paths.heading")}</h2>
+            <div className="eyebrow-light mb-6">{t("contact.direct.eyebrow")}</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">{t("contact.direct.heading")}</h2>
+            <p className="text-lg text-text-light-body mb-20 leading-relaxed">{t("contact.direct.intro")}</p>
 
-            <div className="space-y-12">
+            <div className="space-y-14">
+              {/* Email channel. The email is the primary direct contact method, which
+                  is why it sits first in the list and uses the most visible typography. */}
               <div>
-                <div className="text-xs tracking-[0.25em] uppercase text-gold-light mb-3">{t("contact.paths.email.label")}</div>
-                <a href="mailto:donald@daglo.co" className="block text-xl text-white hover:text-gold-light transition-colors mb-3">donald@daglo.co</a>
-                <p className="text-base text-text-light-body leading-relaxed">{t("contact.paths.email.desc")}</p>
+                <div className="text-xs tracking-[0.25em] uppercase text-gold-light mb-4">
+                  {t("contact.direct.email.label")}
+                </div>
+                <a
+                  href="mailto:donald@daglo.co"
+                  className="block text-xl md:text-2xl text-white hover:text-gold-light transition-colors"
+                >
+                  donald@daglo.co
+                </a>
               </div>
 
+              {/* Direct line phone channel. The phone number is presented as a clickable
+                  tel link so mobile users can tap to call, but the visual treatment is
+                  understated rather than functioning as a prominent CTA. */}
               <div>
-                <div className="text-xs tracking-[0.25em] uppercase text-gold-light mb-3">{t("contact.paths.li.label")}</div>
-                <a href="https://www.linkedin.com/in/donalddaglo" target="_blank" rel="noopener noreferrer" className="block text-xl text-white hover:text-gold-light transition-colors mb-3">
+                <div className="text-xs tracking-[0.25em] uppercase text-gold-light mb-4">
+                  {t("contact.direct.phone.label")}
+                </div>
+                <a
+                  href="tel:+12028139618"
+                  className="block text-xl md:text-2xl text-white hover:text-gold-light transition-colors"
+                >
+                  +1 (202) 813-9618
+                </a>
+              </div>
+
+              {/* LinkedIn channel for professional network connection. */}
+              <div>
+                <div className="text-xs tracking-[0.25em] uppercase text-gold-light mb-4">
+                  {t("contact.direct.li.label")}
+                </div>
+                <a
+                  href="https://www.linkedin.com/in/donalddaglo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-xl md:text-2xl text-white hover:text-gold-light transition-colors"
+                >
                   {t("contact.paths.li.link")}
                 </a>
-                <p className="text-base text-text-light-body leading-relaxed">{t("contact.paths.li.desc")}</p>
               </div>
             </div>
           </div>

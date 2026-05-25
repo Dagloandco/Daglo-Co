@@ -160,10 +160,28 @@ export default function Footer() {
               color: "#e8e6e0",
               textDecoration: "none",
               transition: "color 0.3s ease",
+              display: "block",
+              marginBottom: "8px",
             }}
             className="footer-email-link"
           >
             donald@daglo.co
+          </a>
+          {/* The phone number sits below the email in smaller secondary typography,
+              providing accessible direct contact without competing with the email
+              as the primary contact method. */}
+          <a
+            href="tel:+12028139618"
+            style={{
+              color: "#8a8985",
+              textDecoration: "none",
+              transition: "color 0.3s ease",
+              fontSize: "13px",
+              letterSpacing: "0.02em",
+            }}
+            className="footer-phone-link"
+          >
+            +1 (202) 813-9618
           </a>
         </div>
 
@@ -207,6 +225,7 @@ export default function Footer() {
       <style>{`
         .footer-nav-link:hover,
         .footer-email-link:hover,
+        .footer-phone-link:hover,
         .footer-social-link:hover {
           color: #ffffff !important;
         }
