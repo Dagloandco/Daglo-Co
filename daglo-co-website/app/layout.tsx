@@ -1,26 +1,27 @@
 // layout.tsx
-// This is the root layout file that wraps every page on the Daglo and Co. website.
-// Anything placed in this file will appear on every page automatically.
-// This is where we include the shared Navigation header at the top
-// and the shared Footer at the bottom of every page.
+//
+// The root layout wraps every page on the Daglo and Co. website. Anything placed here
+// appears on every page automatically.
+//
+// This revision adds the LanguageProvider context wrapper and the AccessibilityPanel
+// component to the root layout. The LanguageProvider must wrap the entire application
+// because every component that uses translations needs access to the language context.
+// The AccessibilityPanel renders a floating button in the corner of every page that
+// opens the accessibility adjustments panel when clicked.
 
 import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import AccessibilityPanel from "./components/AccessibilityPanel";
+import { LanguageProvider } from "./lib/LanguageContext";
 
-// The metadata object configures how the site appears in search results and browser tabs.
-// The title appears in the tab when someone has your site open in their browser.
-// The description appears in search engine results below the title.
-// We craft these carefully because they shape first impressions before someone even clicks through.
 export const metadata: Metadata = {
   title: "Daglo & Co. — Governance. Risk. Leadership.",
   description:
     "Counsel for the decisions that define you. Advisory practice serving boards and executives navigating governance, risk, and leadership in contested terrain.",
 };
 
-// The RootLayout component receives the page content as the children variable
-// and wraps it in our consistent site structure with header above and footer below.
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,16 +30,19 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="bg-ivory-warm text-foreground font-sans antialiased">
-        {/* The Navigation header appears at the top of every page. */}
-        <Navigation />
-
-        {/* The main element contains the unique content for each page. */}
-        {/* The min-h-screen class ensures the page is at least as tall as the browser viewport, */}
-        {/* which prevents the footer from floating up the page when content is short. */}
-        <main className="min-h-screen">{children}</main>
-
-        {/* The Footer appears at the bottom of every page. */}
-        <Footer />
+        {/* The LanguageProvider wraps the entire app so every component below can
+            access the current language and the translation function. The provider
+            initializes from localStorage on mount, so users see their preferred
+            language immediately on return visits. */}
+        <LanguageProvider>
+          <Navigation />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          {/* The AccessibilityPanel renders the floating trigger button and the
+              expandable panel. It sits at the end of the body so its fixed-position
+              elements stack above the rest of the page content. */}
+          <AccessibilityPanel />
+        </LanguageProvider>
       </body>
     </html>
   );

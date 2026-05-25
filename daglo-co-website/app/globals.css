@@ -161,3 +161,77 @@ a {
   outline-offset: 4px;
   border-radius: 1px;
 }
+
+/* Accessibility adjustments triggered by the AccessibilityPanel component.
+ *
+ * The panel writes data attributes to the document root element, and these CSS rules
+ * respond to those attributes by adjusting the visual presentation of the site. This
+ * pattern keeps the styling logic in one place and lets the rest of the code remain
+ * unaware that accessibility adjustments exist.
+ *
+ * Font size adjustment scales all text up by approximately 12% and 25% respectively.
+ * The scaling uses the root font size which cascades through em and rem units. */
+html[data-font-size="1"] {
+  font-size: 18px;
+}
+html[data-font-size="2"] {
+  font-size: 20px;
+}
+
+/* Line height adjustment increases the spacing between lines for easier reading. */
+html[data-line-height="1"] body {
+  line-height: 1.9;
+}
+html[data-line-height="1"] p {
+  line-height: 1.95;
+}
+html[data-line-height="2"] body {
+  line-height: 2.1;
+}
+html[data-line-height="2"] p {
+  line-height: 2.2;
+}
+
+/* High contrast mode darkens text and lightens backgrounds for stronger separation
+ * between content and surface. This helps readers with low vision or who are reading
+ * in challenging lighting conditions. */
+html[data-high-contrast="true"] body {
+  background: #ffffff !important;
+}
+html[data-high-contrast="true"] .bg-ivory-warm,
+html[data-high-contrast="true"] section.bg-ivory-warm {
+  background-color: #ffffff !important;
+}
+html[data-high-contrast="true"] .bg-navy-deep,
+html[data-high-contrast="true"] section.bg-navy-deep {
+  background-color: #000000 !important;
+}
+html[data-high-contrast="true"] .text-text-body,
+html[data-high-contrast="true"] p,
+html[data-high-contrast="true"] li {
+  color: #000000 !important;
+}
+html[data-high-contrast="true"] .bg-navy-deep .text-text-light-body,
+html[data-high-contrast="true"] section.bg-navy-deep p,
+html[data-high-contrast="true"] section.bg-navy-deep h1,
+html[data-high-contrast="true"] section.bg-navy-deep h2,
+html[data-high-contrast="true"] section.bg-navy-deep h3 {
+  color: #ffffff !important;
+}
+html[data-high-contrast="true"] .text-navy,
+html[data-high-contrast="true"] h1,
+html[data-high-contrast="true"] h2,
+html[data-high-contrast="true"] h3 {
+  color: #000000;
+}
+
+/* Readable font mode swaps the serif headlines for sans-serif, which some readers
+ * with dyslexia or low vision find easier to scan. */
+html[data-readable-font="true"] h1,
+html[data-readable-font="true"] h2,
+html[data-readable-font="true"] h3,
+html[data-readable-font="true"] h4,
+html[data-readable-font="true"] .font-serif {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+}

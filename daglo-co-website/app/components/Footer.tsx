@@ -2,32 +2,27 @@
 //
 // The site-wide footer for Daglo and Co.
 //
-// This version uses inline styles for the navigation row centering to address the alignment
-// problem visible in the deployed site. The previous version relied on Tailwind flex utilities
-// like justify-center, which were producing inconsistent results where the brand mark and
-// social icons appeared centered but the navigation row drifted to the left of center.
-//
-// The same lesson from the header navigation applies here: when utility-class layout fails
-// in deployment, switching to inline styles with explicit values eliminates the source of
-// the inconsistency. Inline styles cannot be overridden by other stylesheets or stripped
-// during the build process, so the centering they specify will render correctly regardless
-// of what else is happening in the CSS pipeline.
-//
-// Every element in the footer now uses explicit inline styles for its layout properties.
-// The result is a footer where every row truly aligns along the same vertical center axis,
-// from the brand mark at the top through the navigation links, the social icons, the email,
-// and the closing italic line at the bottom.
+// This revision adds translation support and the copyright line you requested. The
+// navigation links, the pillar tagline, the closing italic line, and the new copyright
+// line all use the translation function so they switch between English and French
+// based on the current language selection. The structure and centered alignment that
+// you said you wanted to keep are preserved exactly as they were.
+
+"use client";
 
 import Link from "next/link";
+import { useLanguage } from "../lib/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   const footerNavLinks = [
-    { href: "/philosophy", label: "Philosophy" },
-    { href: "/approach", label: "Approach" },
-    { href: "/engagement", label: "Engagement" },
-    { href: "/foundation", label: "Foundation" },
-    { href: "/insights", label: "Insights" },
-    { href: "/contact", label: "Contact" },
+    { href: "/philosophy", labelKey: "nav.philosophy" },
+    { href: "/approach", labelKey: "nav.approach" },
+    { href: "/engagement", labelKey: "nav.engagement" },
+    { href: "/foundation", labelKey: "nav.foundation" },
+    { href: "/insights", labelKey: "nav.insights" },
+    { href: "/contact", labelKey: "nav.contact" },
   ];
 
   const socialLinks = [
@@ -52,21 +47,15 @@ export default function Footer() {
   ];
 
   return (
-    // The footer uses inline styles for the background and the outer padding. The text
-    // alignment is set to center at the parent level, which cascades down to every child
-    // element unless explicitly overridden.
     <footer
       style={{
         backgroundColor: "#061730",
         marginTop: "128px",
         paddingTop: "96px",
-        paddingBottom: "48px",
+        paddingBottom: "32px",
         textAlign: "center",
       }}
     >
-      {/* The outer container uses inline styles for the maximum width and centering.
-          This guarantees that the entire footer content sits in a centered column
-          regardless of what is happening with the global CSS. */}
       <div
         style={{
           maxWidth: "1280px",
@@ -76,7 +65,6 @@ export default function Footer() {
           paddingRight: "24px",
         }}
       >
-        {/* The brand mark anchors the top of the footer with substantial visual presence. */}
         <div style={{ marginBottom: "64px" }}>
           <div
             style={{
@@ -98,13 +86,10 @@ export default function Footer() {
               color: "#c0bdb5",
             }}
           >
-            Governance &middot; Risk &middot; Leadership
+            {t("footer.pillars")}
           </div>
         </div>
 
-        {/* A thin hairline rule provides minimal separation between the brand mark and
-            the navigation row. The rule uses inline styles for its width constraint and
-            centering, guaranteeing it appears as a narrow centered horizontal line. */}
         <div
           style={{
             maxWidth: "448px",
@@ -116,15 +101,6 @@ export default function Footer() {
           }}
         />
 
-        {/* The navigation row is the critical fix in this version. The previous version
-            used Tailwind flex utilities that were producing inconsistent centering. This
-            version uses inline styles with display flex, justify content center, and
-            explicit gap values to guarantee the items center along the same vertical axis
-            as the brand mark above and the social icons below.
-
-            The flex wrap value of wrap allows items to break onto multiple lines on
-            smaller viewports, and the gap value of 40 pixels provides the horizontal
-            breathing room between adjacent links that produces the Kearney-style rhythm. */}
         <nav
           style={{
             display: "flex",
@@ -147,12 +123,11 @@ export default function Footer() {
               }}
               className="footer-nav-link"
             >
-              {link.label}
+              {t(link.labelKey)}
             </Link>
           ))}
         </nav>
 
-        {/* The social icons row also uses inline styles for guaranteed centering. */}
         <div
           style={{
             display: "flex",
@@ -180,7 +155,6 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* The contact email appears as a plain centered link with no container. */}
         <div style={{ marginBottom: "56px" }}>
           <a
             href="mailto:donald@daglo.co"
@@ -195,7 +169,6 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* A final thin rule provides minimal separation before the closing signature. */}
         <div
           style={{
             maxWidth: "448px",
@@ -207,21 +180,32 @@ export default function Footer() {
           }}
         />
 
-        {/* The closing italic line sits at the very bottom as a quiet centered signature. */}
         <div
           style={{
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontStyle: "italic",
-            fontSize: "12px",
+            fontSize: "14px",
             color: "#c0bdb5",
             letterSpacing: "0.02em",
+            marginBottom: "24px",
           }}
         >
-          Counsel for the decisions that define you.
+          {t("footer.tagline")}
+        </div>
+
+        {/* The copyright line sits at the very bottom of the footer in small text,
+            translated between English and French based on the current language. */}
+        <div
+          style={{
+            fontSize: "11px",
+            color: "#8a8985",
+            letterSpacing: "0.05em",
+          }}
+        >
+          {t("footer.copyright")}
         </div>
       </div>
 
-      {/* Small embedded style block handles the hover states that cannot be expressed inline. */}
       <style>{`
         .footer-nav-link:hover,
         .footer-email-link:hover,

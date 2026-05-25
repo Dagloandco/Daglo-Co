@@ -23,18 +23,23 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useLanguage } from "../lib/LanguageContext";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
 
+  // The navigation links now use translation keys for their labels. The translation
+  // function returns the right string for the current language, so the labels switch
+  // automatically when the user toggles language in the accessibility panel.
   const navLinks = [
-    { href: "/philosophy", label: "Philosophy" },
-    { href: "/approach", label: "Approach" },
-    { href: "/engagement", label: "Engagement" },
-    { href: "/foundation", label: "Foundation" },
-    { href: "/insights", label: "Insights" },
-    { href: "/contact", label: "Contact" },
+    { href: "/philosophy", labelKey: "nav.philosophy" },
+    { href: "/approach", labelKey: "nav.approach" },
+    { href: "/engagement", labelKey: "nav.engagement" },
+    { href: "/foundation", labelKey: "nav.foundation" },
+    { href: "/insights", labelKey: "nav.insights" },
+    { href: "/contact", labelKey: "nav.contact" },
   ];
 
   const isActive = (href: string) => {
@@ -120,7 +125,7 @@ export default function Navigation() {
                 }}
                 className="nav-link-item"
               >
-                {link.label}
+                {t(link.labelKey)}
               </Link>
             );
           })}
@@ -183,7 +188,7 @@ export default function Navigation() {
                   }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </Link>
               );
             })}
