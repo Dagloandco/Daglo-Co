@@ -30,15 +30,12 @@ export default function Navigation() {
   const pathname = usePathname();
   const { t } = useLanguage();
 
-  // The navigation links now use translation keys for their labels. The translation
-  // function returns the right string for the current language, so the labels switch
-  // automatically when the user toggles language in the accessibility panel.
+  // Navigation reflects the new five-page architecture. The Home link is the brand
+  // logo on the left so it does not appear in the navigation row itself.
   const navLinks = [
-    { href: "/philosophy", labelKey: "nav.philosophy" },
-    { href: "/approach", labelKey: "nav.approach" },
-    { href: "/engagement", labelKey: "nav.engagement" },
-    { href: "/foundation", labelKey: "nav.foundation" },
+    { href: "/about", labelKey: "nav.about" },
     { href: "/insights", labelKey: "nav.insights" },
+    { href: "/advisory-work", labelKey: "nav.advisory" },
     { href: "/contact", labelKey: "nav.contact" },
   ];
 

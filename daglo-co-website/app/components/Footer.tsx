@@ -17,11 +17,9 @@ export default function Footer() {
   const { t } = useLanguage();
 
   const footerNavLinks = [
-    { href: "/philosophy", labelKey: "nav.philosophy" },
-    { href: "/approach", labelKey: "nav.approach" },
-    { href: "/engagement", labelKey: "nav.engagement" },
-    { href: "/foundation", labelKey: "nav.foundation" },
+    { href: "/about", labelKey: "nav.about" },
     { href: "/insights", labelKey: "nav.insights" },
+    { href: "/advisory-work", labelKey: "nav.advisory" },
     { href: "/contact", labelKey: "nav.contact" },
   ];
 

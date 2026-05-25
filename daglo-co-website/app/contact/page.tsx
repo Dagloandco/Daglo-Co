@@ -1,15 +1,10 @@
 // contact/page.tsx
 //
-// The Contact page with a working contact form connected to the real Formspree endpoint
-// and a newsletter subscription option for visitors who want to receive forthcoming
-// articles by email.
-//
-// The contact form uses the @formspree/react package which provides proper form state
-// management, error handling, and submission status tracking. The form ID xvzybbdk
-// is the endpoint identifier from your Formspree dashboard. Both the inquiry form and
-// the newsletter subscription submit to the same Formspree endpoint, but they include
-// different _subject tags so you can distinguish article subscribers from inquiry
-// messages in your Formspree dashboard.
+// The Contact page now uses the first-person voice consistent with the executive
+// platform positioning established across the rest of the restructure. The form and
+// engagement arc are preserved functionally, but the surrounding language has been
+// updated to reflect that Donald is the executive making the response personally
+// rather than "the practice" responding institutionally.
 
 "use client";
 
@@ -17,17 +12,11 @@ import Image from "next/image";
 import { useForm, ValidationError } from "@formspree/react";
 import { useLanguage } from "../lib/LanguageContext";
 
-// The FORMSPREE_FORM_ID is your endpoint identifier from your Formspree dashboard.
-// It is the part after the slash in https://formspree.io/f/xvzybbdk
 const FORMSPREE_FORM_ID = "xvzybbdk";
 
 export default function ContactPage() {
   const { t } = useLanguage();
 
-  // Each form gets its own state object from the useForm hook. The hook provides the
-  // submission status, any validation errors, and the submit handler. The two forms
-  // share the same Formspree endpoint but maintain separate state, so submitting one
-  // does not affect the other.
   const [inquiryState, handleInquirySubmit] = useForm(FORMSPREE_FORM_ID);
   const [newsletterState, handleNewsletterSubmit] = useForm(FORMSPREE_FORM_ID);
 
@@ -64,10 +53,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* The contact form section. The form uses the @formspree/react useForm hook
-          which handles the submission, state tracking, and error handling. When the
-          form succeeds, the state.succeeded flag becomes true and we show a success
-          message instead of the form. */}
       <section className="py-28 md:py-36 bg-ivory-warm">
         <div className="content-column">
           <div className="reading-column">
@@ -77,22 +62,11 @@ export default function ContactPage() {
             </div>
 
             {inquiryState.succeeded ? (
-              <div
-                style={{
-                  padding: "32px",
-                  backgroundColor: "#0a1f3d",
-                  color: "#ffffff",
-                  textAlign: "center",
-                  borderRadius: "4px",
-                }}
-              >
+              <div style={{ padding: "32px", backgroundColor: "#0a1f3d", color: "#ffffff", textAlign: "center", borderRadius: "4px" }}>
                 <p style={{ fontSize: "18px", lineHeight: 1.7, margin: 0 }}>{t("contact.form.success")}</p>
               </div>
             ) : (
               <form onSubmit={handleInquirySubmit}>
-                {/* Hidden field tags this submission as an inquiry message in the
-                    Formspree dashboard so you can distinguish it from newsletter
-                    subscriptions when reviewing submissions. */}
                 <input type="hidden" name="_subject" value="New inquiry from daglo.co" />
                 <input type="hidden" name="form_type" value="inquiry" />
 
@@ -100,15 +74,7 @@ export default function ContactPage() {
                   <label htmlFor="name" style={labelStyle}>
                     {t("contact.form.name")} <span style={{ color: "#b8945a" }} aria-label={t("contact.form.required")}>*</span>
                   </label>
-                  <input
-                    id="name"
-                    type="text"
-                    name="name"
-                    required
-                    placeholder={t("contact.form.name.placeholder")}
-                    style={inputStyle}
-                    className="contact-form-input"
-                  />
+                  <input id="name" type="text" name="name" required placeholder={t("contact.form.name.placeholder")} style={inputStyle} className="contact-form-input" />
                   <ValidationError prefix="Name" field="name" errors={inquiryState.errors} style={errorStyle} />
                 </div>
 
@@ -116,15 +82,7 @@ export default function ContactPage() {
                   <label htmlFor="email" style={labelStyle}>
                     {t("contact.form.email")} <span style={{ color: "#b8945a" }} aria-label={t("contact.form.required")}>*</span>
                   </label>
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    required
-                    placeholder={t("contact.form.email.placeholder")}
-                    style={inputStyle}
-                    className="contact-form-input"
-                  />
+                  <input id="email" type="email" name="email" required placeholder={t("contact.form.email.placeholder")} style={inputStyle} className="contact-form-input" />
                   <ValidationError prefix="Email" field="email" errors={inquiryState.errors} style={errorStyle} />
                 </div>
 
@@ -132,15 +90,7 @@ export default function ContactPage() {
                   <label htmlFor="message" style={labelStyle}>
                     {t("contact.form.message")} <span style={{ color: "#b8945a" }} aria-label={t("contact.form.required")}>*</span>
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    placeholder={t("contact.form.message.placeholder")}
-                    style={{ ...inputStyle, resize: "vertical", minHeight: "140px" }}
-                    className="contact-form-input"
-                  />
+                  <textarea id="message" name="message" required rows={6} placeholder={t("contact.form.message.placeholder")} style={{ ...inputStyle, resize: "vertical", minHeight: "140px" }} className="contact-form-input" />
                   <ValidationError prefix="Message" field="message" errors={inquiryState.errors} style={errorStyle} />
                 </div>
 
@@ -171,22 +121,11 @@ export default function ContactPage() {
         </div>
 
         <style>{`
-          .contact-form-input:focus {
-            outline: none;
-            border-color: #0a1f3d !important;
-          }
-          .contact-form-submit:hover:not(:disabled) {
-            background-color: #061730 !important;
-          }
+          .contact-form-input:focus { outline: none; border-color: #0a1f3d !important; }
+          .contact-form-submit:hover:not(:disabled) { background-color: #061730 !important; }
         `}</style>
       </section>
 
-      {/* The newsletter subscription section gives visitors the option to receive
-          forthcoming articles by email. This is a separate form from the inquiry
-          form because the two have different purposes: the inquiry form is for
-          governance questions and engagement discussions, and the newsletter form
-          is for staying informed about published writing. Submissions are tagged
-          differently so you can sort them in your Formspree dashboard. */}
       <section className="py-28 md:py-36 bg-navy-deep">
         <div className="content-column">
           <div className="reading-column">
@@ -197,16 +136,7 @@ export default function ContactPage() {
             </div>
 
             {newsletterState.succeeded ? (
-              <div
-                style={{
-                  padding: "24px",
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  color: "#ffffff",
-                  textAlign: "center",
-                  borderRadius: "4px",
-                  border: "1px solid rgba(216,185,127,0.3)",
-                }}
-              >
+              <div style={{ padding: "24px", backgroundColor: "rgba(255,255,255,0.08)", color: "#ffffff", textAlign: "center", borderRadius: "4px", border: "1px solid rgba(216,185,127,0.3)" }}>
                 <p style={{ fontSize: "16px", lineHeight: 1.7, margin: 0 }}>{t("newsletter.success")}</p>
               </div>
             ) : (
@@ -236,24 +166,13 @@ export default function ContactPage() {
                   />
                   <ValidationError prefix="Email" field="email" errors={newsletterState.errors} style={{ ...errorStyle, color: "#f5b94a" }} />
 
-                  {/* Consent checkbox explicitly captures opt-in for receiving emails.
-                      Email consent is a regulatory requirement in many jurisdictions
-                      and is a good practice everywhere. The hidden value field ensures
-                      the consent is captured in the submission. */}
                   <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", color: "#e8e6e0", fontSize: "14px", lineHeight: 1.5 }}>
                     <input
                       type="checkbox"
                       name="consent"
                       value="yes"
                       required
-                      style={{
-                        marginTop: "3px",
-                        width: "16px",
-                        height: "16px",
-                        accentColor: "#d4b97f",
-                        cursor: "pointer",
-                        flexShrink: 0,
-                      }}
+                      style={{ marginTop: "3px", width: "16px", height: "16px", accentColor: "#d4b97f", cursor: "pointer", flexShrink: 0 }}
                     />
                     <span>{t("newsletter.consent")}</span>
                   </label>
@@ -287,17 +206,9 @@ export default function ContactPage() {
         </div>
 
         <style>{`
-          .newsletter-input:focus {
-            outline: none;
-            border-color: #d4b97f !important;
-            background-color: rgba(255,255,255,0.12) !important;
-          }
-          .newsletter-input::placeholder {
-            color: rgba(232,230,224,0.5);
-          }
-          .newsletter-submit:hover:not(:disabled) {
-            background-color: #c4a86b !important;
-          }
+          .newsletter-input:focus { outline: none; border-color: #d4b97f !important; background-color: rgba(255,255,255,0.12) !important; }
+          .newsletter-input::placeholder { color: rgba(232,230,224,0.5); }
+          .newsletter-submit:hover:not(:disabled) { background-color: #c4a86b !important; }
         `}</style>
       </section>
 
@@ -330,9 +241,7 @@ export default function ContactPage() {
             <div className="space-y-12">
               <div>
                 <div className="text-xs tracking-[0.25em] uppercase text-gold-light mb-3">{t("contact.paths.email.label")}</div>
-                <a href="mailto:donald@daglo.co" className="block text-xl text-white hover:text-gold-light transition-colors mb-3">
-                  donald@daglo.co
-                </a>
+                <a href="mailto:donald@daglo.co" className="block text-xl text-white hover:text-gold-light transition-colors mb-3">donald@daglo.co</a>
                 <p className="text-base text-text-light-body leading-relaxed">{t("contact.paths.email.desc")}</p>
               </div>
 
@@ -351,7 +260,6 @@ export default function ContactPage() {
   );
 }
 
-// Reusable inline style objects for the form inputs.
 const labelStyle: React.CSSProperties = {
   display: "block",
   fontSize: "14px",

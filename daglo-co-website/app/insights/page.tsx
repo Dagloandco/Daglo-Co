@@ -1,10 +1,10 @@
 // insights/page.tsx
 //
-// The Insights page with full English and French translation support and an inline
-// newsletter subscription option. The newsletter subscription form appears just before
-// the existing LinkedIn follow section, giving readers two ways to stay informed about
-// new articles: email subscription for direct delivery, or LinkedIn for the broader
-// thinking and announcements.
+// The Insights page is repositioned as Donald Daglo's governance writing and strategic
+// thinking. The three articles remain exactly as they were, but the page framing
+// signals to a board nominating committee, executive recruiter, or leadership team
+// that this is the writing of a governance leader rather than the publication of a
+// consulting firm.
 
 "use client";
 
@@ -33,7 +33,7 @@ export default function InsightsPage() {
         </div>
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6">
           <div className="text-xs tracking-[0.35em] uppercase text-gold-light mb-8">{t("insights.eyebrow")}</div>
-          <h1 className="text-5xl md:text-7xl font-serif text-white leading-[1.1]">{t("insights.hero")}</h1>
+          <h1 className="text-4xl md:text-6xl font-serif text-white leading-[1.15]">{t("insights.hero")}</h1>
         </div>
       </section>
 
@@ -74,10 +74,6 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      {/* Newsletter subscription on the Insights page. Readers who reach this page are
-          already interested in the writing, so offering them a way to receive each
-          article when it publishes is the natural next step. The form sits on the
-          ivory background to feel like a continuation of the editorial content above. */}
       <section className="py-28 md:py-36 bg-ivory-warm" style={{ borderTop: "1px solid #e8e4dc" }}>
         <div className="content-column">
           <div className="reading-column">
@@ -88,16 +84,7 @@ export default function InsightsPage() {
             </div>
 
             {newsletterState.succeeded ? (
-              <div
-                style={{
-                  padding: "24px",
-                  backgroundColor: "#ffffff",
-                  color: "#0a1f3d",
-                  textAlign: "center",
-                  borderRadius: "4px",
-                  border: "1px solid #d4b97f",
-                }}
-              >
+              <div style={{ padding: "24px", backgroundColor: "#ffffff", color: "#0a1f3d", textAlign: "center", borderRadius: "4px", border: "1px solid #d4b97f" }}>
                 <p style={{ fontSize: "16px", lineHeight: 1.7, margin: 0 }}>{t("newsletter.success")}</p>
               </div>
             ) : (
@@ -134,14 +121,7 @@ export default function InsightsPage() {
                       name="consent"
                       value="yes"
                       required
-                      style={{
-                        marginTop: "3px",
-                        width: "16px",
-                        height: "16px",
-                        accentColor: "#0a1f3d",
-                        cursor: "pointer",
-                        flexShrink: 0,
-                      }}
+                      style={{ marginTop: "3px", width: "16px", height: "16px", accentColor: "#0a1f3d", cursor: "pointer", flexShrink: 0 }}
                     />
                     <span>{t("newsletter.consent")}</span>
                   </label>
@@ -175,13 +155,8 @@ export default function InsightsPage() {
         </div>
 
         <style>{`
-          .insights-newsletter-input:focus {
-            outline: none;
-            border-color: #0a1f3d !important;
-          }
-          .insights-newsletter-submit:hover:not(:disabled) {
-            background-color: #061730 !important;
-          }
+          .insights-newsletter-input:focus { outline: none; border-color: #0a1f3d !important; }
+          .insights-newsletter-submit:hover:not(:disabled) { background-color: #061730 !important; }
         `}</style>
       </section>
 
@@ -191,7 +166,9 @@ export default function InsightsPage() {
             <div className="eyebrow-light mb-6">{t("insights.follow.eyebrow")}</div>
             <h2 className="text-3xl md:text-5xl font-serif text-white mb-10 leading-tight">{t("insights.follow.heading")}</h2>
             <p className="text-lg text-text-light-body mb-12 leading-relaxed">{t("insights.follow.body")}</p>
-            <a href="https://www.linkedin.com/in/donalddaglo" target="_blank" rel="noopener noreferrer" className="inline-block text-base text-white border-b border-white pb-2 hover:text-gold-light hover:border-gold-light transition-colors duration-300">{t("insights.follow.cta")}</a>
+            <a href="https://www.linkedin.com/in/donalddaglo" target="_blank" rel="noopener noreferrer" className="inline-block text-base text-white border-b border-white pb-2 hover:text-gold-light hover:border-gold-light transition-colors duration-300">
+              {t("insights.follow.cta")}
+            </a>
           </div>
         </div>
       </section>
