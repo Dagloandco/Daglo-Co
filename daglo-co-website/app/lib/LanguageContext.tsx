@@ -424,7 +424,7 @@ const translations: Record<string, { en: string; fr: string }> = {
   },
   "advisory.t4.title": { en: "Executive counsel", fr: "Conseil exécutif" },
   "advisory.t4.desc": {
-    en: "Trusted counsel for senior leaders navigating high-consequence decisions under pressure and incomplete information. Working alongside executives in the moments where the consequences of a single decision can cascade across the organization. Cyber risk, data risk, third-party exposure, geopolitical disruption, and the kinds of strategic questions that benefit from an outside perspective grounded in governance discipline.",
+    en: "Trusted counsel for senior leaders navigating high-consequence decisions under pressure and incomplete information. Working alongside executives in the moments when the consequences of a single decision can cascade across the organization. Cyber risk, data risk, third-party exposure, geopolitical disruption, and the kinds of strategic questions that benefit from an outside perspective grounded in governance discipline.",
     fr: "Conseil de confiance pour les hauts dirigeants confrontés à des décisions à fortes conséquences sous pression et avec une information incomplète. Travailler aux côtés des dirigeants dans les moments où les conséquences d'une seule décision peuvent se propager à travers toute l'organisation. Risque cyber, risque sur les données, exposition aux tiers, perturbation géopolitique et les types de questions stratégiques qui bénéficient d'une perspective extérieure ancrée dans la discipline de gouvernance.",
   },
   "advisory.commit.eyebrow": { en: "Operating Discipline", fr: "Discipline opérationnelle" },
@@ -460,8 +460,8 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "La Confiance implicite doit être mise au jour, testée et convertie en décisions délibérées.",
   },
   "advisory.c3.expansion": {
-    en: "Every implicit trust relationship across data, vendors, geographies, and partnerships exposes the organization without its knowing. The work is to convert those relationships into explicit decisions that the board has actually made.",
-    fr: "Chaque relation de confiance implicite à travers les données, les fournisseurs, les zones géographiques et les partenariats expose l'organisation sans qu'elle le sache. Le travail consiste à convertir ces relations en décisions explicites que le conseil a réellement prises.",
+    en: "Every implicit trust relationship across data, vendors, geographies, and partnerships exposes the organization without anyone realizing it. The work is to convert those relationships into explicit decisions that the board has actually made.",
+    fr: "Chaque relation de confiance implicite à travers les données, les fournisseurs, les zones géographiques et les partenariats expose l'organisation sans que personne ne s'en rende compte. Le travail consiste à convertir ces relations en décisions explicites que le conseil a réellement prises.",
   },
   "advisory.c4.name": { en: "Make risk visible", fr: "Rendre le risque visible" },
   "advisory.c4.statement": {
@@ -494,8 +494,8 @@ const translations: Record<string, { en: string; fr: string }> = {
     fr: "Sur la gouvernance, le risque cyber, les données et la sécurité dans un monde contesté.",
   },
   "insights.intro.body": {
-    en: "These essays examine the decisions leaders must make as Trust erodes, data becomes the true center of gravity, and global competition reshapes the security environment. They are written for boards, executives, security leaders, and policymakers who need to govern in the face of uncertainty.",
-    fr: "Ces essais examinent les décisions que les dirigeants doivent prendre alors que la Confiance s'érode, que les données deviennent le véritable centre de gravité et que la concurrence mondiale redessine l'environnement de sécurité. Ils sont écrits pour les conseils, les dirigeants, les responsables de la sécurité et les décideurs publics qui doivent gouverner face à l'incertitude.",
+    en: "These articles examine the decisions leaders must make as Trust erodes, as data becomes the true center of gravity, and as global competition reshapes the security environment. They are written for boards, executives, security leaders, and policymakers who need to govern in the face of uncertainty.",
+    fr: "Ces articles examinent les décisions que les dirigeants doivent prendre à mesure que la Confiance s'érode, à mesure que les données deviennent le véritable centre de gravité et à mesure que la concurrence mondiale redessine l'environnement de sécurité. Ils sont écrits pour les conseils, les dirigeants, les responsables de la sécurité et les décideurs publics qui doivent gouverner face à l'incertitude.",
   },
   "insights.pipeline.eyebrow": { en: "The Pipeline", fr: "En préparation" },
   "insights.pipeline.heading": {
